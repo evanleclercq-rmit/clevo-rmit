@@ -75,7 +75,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Budding Stockmarket Investor
+                    Budding Sharemarket Investor
                 </div>
 
                 <div class="links">
