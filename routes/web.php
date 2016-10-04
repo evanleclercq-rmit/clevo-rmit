@@ -23,3 +23,5 @@ Route::get('/login', function () {
 });
 
 Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
