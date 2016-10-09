@@ -80,7 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li><a href="#"><i class="fa fa-sort-amount-desc"></i> Leaderboard</a></li>
 									<li><a href="#"><i class="fa fa-edit"></i> Account Summary</a></li>
 									<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in"></i>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
