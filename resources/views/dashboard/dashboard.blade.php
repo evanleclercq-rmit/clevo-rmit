@@ -606,9 +606,15 @@ dt {
 									<li><a href="#"><i class="fa fa-sort-amount-desc"></i> Leaderboard</a></li>
 									<li><a href="#"><i class="fa fa-edit"></i> Account Summary</a></li>
 									<li class="dropdown">
+<<<<<<< HEAD
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 										{{ Auth::user()->name }} <span class="caret"></span>
 										</a>
+=======
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-sign-in"></i>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+>>>>>>> d8a90a436b055e369a76b0c5445e6edfb1cd8bea
 
 										<ul class="dropdown-menu" role="menu">
 										<li><a href='#'>Settings</a></li>
