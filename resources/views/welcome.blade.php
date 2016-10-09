@@ -88,10 +88,8 @@
                 <div class="links">
                     <a href="#">About</a>
                     <a href="#">Getting Started</a>
-<<<<<<< HEAD
 					<a href="{{ url('/apitest') }}">API Tests</a>
-=======
->>>>>>> d8a90a436b055e369a76b0c5445e6edfb1cd8bea
+
                 </div>
             </div>
         </div>
