@@ -559,7 +559,6 @@ dt {
 
 
 
-
 </head>
 <body>
 	<div class="content-top">
@@ -700,6 +699,7 @@ dt {
 									<li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</li>
 									<li>Currency  :</li>
 									<li>Change &nbsp;&nbsp; :</li>
+									
 								</ul>
 							</div>
 						</div>
@@ -712,7 +712,6 @@ dt {
 									<h3>Hourly Graphic</h3>
 									<dl>
 										<dt>
-		
 										  </dt>
 										  <dd class="percentage percentage-11"><span class="text">Company 1: 11.33%</span></dd>
 										  <dd class="percentage percentage-49"><span class="text">Company 2: 49.77%</span></dd>
@@ -772,6 +771,7 @@ dt {
                                 <li>Shares Sold:</li>
                                 <li>Profit:</li>
                                 <li>Initial Ballance: $1,000,000</li>
+								<p><a href="{{ url('/apitest') }}">API Tests</a></p>
 								</ul>  
 							</div>
 					</div>
@@ -787,17 +787,6 @@ dt {
                 </div>
 				
 			</div>	
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	
     

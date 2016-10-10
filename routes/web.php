@@ -28,4 +28,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
 //Route to the API Test page/
-Route::get('api-test', 'ApiTestController@index');
+Route::get('/apitest', 'ApiTestController@index');
