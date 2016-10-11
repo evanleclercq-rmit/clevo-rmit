@@ -39,13 +39,13 @@ Installing Composer
 
 **1.** From Terminal run the following commands
 
-> php -r "copy('[https://getcomposer.org/installer](https://getcomposer.org/installer)', 'composer-setup.php');"
-> php composer-setup.php
-> php -r "unlink('composer-setup.php');"
+	php -r "copy('[https://getcomposer.org/installer](https://getcomposer.org/installer)', 'composer-setup.php');"
+	php composer-setup.php
+	php -r "unlink('composer-setup.php');"
 
 **2.** Make the Composer installation global by moving composer.phar to a directory that is in your PATH
 
-> mv composer.phar /usr/local/bin/composer
+	mv composer.phar /usr/local/bin/composer
 
 *For more in-depth instructions on installing Composer on Linux or OSX see **[https://getcomposer.org/doc/00-intro.md#installation-linux-unix-os*x](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 
@@ -57,7 +57,7 @@ Installing Laravel
 
 **1.** Open Command Prompt or Terminal and run - 
 
-> composer global require "laravel/installer"
+	composer global require "laravel/installer"
 
 
 Installing Local Web Server
@@ -85,11 +85,11 @@ This should be done into the public access folder of your local web server. This
 
 **2.** In Command Prompt or Terminal navigate to the folder that now contains the project files.
 
-> cd c:/xampp/htdocs/clevo-rmit
+	cd c:/xampp/htdocs/clevo-rmit
 
 **3.** Run the following command to install any dependencies required by the project.
 
-		composer install
+	composer install
 
 
 Running the application
