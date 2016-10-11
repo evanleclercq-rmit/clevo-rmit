@@ -683,22 +683,83 @@ dt {
 							</div>
 						</div>
 					</div>
-                  
+                  <?php
+                    
+                    $company = "";
+                    $price = "";
+                    $currency = "";
+                    $change = "";
+                    
+                    if(isset($_POST)&&!empty($_POST))
+                    {
+                        $stockSymbol = $_POST['searchText'];
+                        $stockData = search_stock($stockSymbol);
+            
+                        $company = $stockData['name'];
+                        $price = $stockData['price'];
+                        $currency = $stockData['currency'];
+                        $change = $stockData['change'];
+            
+            //foreach ($stockData as $key => $value)
+            //{
+             //   echo $key, " :", $value, "<br>";      
+            //}
+        }
+        
+
+
+
+
+
+    
+        
+    function search_stock($stockSymbol)
+    {
+            $cSession = curl_init(); 
+            
+            $queryURL = 
+"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22".$stockSymbol."%22)&format=json&env=store://datatables.org/alltableswithkeys";
+            
+            curl_setopt($cSession,CURLOPT_URL,$queryURL);
+            curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($cSession,CURLOPT_HEADER, false);    
+            
+            $result = curl_exec($cSession);
+
+            curl_close($cSession);
+        
+            $json = json_decode($result, true);
+        
+            $stockData = array(
+                 "name" => $json['query']['results']['quote']['Name'],
+                 "price" => $json['query']['results']['quote']['Ask'],
+                 "currency" => $json['query']['results']['quote']['Currency'],
+                 "change" => $json['query']['results']['quote']['Change'],
+            );
+            
+           
+            return $stockData;
+
+    }
+
+
+                    ?>
                   
 					<div class="col-md-4 content-middle">
 						<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 							<div class="skills-heading">
 								<h3>Search Stock by Symbol</h3>
-								<form  name="APIsearchForm" action="<?php echo basename ($_SERVER["PHP_SELF"]); ?>" method="post">
+								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+                                  {{ csrf_field() }}   
 								<input name="searchText" placeholder=" Enter stock symbol" type="text"?>   
 								<button class="submitButt" type="submit" value="Submit">Search</button>
 								</form>
 								<ul>
 								<br>
-									<li>Company : </li>
-									<li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</li>
-									<li>Currency  :</li>
-									<li>Change &nbsp;&nbsp; :</li>
+									<li>Company : <?php echo $company ?></li>
+									<li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
+									<li>Currency  :<?php echo $currency ?></li>
+									<li>Change &nbsp;&nbsp; : <?php echo $change ?></li>
 									
 								</ul>
 							</div>
@@ -799,56 +860,7 @@ dt {
 </body>
 
 <?php
-        if(isset($_POST)&&!empty($_POST))
-        {
-            $stockSymbol = $_POST['searchText'];
-            
-           
-            $stockData = search_stock($stockSymbol);
-            
-            foreach ($stockData as $key => $value)
-            {
-                echo $key, " :", $value, "<br>";      
-            }
-        }
         
-?>
-
-
-<?php
-
-    
-        
-    function search_stock($stockSymbol)
-    {
-            $cSession = curl_init(); 
-            
-            $queryURL = 
-"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22".$stockSymbol."%22)&format=json&env=store://datatables.org/alltableswithkeys";
-            
-            curl_setopt($cSession,CURLOPT_URL,$queryURL);
-            curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
-            curl_setopt($cSession,CURLOPT_HEADER, false);    
-            
-            $result = curl_exec($cSession);
-
-            curl_close($cSession);
-        
-            $json = json_decode($result, true);
-        
-            $stockData = array(
-                 "name" => $json['query']['results']['quote']['Name'],
-                 "price" => $json['query']['results']['quote']['Ask'],
-                 "currency" => $json['query']['results']['quote']['Currency'],
-                 "change" => $json['query']['results']['quote']['Change'],
-            );
-            
-           
-            return $stockData;
-
-    }
-
-
 
        
    
