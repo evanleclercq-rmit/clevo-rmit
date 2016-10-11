@@ -3,7 +3,7 @@ Budding Sharemarket Investor
 
 Setup Guide
 
-To run Budding Sharemarket Investor in a development environment the following are required:
+To run Budding Sharemarket Investor in a development environment the following tools and programs are required:
 
 * **Composer**- a tool for dependency management in PHP
 
@@ -89,13 +89,13 @@ This should be done into the public access folder of your local web server. This
 
 **3.** Run the following command to install any dependencies required by the project.
 
-> composer install
+		composer install
 
 
 Running the application
 -----------------------
 
-***1.** Ensure that the local web server is running.
+**1.** Ensure that the local web server is running.
 
 **2.** Open a web browser and navigate to the public folder inside the project folder.
 
