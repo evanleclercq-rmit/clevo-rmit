@@ -1,7 +1,6 @@
 Budding Sharemarket Investor
 ============================
 
-Setup Guide
 
 To run Budding Sharemarket Investor in a development environment the following tools and programs are required:
 
@@ -16,10 +15,11 @@ To run Budding Sharemarket Investor in a development environment the following t
 * **Project files** from GitHub
 
 
-Installing Composer 
--------------------
+__Installing Composer__
+-----------------------
 
 *Skip this step if Composer is already installed on your system*
+
 
 **Windows**
 
@@ -34,6 +34,7 @@ Installing Composer
 **3.** Add the Composer path to your system’s environment variables. This will vary between systems. 
 
 **Windows 10**: System Properties > Advanced > Environment Variables > Path
+
 
 **Linux / Unix / OSX**
 
@@ -50,8 +51,8 @@ Installing Composer
 *For more in-depth instructions on installing Composer on Linux or OSX see **[https://getcomposer.org/doc/00-intro.md#installation-linux-unix-os*x](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
 
 
-Installing Laravel
-------------------
+__Installing Laravel__
+----------------------
 
 *Skip this step if Laravel is already installed on your system*
 
@@ -60,8 +61,8 @@ Installing Laravel
 	composer global require "laravel/installer"
 
 
-Installing Local Web Server
----------------------------
+__Installing Local Web Server__
+-------------------------------
 
 *Skip this step if a local web server is already installed on your system*
 
@@ -76,8 +77,8 @@ The following are suitable options:
 [WAMP](http://www.wampserver.com/en/) (Windows)
 
 
-Setting up the project
------------------------
+__Setting up the project__
+--------------------------
 
 **1.** Git clone [https://github.com/evanleclercq-rmit/clevo-rmit](https://github.com/evanleclercq-rmit/clevo-rmit)
 
@@ -92,8 +93,8 @@ This should be done into the public access folder of your local web server. This
 	composer install
 
 
-Running the application
------------------------
+__Running the application__
+---------------------------
 
 **1.** Ensure that the local web server is running.
 
