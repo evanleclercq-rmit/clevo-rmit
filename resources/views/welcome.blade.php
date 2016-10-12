@@ -65,12 +65,19 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+          <div class="flex-center position-ref full-height">
+            @if (Auth::guest())
                 <div class="top-right links">
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
                 </div>
+
+            @else
+            <div class="top-right links">
+                <a href="{{ url('/dashboard') }}">Dashboard</a>
+                <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+            </div>
             @endif
 
             <div class="content">
@@ -81,7 +88,8 @@
                 <div class="links">
                     <a href="#">About</a>
                     <a href="#">Getting Started</a>
-					<a href="#">Sample</a>
+					<a href="{{ url('/apitest') }}">API Tests</a>
+
                 </div>
             </div>
         </div>

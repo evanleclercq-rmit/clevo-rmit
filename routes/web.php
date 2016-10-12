@@ -25,7 +25,7 @@ Route::get('/login', function () {
 Auth::routes();
 
 //Route to the dashboard controller - lands at defualt view.
-Route::get('/dashboard', 'DashboardController@index');
+Route::any('/dashboard', 'DashboardController@index');
 
 //Route to the API Test page/
-Route::get('api-test', 'ApiTestController@index');
+Route::get('/apitest', 'ApiTestController@index');
