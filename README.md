@@ -4,9 +4,9 @@ Budding Sharemarket Investor
 
 To run Budding Sharemarket Investor in a development environment the following tools and programs are required:
 
-* **Composer**- a tool for dependency management in PHP
+* **Composer** - a tool for dependency management in PHP
 
-* **Laravel**- a PHP framework
+* **Laravel** - a PHP framework
 
 * **Local web host** - ie. XAMPP, WAMP, MAMP
 
