@@ -24,8 +24,11 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-//Route to the dashboard controller - lands at defualt view.
-Route::any('/dashboard', 'DashboardController@index');
+Route::group(['middleware' => 'auth'], function () {
+
+    // All routes that need a logged in user
+	Route::any('/dashboard', 'DashboardController@index');
+});
 
 //Route to the API Test page/
 Route::get('/apitest', 'ApiTestController@index');
