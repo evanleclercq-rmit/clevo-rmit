@@ -184,18 +184,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-4 content-middle"><!--Search Stock by Symbol-->
 						<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 							<div class="skills-heading">
-								<h3>Search Stock by Symbol</h3>
+								<h3>Search Live Stock Value</h3>
 								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
                                   {{ csrf_field() }}   
-								<input name="searchText" placeholder=" Enter stock symbol or choose from list" type="text"> 
+								<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 								<button class="submitButt" type="submit" value="submit">Search</button>
 								</form>
-								<br><br>
+								<br>
+								
 								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
                                   {{ csrf_field() }}   
 							
-									<select name="searchText" > 
-									<option value="">choose a company...</option>
+									<select name="searchText" onchange="this.form.submit();"> 
+									<option value="">select company</option>
 									<option value="AAPL">APPLE</option>
 									<option value="GOOGL">GOOGLE</option>
 									<option value="MSFT">MICROSOFT</option>
@@ -208,7 +209,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<option value="TCEHY">Tencent</option>
 									</select>
 									<br><br>
-									<input type="submit" value="submit">
 			
 								</form>
 								<ul>
