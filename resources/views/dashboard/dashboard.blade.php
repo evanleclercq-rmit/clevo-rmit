@@ -185,14 +185,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 							<div class="skills-heading">
 								<h3>Search Live Stock Value</h3>
-								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+								<form  name="APIsearchForm" action="/public/dashboard" method="post">
                                   {{ csrf_field() }}   
 								<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 								<button class="submitButt" type="submit" value="submit">Search</button>
 								</form>
 								<br>
 								
-								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+								<form  name="APIsearchForm" action="/public/dashboard" method="post">
                                   {{ csrf_field() }}   
 							
 									<select name="searchText" onchange="this.form.submit();"> 
