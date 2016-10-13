@@ -187,8 +187,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<h3>Search Stock by Symbol</h3>
 								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
                                   {{ csrf_field() }}   
-								<input name="searchText" placeholder=" Enter stock symbol" type="text"?>   
-								<button class="submitButt" type="submit" value="Submit">Search</button>
+								<input name="searchText" placeholder=" Enter stock symbol or choose from list" type="text"> 
+								<button class="submitButt" type="submit" value="submit">Search</button>
+								</form>
+								<br><br>
+								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+                                  {{ csrf_field() }}   
+							
+									<select name="searchText" > 
+									<option value="">choose a company...</option>
+									<option value="AAPL">APPLE</option>
+									<option value="GOOGL">GOOGLE</option>
+									<option value="MSFT">MICROSOFT</option>
+									<option value="FB">FACEBOOK</option>
+									<option value="AMZN">AMAZON</option>
+									<option value="XOM">Exxon Mobil Corporation</option>
+									<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
+									<option value="JNJ">Johnson & Johnson </option>
+									<option value="GE">General Electric</option>
+									<option value="TCEHY">Tencent</option>
+									</select>
+									<br><br>
+									<input type="submit" value="submit">
+			
 								</form>
 								<ul>
 								<br>
