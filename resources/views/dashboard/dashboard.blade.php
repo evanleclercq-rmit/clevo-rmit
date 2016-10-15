@@ -123,13 +123,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								  "activeTickerBackgroundColor": "#edf0f3",
 								  "large_chart_url": "https://www.tradingview.com/chart/",
 								  "noGraph": false,
-								  "width": "300px",
+								  "width": "320px",
 								  "height": "500px",
 								  "locale": "en"
 								});
 								</script>
 								<!-- TradingView Widget END -->
-								
 							</div>
 						</div>
 					</div>
