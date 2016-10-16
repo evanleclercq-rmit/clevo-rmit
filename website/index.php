@@ -291,16 +291,23 @@
 	<div id="header">
 		<div class="content-top">
 			<div class="container">
+				
 				<div class="logo">
+				
 					<div id="topBar">
-						<div class="textTop"><h1>CLEVO</h1>
-						</div>
+						<!--<div class="textTop">-->
+						<ul class="toptitle">
+						<li><h1>CLEVO</h1></li>
+						<li class="right"><p>Welcome Back,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></li>
+						
+						</ul>
+						<!--</div>-->
 							<ul class="topnav">
 								<li><a class="active" href="#">Dashboard</a></li>
 								<li><a href="#transactions">Transactions</a></li>
 								<li><a href="#gettingstarted">Getting Started</a></li>
 								<li><a href="#aboutus">About Us</a></li>
-								<li class="right"><a href="#logout">Logout</a></li>
+								<li class="right"><a href="#logout">Logout&nbsp;&nbsp;</a></li>
 							</ul>	
 					</div>
 				</div>
