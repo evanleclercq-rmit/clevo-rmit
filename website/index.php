@@ -66,28 +66,11 @@
 
 
 <body>
-<div id="container">
-<div id="header">
-<div class="content-top">
-	<div class="container">
-		<div class="logo">
-		<!--<div id="header">-->
-			<div id="topBar">
-				<div class="textTop"><h1>CLEVO</h1>
-				</div>
-			
 
-			<ul class="topnav">
-  			<li><a class="active" href="#">Dashboard</a></li>
-  			<li><a href="#transactions">Transactions</a></li>
-  			<li><a href="#gettingstarted">Getting Started</a></li>
-  			<li><a href="#aboutus">About Us</a></li>
- 			<li class="right"><a href="#logout">Logout</a></li>
-			</ul>
-		</div><!--</div>--></div>
-	</div>
-</div>
-</div>
+
+
+<div id="container">
+	
 
 
 
@@ -95,10 +78,13 @@
 <div id="body">	
 	<div class="container">
 		<div class="stockmarket-information">
-			<div class="contact-form-heading"><br>
-				<h3>Stockmarket Information</h3>
+			<div class="contact-form-heading">
+				<div class="content-top-grids">	
+		<div class="col-md-16 content-left">
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+		<h3>Stockmarket Information</h3>
 		<!-- TradingView Widget BEGIN -->
-			<div id="tv-medium-widget-f0442"></div>
+			<div id="tv-medium-widget-f0442"></div></div></div></div>
 			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
 			<script type="text/javascript">
 			new TradingView.MediumWidget({
@@ -219,18 +205,18 @@
 		<div class="col-md-4 content-left">
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="stockmarket-search">
-			
 			<div class="skills-heading">
-			<h3>Search Live Stock Value</h3>
+			<h3>Search Live Stock</h3>
 			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
-			{{ csrf_field() }} 
+	<!--		{{ csrf_field() }} -->
 				<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 				<button class="submitButt" type="submit" value="submit">Search</button>
 			</form>
 				<br>
 							
 			<form  name="APIsearchForm" action="../website/index.php" method="post">
-			{{ csrf_field() }} 
+	
+	<!--		{{ csrf_field() }} -->
 						
 				<select name="searchText" onchange="this.form.submit();"> 
 				<option value="">select company</option>
@@ -279,7 +265,7 @@
  
 	<div class="col-md-4 content-right"><!--Leaderboard-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-			<div class="contact-form-heading">
+			<div class="skills-heading">
 				<h3>Leaderboard</h3>
 					<ul>
 						<li> 1. C</li>
@@ -300,6 +286,31 @@
  
 </div>
 	</div>
+		
+<!--header-->		
+	<div id="header">
+		<div class="content-top">
+			<div class="container">
+				<div class="logo">
+					<div id="topBar">
+						<div class="textTop"><h1>CLEVO</h1>
+						</div>
+							<ul class="topnav">
+								<li><a class="active" href="#">Dashboard</a></li>
+								<li><a href="#transactions">Transactions</a></li>
+								<li><a href="#gettingstarted">Getting Started</a></li>
+								<li><a href="#aboutus">About Us</a></li>
+								<li class="right"><a href="#logout">Logout</a></li>
+							</ul>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--//header-->		
+		
+		
+		
 		
 			<div id="footer">
 				<ul class="footernav">
