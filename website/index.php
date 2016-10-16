@@ -3,139 +3,10 @@
 <head>
 <title>CLEVO</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Sharemarket Budding Investor, sharemarket" />
+<meta name="keywords" content="Sharemarket Budding Investor, sharemarket, CLEVO" />
+<link rel="stylesheet" type="text/css" href="style.css" />	
 
-<style>
-h1{
-	padding: 1px 16px;
-}
-h3{
-	padding: 1px 16px;
-}
-
-body {margin: 0;}
-
-.textTop{
-    display: inline-block;
-}
-
-#topBar{
-   position:fixed;
-   top:0;
-   left:0;
-   width:100%;
-   height:75px;
-   background-color:#2b4065;
-}
-#topBar h1 {
-	color: #FFF;
-	padding-left: 1px 1px;
-}
-
-div {  
-     vertical-align: top;
-}
-
-
-#wrapper {
-	min-height:100%;
-	position:relative;
-}
-
-
-ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #95abce;
-	margin-top: 75px;
-}
-
-ul.topnav li {
-	float: left;
-}
-
-ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 1px 15px;
-    text-decoration: none;
-}
-
-ul.topnav li a:hover:not(.active) {background-color: #111;}
-
-ul.topnav li a.active {background-color: #2b4065;}
-
-ul.topnav li.right {float: right;}
-
-@media screen and (max-width: 600px){
-    ul.topnav li.right,
-    ul.topnav li {float: none;}
-}
-
-ul.footernav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #95abce;
-	margin-top: 75px;
-}
-
-ul.footernav li {
-	float: left;
-}
-
-ul.footernav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 1px 15px;
-    text-decoration: none;
-}
-
-ul.footernav li a:hover:not(.active) {background-color: #111;}
-
-ul.footernav li a.active {background-color: #2b4065;}
-
-ul.footernav li.right {float: right;}
-
-@media screen and (max-width: 600px){
-    ul.footernav li.right,
-    ul.footernav li {float: none;}
-}
-
-#wrapper {
-	min-height:100%;
-	position:relative;
-}
-
-#header {
-	background:#ededed;
-	padding:10px;
-}
-
-#content {
-	padding-bottom:100px; /* Height of the footer element */
-}
-
-#footer {
-	background:#2b4065;
-	width:100%;
-	height:100px;
-	position:absolute;
-	bottom:0;
-	left:0;
-	color: #FFF;
-}
-
-</style>
 </head>
-
-
-
 
 <body>
 <div id="wrapper">
@@ -151,6 +22,7 @@ ul.footernav li.right {float: right;}
   			<li><a href="#gettingstarted">Getting Started</a></li>
   			<li><a href="#aboutus">About Us</a></li>
  			<li class="right"><a href="#logout">Logout</a></li>
+			
 		</ul>
 	</div>
 	
@@ -278,12 +150,14 @@ ul.footernav li.right {float: right;}
 		<div class="stockmarket-search">
 			<h3>Search Live Stock Value</h3>
 			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
+			{{ csrf_field() }} 
 				<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 				<button class="submitButt" type="submit" value="submit">Search</button>
 			</form>
 				<br>
 							
 			<form  name="APIsearchForm" action="../website/index.php" method="post">
+			{{ csrf_field() }} 
 						
 				<select name="searchText" onchange="this.form.submit();"> 
 				<option value="">select company</option>

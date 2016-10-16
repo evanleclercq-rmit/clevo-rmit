@@ -66,8 +66,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<ul>
 									<div class="dropdown wow fadeInUp animated" data-wow-delay=".5s" style="go-right; float:right;  color:white;">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style = "go-right; float:right; padding:0px; color:white;">
-										{{ Auth::user()->name }} <span class="caret"></span>
-										</a>
+										 {{ Auth::user()->name }}<span class="caret"></span></a>
 
 										<ul class="dropdown-menu" role="menu" >
 											<li><a href='#'>Settings</a></li>
@@ -184,15 +183,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 							<div class="skills-heading">
 								<h3>Search Live Stock Value</h3>
-								<form  name="APIsearchForm" action="/public/dashboard" method="post">
-                                  {{ csrf_field() }}   
+								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+								{{ csrf_field() }}   
 								<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 								<button class="submitButt" type="submit" value="submit">Search</button>
 								</form>
 								<br>
 								
-								<form  name="APIsearchForm" action="/public/dashboard" method="post">
-                                  {{ csrf_field() }}   
+								<form  name="APIsearchForm" action="/clevo-rmit/public/dashboard" method="post">
+								{{ csrf_field() }}   
+                                    
 							
 									<select name="searchText" onchange="this.form.submit();"> 
 									<option value="">select company</option>
