@@ -1089,7 +1089,7 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	line-height: 1.42857143;
-	color: #000000;
+	color: #EE732F;
 	background-color: #fff;
 }
 input,
@@ -1227,8 +1227,8 @@ h2,
 .h2,
 h3,
 .h3 {
-	margin-top: 0px;
-	margin-bottom: 0px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 h1 small,
 .h1 small,
@@ -1292,7 +1292,7 @@ h6,
   font-size: 12px;
 }
 p {
-	margin: 20 0 10px;
+  margin: 0 0 10px;
 }
 .lead {
   margin-bottom: 20px;
@@ -1409,8 +1409,8 @@ a.bg-danger:hover {
 }
 ul,
 ol {
-	margin-top: 0;
-	margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 ul ul,
 ol ul,
