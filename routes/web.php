@@ -11,9 +11,14 @@
 |
 */
 
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+#Profile
 
 Auth::routes();
 
