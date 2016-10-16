@@ -71,12 +71,14 @@ ul.topnav li.right {float: right;}
 }
 
 ul.footernav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #95abce;
-	margin-top: 75px;
+	list-style-type: none;
+	padding: 0;
+	overflow: hidden;
+	background-color: #95abce;
+	margin-top: auto;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
 }
 
 ul.footernav li {

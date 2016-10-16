@@ -67,7 +67,8 @@
 
 <body>
 <div class="content-top">
-	<div class="container"><!--<div class="logo">-->
+	<div class="container">
+		<div class="logo">
 		<!--<div id="header">-->
 			<div id="topBar">
 				<div class="textTop"><h1>CLEVO</h1>
@@ -81,12 +82,12 @@
   			<li><a href="#aboutus">About Us</a></li>
  			<li class="right"><a href="#logout">Logout</a></li>
 			</ul>
-		</div><!--</div><!--</div>-->
+		</div><!--</div>--></div>
 	</div>
 </div>
 	
-	
-	<div id="content">
+	<div class="container">
+	<!--<div id="content">-->
 		<div class="stockmarket-information">
 			<div class="contact-form-heading"><br>
 				<h3>Stockmarket Information</h3>
@@ -154,7 +155,7 @@
 			</script>
 			<!-- TradingView Widget END -->
 
-		</div>							
+		</div>		</div>			</div>		
 		
 <?php
                     
@@ -204,7 +205,7 @@
     }
 ?>		
 
-
+<div class="container">
 <div class="content-grids">
 				<!-- content-top-grids -->
 	<div class="content-top-grids">	
@@ -288,21 +289,23 @@
 			</div>
 		</div>
 	</div><!--//Leaderboard-->
+ </div>
  
- 
- <!--
-	<div id="footer">
+
 	
-		<ul class="footernav">
-  			<li><a href="#termsofuse">Terms of Use</a></li>
-  			<li><a href="#privacy">Privacy</a></li>
-  			<li><a href="#sitemap">Sitemap</a></li>
-		</ul>
-	</div>
--->
+		<div class="container">
+			<div id="footer">
+				<ul class="footernav">
+					<li><a href="#termsofuse">Terms of Use</a></li>
+					<li><a href="#privacy">Privacy</a></li>
+					<li><a href="#sitemap">Sitemap</a></li>
+				</ul>
+			</div>
+		</div>
 
 
-</div>
+
+
 
 </body>
 </html>
