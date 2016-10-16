@@ -66,6 +66,8 @@
 
 
 <body>
+<div id="container">
+<div id="header">
 <div class="content-top">
 	<div class="container">
 		<div class="logo">
@@ -85,13 +87,16 @@
 		</div><!--</div>--></div>
 	</div>
 </div>
-	
+</div>
+
+
+
+
+<div id="body">	
 	<div class="container">
-	<!--<div id="content">-->
 		<div class="stockmarket-information">
 			<div class="contact-form-heading"><br>
 				<h3>Stockmarket Information</h3>
-			<!--</div>-->
 		<!-- TradingView Widget BEGIN -->
 			<div id="tv-medium-widget-f0442"></div>
 			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -155,7 +160,9 @@
 			</script>
 			<!-- TradingView Widget END -->
 
-		</div>		</div>			</div>		
+			</div>		
+		</div>			
+	</div>		
 		
 <?php
                     
@@ -289,21 +296,25 @@
 			</div>
 		</div>
 	</div><!--//Leaderboard-->
- </div>
- 
 
-	
-		<div class="container">
+ 
+</div>
+	</div>
+		
 			<div id="footer">
 				<ul class="footernav">
 					<li><a href="#termsofuse">Terms of Use</a></li>
 					<li><a href="#privacy">Privacy</a></li>
 					<li><a href="#sitemap">Sitemap</a></li>
 				</ul>
+				<p style="text-align: center;">© 2016 Statistics UI Kit . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+			<p style="text-align: center;">Disclaimer:<br>
+This Site has been made for educational purposes by students of RMIT University towards
+the completion of CPT331 - Programming Poject</p>
 			</div>
-		</div>
+		
 
-
+ </div>
 
 
 
