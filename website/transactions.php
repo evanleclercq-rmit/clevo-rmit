@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>CLEVO</title>
+<title>Transactions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Sharemarket Budding Investor, sharemarket, CLEVO" />
+<meta name="keywords" content="Sharemarket Budding Investor, sharemarket, buy shares, sell shares" />
 <link rel="stylesheet" type="text/css" href="style.css" />	
 
 
@@ -207,14 +207,14 @@
 			<div class="stockmarket-search">
 			<div class="skills-heading">
 			<h3>Search Live Stock</h3>
-			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
+			<form  name="APIsearchForm" action="../website/transactions.php" method="post"> 
 	<!--		{{ csrf_field() }} -->
 				<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 				<button class="submitButt" type="submit" value="submit">Search</button>
 			</form>
 				<br>
 							
-			<form  name="APIsearchForm" action="../website/index.php" method="post">
+			<form  name="APIsearchForm" action="../website/transactions.php" method="post">
 	
 	<!--		{{ csrf_field() }} -->
 						
@@ -248,38 +248,66 @@
 	</div>
 </div>
 
-	<div class="col-md-4 content-middle"><!--Search Stock by Symbol-->
+	<div class="col-md-4 content-middle"><!--Buy Shares-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="skills-heading">
-				<h3>Current Holdings</h3>
-					<ul>
-						<li>Current Ballance:</li>
-						<li>Shares Bought:</li>
-						<li>Shares Sold:</li>
-						<li>Profit:</li>
-						<li>Initial Ballance: $1,000,000</li>
-					</ul>  
+				<h3>Buy Shares</h3>
+				<form  name="APIsearchForm" action="../website/transactions.php" method="post">
+				<select name="searchText" onchange="this.form.submit();" > 
+				<option value="">select company</option>
+				<option value="AAPL">APPLE</option>
+				<option value="GOOGL">GOOGLE</option>
+				<option value="MSFT">MICROSOFT</option>
+				<option value="FB">FACEBOOK</option>
+				<option value="AMZN">AMAZON</option>
+				<option value="XOM">Exxon Mobil Corporation</option>
+				<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
+				<option value="JNJ">Johnson & Johnson </option>
+				<option value="GE">General Electric</option>
+				<option value="TCEHY">Tencent</option>
+				</select><br><br>
+				<input name="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1" value="">
+				<button class="submitButt" type="submit" value="submit">Calculate</button>	
+				<br><br>
+				<ul>
+				<li>Company : <?php echo $company ?></li>
+				<li>Total Value: <?php echo ($price * 2) ?> <?php echo $currency ?></li>
+				</ul><br>
+				<button class="submitButt" type="submit" value="submit">Buy Shares</button>
+				<br>
+				</form>
 			</div>
 		</div>
 	</div>
  
-	<div class="col-md-4 content-right"><!--Leaderboard-->
+	<div class="col-md-4 content-right"><!--Sale Shares-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="skills-heading">
-				<h3>Leaderboard</h3>
-					<ul>
-						<li> 1. C</li>
-						<li> 2. L</li>
-						<li> 3. E</li>
-						<li> 4. V</li>
-						<li> 5. O</li>
-						<li> 6. A</li>
-						<li> 7. B</li>
-						<li> 8. C</li>
-						<li> 9. D</li>
-						<li>10. E</li>
-					</ul>
-			</div>
+				<h3>Sell Shares</h3>
+				<form  name="APIsearchForm" action="../website/transactions.php" method="post">
+				<select name="searchText" onchange="this.form.submit();" > 
+				<option value="">select company</option>
+				<option value="AAPL">APPLE</option>
+				<option value="GOOGL">GOOGLE</option>
+				<option value="MSFT">MICROSOFT</option>
+				<option value="FB">FACEBOOK</option>
+				<option value="AMZN">AMAZON</option>
+				<option value="XOM">Exxon Mobil Corporation</option>
+				<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
+				<option value="JNJ">Johnson & Johnson </option>
+				<option value="GE">General Electric</option>
+				<option value="TCEHY">Tencent</option>
+				</select><br><br>
+				<input name="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1" value="">
+				<button class="submitButt" type="submit" value="submit">Calculate</button>	
+				<br><br>
+				<ul>
+				<li>Company : <?php echo $company ?></li>
+				<li>Total Value: <?php echo ($price * 2) ?> <?php echo $currency ?></li>
+				</ul><br>
+				<button class="submitButt" type="submit" value="submit">Sell Shares</button>
+				<br>
+				</form>
 		</div>
 	</div><!--//Leaderboard-->
 
@@ -304,8 +332,8 @@
 						</ul>
 						<!--</div>-->
 							<ul class="topnav">
-								<li><a class="active" href="#">Dashboard</a></li>
-								<li><a href="../website/transactions.php">Transactions</a></li>
+								<li><a href="../website/index.php">Dashboard</a></li>
+								<li><a class="active" href="">Transactions</a></li>
 								<li><a href="#gettingstarted">Getting Started</a></li>
 								<li><a href="#aboutus">About Us</a></li>
 								<li class="right"><a href="#logout">Logout&nbsp;&nbsp;</a></li>
