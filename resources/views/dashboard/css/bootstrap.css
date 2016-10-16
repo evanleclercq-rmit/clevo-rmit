@@ -1227,8 +1227,8 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 h1 small,
 .h1 small,
@@ -1409,8 +1409,8 @@ a.bg-danger:hover {
 }
 ul,
 ol {
-  margin-top: 0;
-  margin-bottom: 10px;
+	margin-top: 0;
+	margin-bottom: 0px;
 }
 ul ul,
 ol ul,

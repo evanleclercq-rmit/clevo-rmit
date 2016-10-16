@@ -2,10 +2,20 @@
 
  */
 h1{
-	padding: 1px 16px;
+	padding: 10px 20px;
 }
+
+h2{
+	color:white;
+	padding: 30px 40px;
+}
+
 h3{
 	padding: 1px 16px;
+}
+
+h4{
+	padding: 30px 1px;
 }
 
 body {
@@ -84,12 +94,12 @@ ul.toptitle li.right {float: right;}
 
 
 ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #95abce;
-	margin-top: 35px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #95abce;
+	margin-top: 0px;
 }
 
 ul.topnav li {
@@ -104,7 +114,7 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover:not(.active) {background-color: #2b4065;}
 
 ul.topnav li a.active {background-color: #2b4065;}
 
@@ -138,7 +148,7 @@ ul.footernav li a {
     text-decoration: none;
 }
 
-ul.footernav li a:hover:not(.active) {background-color: #111;}
+ul.footernav li a:hover:not(.active) {background-color: #2b4065;}
 
 ul.footernav li a.active {background-color: #2b4065;}
 

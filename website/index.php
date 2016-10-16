@@ -298,7 +298,8 @@
 						<!--<div class="textTop">-->
 						<ul class="toptitle">
 						<li><h1>CLEVO</h1></li>
-						<li class="right"><p>Welcome Back,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></li>
+						<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>
+						<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
 						
 						</ul>
 						<!--</div>-->
