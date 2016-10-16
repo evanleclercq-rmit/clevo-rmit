@@ -44,7 +44,7 @@ ul.topnav {
     padding: 0;
     overflow: hidden;
     background-color: #95abce;
-	margin-top: 75px;
+	margin-top: auto;
 }
 
 ul.topnav li {

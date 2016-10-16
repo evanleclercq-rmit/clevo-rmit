@@ -2,38 +2,95 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>CLEVO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Sharemarket Budding Investor, sharemarket, CLEVO" />
 <link rel="stylesheet" type="text/css" href="style.css" />	
 
+
+
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="../resources/views/dashboard/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="../resources/views/dashboard/css/style.css" type="text/css" media="all" />
+<!--// css -->
+<!-- font-awesome icons -->
+<link href="../resources/views/dashboard/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<!-- font -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<script src="../resources/views/dashboard/js/jquery-1.11.3.min.js"></script>
+<script src="../resources/views/dashboard/js/bootstrap.js"></script>
+
+
+<script src="../resources/views/dashboard/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#horizontalTab').easyResponsiveTabs({
+			type: 'default', //Types: default, vertical, accordion           
+			width: 'auto', //auto or any width like 600px
+			fit: true   // 100% fit in a container
+		});
+	});
+</script>
+
+<!-- chart-grid-left -->
+<link rel="stylesheet" href="../resources/views/dashboard/css/master.css">
+<script src="../resources/views/dashboard/js/d3.min.js"></script>
+<script src="../resources/views/dashboard/js/xcharts.min.js"></script>
+<script src="../resources/views/dashboard/js/rainbow.min.js"></script>
+<!-- //chart-grid-left -->
+<!-- fabochart -->
+<link href="../resources/views/dashboard/css/fabochart.css" rel="stylesheet" type="text/css">
+<!-- //fabochart -->
+<!--animate-->
+<link href="../resources/views/dashboard/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="../resources/views/dashboard/js/wow.min.js"></script>
+	<script>
+		 new WOW().init();
+	</script>
+<!--//end-animate-->
+
+
+
+
+
 </head>
 
-<body>
-<div id="wrapper">
-	<div id="header">
-		<div id="topBar">
-			<div class="textTop"><h1>CLEVO</h1>
-            </div>
-		</div>
 
-		<ul class="topnav">
+
+
+<body>
+<div class="content-top">
+	<div class="container"><!--<div class="logo">-->
+		<!--<div id="header">-->
+			<div id="topBar">
+				<div class="textTop"><h1>CLEVO</h1>
+				</div>
+			
+
+			<ul class="topnav">
   			<li><a class="active" href="#">Dashboard</a></li>
   			<li><a href="#transactions">Transactions</a></li>
   			<li><a href="#gettingstarted">Getting Started</a></li>
   			<li><a href="#aboutus">About Us</a></li>
  			<li class="right"><a href="#logout">Logout</a></li>
-			
-		</ul>
+			</ul>
+		</div><!--</div><!--</div>-->
 	</div>
-	
-	
-	
+</div>
 	
 	
 	<div id="content">
 		<div class="stockmarket-information">
-        <h3>Stockmarket Information</h3>
-        
+			<div class="contact-form-heading"><br>
+				<h3>Stockmarket Information</h3>
+			<!--</div>-->
 		<!-- TradingView Widget BEGIN -->
 			<div id="tv-medium-widget-f0442"></div>
 			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -147,7 +204,15 @@
     }
 ?>		
 
-		<div class="stockmarket-search">
+
+<div class="content-grids">
+				<!-- content-top-grids -->
+	<div class="content-top-grids">	
+		<div class="col-md-4 content-left">
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+			<div class="stockmarket-search">
+			
+			<div class="skills-heading">
 			<h3>Search Live Stock Value</h3>
 			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
 			{{ csrf_field() }} 
@@ -183,18 +248,49 @@
 					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
 									
 				</ul>
-		
 		</div>
-		
-		
+			</div>
+		</div>	</div>
+	</div>
+</div>
 
-	
+	<div class="col-md-4 content-middle"><!--Search Stock by Symbol-->
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+			<div class="skills-heading">
+				<h3>Current Holdings</h3>
+					<ul>
+						<li>Current Ballance:</li>
+						<li>Shares Bought:</li>
+						<li>Shares Sold:</li>
+						<li>Profit:</li>
+						<li>Initial Ballance: $1,000,000</li>
+					</ul>  
+			</div>
+		</div>
+	</div>
+ 
+	<div class="col-md-4 content-right"><!--Leaderboard-->
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+			<div class="contact-form-heading">
+				<h3>Leaderboard</h3>
+					<ul>
+						<li> 1. C</li>
+						<li> 2. L</li>
+						<li> 3. E</li>
+						<li> 4. V</li>
+						<li> 5. O</li>
+						<li> 6. A</li>
+						<li> 7. B</li>
+						<li> 8. C</li>
+						<li> 9. D</li>
+						<li>10. E</li>
+					</ul>
+			</div>
+		</div>
+	</div><!--//Leaderboard-->
  
  
- 
- 
- 
- 
+ <!--
 	<div id="footer">
 	
 		<ul class="footernav">
@@ -203,7 +299,7 @@
   			<li><a href="#sitemap">Sitemap</a></li>
 		</ul>
 	</div>
-
+-->
 
 
 </div>
