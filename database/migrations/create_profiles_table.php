@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
 			$table->text('bio')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('github_username')->nullable()
+            $table->string('github_username')->nullable();
             $table->timestamps();
         });
     }
