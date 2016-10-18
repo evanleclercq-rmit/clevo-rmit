@@ -216,7 +216,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
 									<li>Currency  : <?php echo $currency ?></li>
 									<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
-									
 								</ul>
 							</div>
 						</div>
@@ -228,11 +227,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div class="skills-heading">
 								<h3>Account Summary</h3>
 								<ul>
-								<li>Current Ballance:</li>
+								<li>Current Balance: ${{ Auth::user()->balance }}</li>
 								<li>Shares Bought:</li>
 								<li>Shares Sold:</li>
 								<li>Profit:</li>
-								<li>Initial Ballance: $1,000,000</li>
+								<li>Initial Balance: $1,000,000</li>
 								</ul>  
 							</div>
 						</div>
@@ -248,6 +247,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="contact-form-heading">
 							<h3>Leaderboard</h3>
 							<ul>
+
+
+
+
                                <li> 1. C</li>
                                <li> 2. L</li>
                                <li> 3. E</li>
