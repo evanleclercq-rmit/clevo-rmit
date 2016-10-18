@@ -87,6 +87,12 @@
 			<div id="tv-medium-widget-f0442"></div></div></div></div>
 			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
 			<script type="text/javascript">
+            
+            function calculateTotalShareCost(numShares)
+                {
+                    document.getElementById("totalCostOfShares").value=numShares.value*document.getElementById("sharePrice").value;
+                }
+            
 			new TradingView.MediumWidget({
 			  "container_id": "tv-medium-widget-f0442",
 			  "symbols": [
@@ -156,6 +162,9 @@
 	$price = "";
 	$currency = "";
 	$change = "";
+    $buySharePrice= "";
+    
+    
                     
 	if(isset($_POST)&&!empty($_POST))
 	{
@@ -166,10 +175,9 @@
 		$currency = $stockData['currency'];
 		$change = $stockData['change'];
 
-		//foreach ($stockData as $key => $value)
-		//{
-		//   echo $key, " :", $value, "<br>";      
-		//}
+       
+        
+        
 	}
         
         
@@ -243,7 +251,9 @@
 									
 				</ul>
 		</div>
+                
 			</div>
+            
 		</div>	</div>
 	</div>
 </div>
@@ -252,28 +262,17 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="skills-heading">
 				<h3>Buy Shares</h3>
-				<form  name="APIsearchForm" action="../website/transactions.php" method="post">
-				<select name="searchText" onchange="this.form.submit();" > 
-				<option value="">select company</option>
-				<option value="AAPL">APPLE</option>
-				<option value="GOOGL">GOOGLE</option>
-				<option value="MSFT">MICROSOFT</option>
-				<option value="FB">FACEBOOK</option>
-				<option value="AMZN">AMAZON</option>
-				<option value="XOM">Exxon Mobil Corporation</option>
-				<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
-				<option value="JNJ">Johnson & Johnson </option>
-				<option value="GE">General Electric</option>
-				<option value="TCEHY">Tencent</option>
-				</select><br><br>
-				<input name="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1" value="">
-				<button class="submitButt" type="submit" value="submit">Calculate</button>	
+				<form  name="buySharesForm" action="../website/transactions.php" method="post">
+				<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+				<input name="numberOfShares" id="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1"
+                       onchange="calculateTotalShareCost(this)" disabled>
+					
 				<br><br>
 				<ul>
 				<li>Company : <?php echo $company ?></li>
-				<li>Total Value: <?php echo ($price * 2) ?> <?php echo $currency ?></li>
+				<li>Total Value: <input name="totalCostOfShares" style="width: 4em;" id="totalCostOfShares" value="" readonly> <?php echo $currency ?></li>
 				</ul><br>
-				<button class="submitButt" type="submit" value="submit">Buy Shares</button>
+				<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 				<br>
 				</form>
 			</div>
@@ -363,7 +362,19 @@ the completion of CPT331 - Programming Poject</p>
 
  </div>
 
-
+<?php
+    
+     if(isset($_POST['searchText']))
+        {
+            echo "<script type=\"text/javascript\"> document.getElementById('numberOfShares').disabled=false;
+                    document.getElementById('buySharesButton').disabled=false;</script>";
+                
+        }
+        else
+        {
+            echo "testtt";
+        }
+?>
 
 </body>
 </html>
