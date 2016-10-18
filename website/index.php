@@ -62,18 +62,9 @@
 
 </head>
 
-
-
-
 <body>
 
-
-
 <div id="container">
-	
-
-
-
 
 <div id="body">	
 	<div class="container">
@@ -232,7 +223,7 @@
 				<option value="TCEHY">Tencent</option>
 				</select>
 				<br>
-	
+	       
 			</form>
 				<ul>
 				<br>
@@ -285,7 +276,7 @@
 
  
 </div>
-	</div>
+</div>
 		
 <!--header-->		
 	<div id="header">
@@ -315,10 +306,7 @@
 			</div>
 		</div>
 	</div>
-<!--//header-->		
-		
-		
-		
+<!--//header-->	
 		
 			<div id="footer">
 				<ul class="footernav">
