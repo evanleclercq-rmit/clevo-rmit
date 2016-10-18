@@ -14,7 +14,7 @@ class AddBalanceToUsers extends Migration
    public function up()
 {
     Schema::table('users', function($table) {
-        $table->integer('balance')->default('0');
+        $table->integer('balance')->default('1000000');
     });
 }
 
