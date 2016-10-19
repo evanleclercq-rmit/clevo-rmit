@@ -90,7 +90,7 @@
 		</div>
 <!--//login form>-->
 <!--footer-->
-		<div id="footer">
+		<div id="footer" style="position:fixed; bottom:-10px;">
 			<ul class="footernav">
 				<li><a href="#termsofuse">Terms of Use</a></li>
 				<li><a href="#privacy">Privacy</a></li>
