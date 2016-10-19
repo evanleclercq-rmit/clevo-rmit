@@ -8,9 +8,6 @@
 <link rel="stylesheet" type="text/css" href="style.css" />	
 
 
-
-
-
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
 <link href="../resources/views/dashboard/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -60,50 +57,39 @@
 </head>
 
 <body>
-<div id="body" style="width:100%"> 
-
-
-		<div id="body" style="width:100%"> 
-			<div id="middle">	
-				<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-					<p style="text-align: center;">Welcome to</p>
-					<h3 style="text-align: center;">CLEVO</h3>
-					<p style="text-align: center;">... a budding sharemarket investor application</p>
-					<form  name="LoginForm" action="../website/index.php" method="post"> 
-					<input name="searchText" placeholder="Email Address / Username" type="text"> 
-					<input name="searchText" placeholder="Password" type="text"> 
-					<button class="submitButt" type="submit" value="submit">Login</button>
-					</form>
-				</div>
-			</div>	
-		</div>
-		
 <!--header-->		
 	<div id="header">
-		<div class="content-top">
-			<div class="container">	
-				<div class="logo">
-					<div id="topBar">
-						<ul class="toptitle">
-							<li><h1>CLEVO</h1></li>
-							<!--<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>-->
-							<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
-						</ul>
-						
-						
-						<ul class="topnav">
-							<li><a href="#gettingstarted">Getting Started</a></li>
-							<li><a href="#aboutus">About Us</a></li>
-							<li class="right"><a class="active" href="../webiste/login.php">Login&nbsp;&nbsp;</a></li>
-							<li class="right"><a href="../website/register.php">Register&nbsp;&nbsp;</a></li>
-						</ul>	
-					</div>
-				</div>
-			</div>
+		<div id="topBar">
+			<ul class="toptitle">
+				<li><h1>CLEVO</h1></li>
+				<!--<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>-->
+				<li class="right"><h4 style="color:#ffffff">Welcome Back !&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
+			</ul>
+			<ul class="topnav">
+				<li><a href="#gettingstarted">Getting Started</a></li>
+				<li><a href="#aboutus">About Us</a></li>
+				<li class="right"><a class="active" href="../webiste/login.php">Login&nbsp;&nbsp;</a></li>
+				<li class="right"><a href="../website/register.php">Register&nbsp;&nbsp;</a></li>
+			</ul>	
 		</div>
 	</div>
 <!--//header-->	
-		
+
+<!--login form>-->
+		<div id="middle">
+			<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+				<p style="text-align: center;">Welcome to</p>
+				<h3 style="text-align: center;">CLEVO</h3>
+				<p style="text-align: center;">... a budding sharemarket investor application</p>
+					<form  name="LoginForm" action="../website/index.php" method="post"> 
+						<input name="searchText" placeholder="Email Address / Username" type="text"> 
+						<input name="searchText" placeholder="Password" type="text"> 
+						<button class="submitButt" type="submit" value="submit">Login</button>
+					</form>
+			</div>
+		</div>
+<!--//login form>-->
+<!--footer-->
 		<div id="footer">
 			<ul class="footernav">
 				<li><a href="#termsofuse">Terms of Use</a></li>
@@ -114,7 +100,7 @@
 		<p style="text-align: center;">Disclaimer:<br>
 			This Site has been made for educational purposes by students of RMIT University towards
 			the completion of CPT331 - Programming Poject</p>
-	</div>
- </div>
+		</div>
+<!--//footer--> 
 </body>
 </html>

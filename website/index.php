@@ -8,9 +8,6 @@
 <link rel="stylesheet" type="text/css" href="style.css" />	
 
 
-
-
-
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
 <link href="../resources/views/dashboard/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -57,27 +54,45 @@
 <!--//end-animate-->
 
 
-
-
-
 </head>
 
 <body>
 
-<div id="container">
 
-<div id="body">	
-	<div class="container">
-		<div class="stockmarket-information">
-			<div class="contact-form-heading">
-				<div class="content-top-grids">	
-		<div class="col-md-16 content-left">
-		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-		<h3>Stockmarket Information</h3>
-		<!-- TradingView Widget BEGIN -->
-			<div id="tv-medium-widget-f0442"></div></div></div></div>
-			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-			<script type="text/javascript">
+<!--header-->		
+	<div id="header">
+					<div id="topBar">
+						<ul class="toptitle">
+						<li><h1>CLEVO</h1></li>
+						<!--<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>-->
+						<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
+						
+						</ul>
+							<ul class="topnav">
+								<li><a class="active" href="#">Dashboard</a></li>
+								<li><a href="../website/transactions.php">Transactions</a></li>
+								<li><a href="#gettingstarted">Getting Started</a></li>
+								<li><a href="#aboutus">About Us</a></li>
+								<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
+							</ul>	
+					</div>
+	</div>
+<!--//header-->	
+
+
+<div id="container">
+	<div id="body">	
+		<div class="container">
+			<div class="stockmarket-information">
+				<div class="contact-form-heading">
+					<div class="content-top-grids">	
+						<div class="col-md-16 content-left">
+							<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+								<h3>Stockmarket Information</h3>
+				<!-- TradingView Widget BEGIN -->
+					<div id="tv-medium-widget-f0442"></div></div></div></div>
+					<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+					<script type="text/javascript">
 			new TradingView.MediumWidget({
 			  "container_id": "tv-medium-widget-f0442",
 			  "symbols": [
@@ -190,13 +205,11 @@
 ?>		
 
 <div class="container">
-<div class="content-grids">
-				<!-- content-top-grids -->
-	<div class="content-top-grids">	
+
 		<div class="col-md-4 content-left">
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="stockmarket-search">
-			<div class="skills-heading">
+		<div class="skills-heading"><!--Search Live Stock-->
 			<h3>Search Live Stock</h3>
 			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
 	<!--		{{ csrf_field() }} -->
@@ -233,13 +246,13 @@
 					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
 									
 				</ul>
-		</div>
+			</div><!--//Search Live Stock-->
 			</div>
-		</div>	</div>
-	</div>
-</div>
+			</div>	
+		</div>
 
-	<div class="col-md-4 content-middle"><!--Search Stock by Symbol-->
+
+	<div class="col-md-4 content-middle"><!--Current Holdings-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<div class="skills-heading">
 				<h3>Current Holdings</h3>
@@ -252,7 +265,7 @@
 					</ul>  
 			</div>
 		</div>
-	</div>
+	</div><!--//Current Holdings-->
  
 	<div class="col-md-4 content-right"><!--Leaderboard-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
@@ -273,42 +286,11 @@
 			</div>
 		</div>
 	</div><!--//Leaderboard-->
+</div><!--//container-->
+</div><!--//body-->
+</div><!--//container-->
 
- 
-</div>
-</div>
-		
-<!--header-->		
-	<div id="header">
-		<div class="content-top">
-			<div class="container">
-				
-				<div class="logo">
-				
-					<div id="topBar">
-						<!--<div class="textTop">-->
-						<ul class="toptitle">
-						<li><h1>CLEVO</h1></li>
-						<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>
-						<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
-						
-						</ul>
-						<!--</div>-->
-							<ul class="topnav">
-								<li><a class="active" href="#">Dashboard</a></li>
-								<li><a href="../website/transactions.php">Transactions</a></li>
-								<li><a href="#gettingstarted">Getting Started</a></li>
-								<li><a href="#aboutus">About Us</a></li>
-								<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
-							</ul>	
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!--//header-->	
-		
-			<div id="footer">
+<div id="footer">
 				<ul class="footernav">
 					<li><a href="#termsofuse">Terms of Use</a></li>
 					<li><a href="#privacy">Privacy</a></li>
@@ -319,11 +301,20 @@
 This Site has been made for educational purposes by students of RMIT University towards
 the completion of CPT331 - Programming Poject</p>
 			</div>
-		
-
- </div>
-
-
-
+			
+<?php
+    
+     if(isset($_POST['searchText']))
+        {
+            echo "<script type=\"text/javascript\"> document.getElementById('numberOfShares').disabled=false;
+                    document.getElementById('buySharesButton').disabled=false;</script>";
+                
+        }
+        else
+        {
+            echo "";
+        }
+?>
+			
 </body>
 </html>
