@@ -66,13 +66,14 @@
 		<div id="body" style="width:100%"> 
 			<div id="middle">	
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-					<p style="text-align: center;">Welcome to</p>
-					<h3 style="text-align: center;">CLEVO</h3>
-					<p style="text-align: center;">... a budding sharemarket investor application</p>
-					<form  name="LoginForm" action="../website/index.php" method="post"> 
-					<input name="searchText" placeholder="Email Address / Username" type="text"> 
+					
+					<h3 style="text-align: center;">Register</h3><br>
+					<form  name="RegisterForm" action="../website/register.php" method="post"> 
+					<input name="searchText" placeholder="Name" type="text"> 
+					<input name="searchText" placeholder="Email" type="text"> 
 					<input name="searchText" placeholder="Password" type="text"> 
-					<button class="submitButt" type="submit" value="submit">Login</button>
+					<input name="searchText" placeholder="Confirm Password" type="text"> 
+					<button class="submitButt" type="submit" value="submit">Register</button>
 					</form>
 				</div>
 			</div>	
@@ -94,8 +95,8 @@
 						<ul class="topnav">
 							<li><a href="#gettingstarted">Getting Started</a></li>
 							<li><a href="#aboutus">About Us</a></li>
-							<li class="right"><a class="active" href="../webiste/login.php">Login&nbsp;&nbsp;</a></li>
-							<li class="right"><a href="../website/register.php">Register&nbsp;&nbsp;</a></li>
+							<li class="right"><a href="../website/login.php">Login&nbsp;&nbsp;</a></li>
+							<li class="right" ><a class="active" href="../website/register.php">Register&nbsp;&nbsp;</a></li>
 						</ul>	
 					</div>
 				</div>
