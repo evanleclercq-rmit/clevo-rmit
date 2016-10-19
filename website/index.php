@@ -57,42 +57,38 @@
 </head>
 
 <body>
-
-
 <!--header-->		
 	<div id="header">
-					<div id="topBar">
-						<ul class="toptitle">
-						<li><h1>CLEVO</h1></li>
-						<!--<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>-->
-						<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
-						
-						</ul>
-							<ul class="topnav">
-								<li><a class="active" href="#">Dashboard</a></li>
-								<li><a href="../website/transactions.php">Transactions</a></li>
-								<li><a href="#gettingstarted">Getting Started</a></li>
-								<li><a href="#aboutus">About Us</a></li>
-								<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
-							</ul>	
-					</div>
+		<div id="topBar">
+			<ul class="toptitle">
+				<li><h1>CLEVO</h1></li>
+				<!--<li><h2 style="color:#ffffff">...a budding sharemarket investor application</h2></li>-->
+				<li class="right"><h4 style="color:#ffffff">Welcome Back, "user"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4></li>
+			</ul>
+			<ul class="topnav">
+				<li><a class="active" href="#">Dashboard</a></li>
+				<li><a href="../website/transactions.php">Transactions</a></li>
+				<li><a href="#gettingstarted">Getting Started</a></li>
+				<li><a href="#aboutus">About Us</a></li>
+				<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
+			</ul>	
+		</div>
 	</div>
 <!--//header-->	
 
-
-<div id="container">
 	<div id="body">	
 		<div class="container">
-			<div class="stockmarket-information">
-				<div class="contact-form-heading">
-					<div class="content-top-grids">	
-						<div class="col-md-16 content-left">
-							<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-								<h3>Stockmarket Information</h3>
-				<!-- TradingView Widget BEGIN -->
-					<div id="tv-medium-widget-f0442"></div></div></div></div>
-					<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-					<script type="text/javascript">
+			<div class="col-md-16 content-left">
+				<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+					<h3><b>Stockmarket Information</b></h3><br>
+					<!-- TradingView Widget BEGIN -->
+					<div id="tv-medium-widget-f0442">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+		<script type="text/javascript">
 			new TradingView.MediumWidget({
 			  "container_id": "tv-medium-widget-f0442",
 			  "symbols": [
@@ -151,10 +147,7 @@
 			});
 			</script>
 			<!-- TradingView Widget END -->
-
-			</div>		
-		</div>			
-	</div>		
+	</div><!--//body-->	
 		
 <?php
                     
@@ -204,104 +197,84 @@
     }
 ?>		
 
-<div class="container">
-
-		<div class="col-md-4 content-left">
+<div class="container"><!--second container-->
+	<div class="col-md-4 content-left"><!--Search Live Stock-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-			<div class="stockmarket-search">
-		<div class="skills-heading"><!--Search Live Stock-->
-			<h3>Search Live Stock</h3>
-			<form  name="APIsearchForm" action="../website/index.php" method="post"> 
-	<!--		{{ csrf_field() }} -->
-				<input name="searchText" placeholder=" search by stock symbol" type="text"> 
-				<button class="submitButt" type="submit" value="submit">Search</button>
-			</form>
+			<h3><b>Search Live Stock</b></h3><br>
+				<form  name="APIsearchForm" action="../website/index.php" method="post"> 
+					<input name="searchText" placeholder=" search by stock symbol" type="text"> 
+					<button class="submitButt" type="submit" value="submit">Search</button>
+				</form>
 				<br>
-							
-			<form  name="APIsearchForm" action="../website/index.php" method="post">
-	
-	<!--		{{ csrf_field() }} -->
-						
-				<select name="searchText" onchange="this.form.submit();"> 
-				<option value="">select company</option>
-				<option value="AAPL">APPLE</option>
-				<option value="GOOGL">GOOGLE</option>
-				<option value="MSFT">MICROSOFT</option>
-				<option value="FB">FACEBOOK</option>
-				<option value="AMZN">AMAZON</option>
-				<option value="XOM">Exxon Mobil Corporation</option>
-				<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
-				<option value="JNJ">Johnson & Johnson </option>
-				<option value="GE">General Electric</option>
-				<option value="TCEHY">Tencent</option>
-				</select>
-				<br>
-	       
-			</form>
+				<form  name="APIsearchForm" action="../website/index.php" method="post">
+					<select name="searchText" onchange="this.form.submit();"> 
+					<option value="">select company</option>
+					<option value="AAPL">APPLE</option>
+					<option value="GOOGL">GOOGLE</option>
+					<option value="MSFT">MICROSOFT</option>
+					<option value="FB">FACEBOOK</option>
+					<option value="AMZN">AMAZON</option>
+					<option value="XOM">Exxon Mobil Corporation</option>
+					<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
+					<option value="JNJ">Johnson & Johnson </option>
+					<option value="GE">General Electric</option>
+					<option value="TCEHY">Tencent</option>
+					</select>
+					<br>
+				</form>
 				<ul>
 				<br>
 					<li>Company : <?php echo $company ?></li>
 					<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
 					<li>Currency  : <?php echo $currency ?></li>
-					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
-									
+					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>				
 				</ul>
-			</div><!--//Search Live Stock-->
-			</div>
-			</div>	
-		</div>
-
+		</div>	
+	</div><!--//Search Live Stock-->
 
 	<div class="col-md-4 content-middle"><!--Current Holdings-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-			<div class="skills-heading">
-				<h3>Current Holdings</h3>
-					<ul>
-						<li>Current Ballance:</li>
-						<li>Shares Bought:</li>
-						<li>Shares Sold:</li>
-						<li>Profit:</li>
-						<li>Initial Ballance: $1,000,000</li>
-					</ul>  
-			</div>
+			<h3><b>Current Holdings</b></h3><br>
+				<ul>
+					<li>Current Ballance:</li>
+					<li>Shares Bought:</li>
+					<li>Shares Sold:</li>
+					<li>Profit:</li>
+					<li>Initial Ballance: $1,000,000</li>
+				</ul>  
 		</div>
 	</div><!--//Current Holdings-->
  
 	<div class="col-md-4 content-right"><!--Leaderboard-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
-			<div class="skills-heading">
-				<h3>Leaderboard</h3>
-					<ul>
-						<li> 1. C</li>
-						<li> 2. L</li>
-						<li> 3. E</li>
-						<li> 4. V</li>
-						<li> 5. O</li>
-						<li> 6. A</li>
-						<li> 7. B</li>
-						<li> 8. C</li>
-						<li> 9. D</li>
-						<li>10. E</li>
-					</ul>
-			</div>
+			<h3><b>Leaderboard</b></h3><br>
+				<ul>
+					<li> 1. C</li>
+					<li> 2. L</li>
+					<li> 3. E</li>
+					<li> 4. V</li>
+					<li> 5. O</li>
+					<li> 6. A</li>
+					<li> 7. B</li>
+					<li> 8. C</li>
+					<li> 9. D</li>
+					<li>10. E</li>
+				</ul>
 		</div>
 	</div><!--//Leaderboard-->
-</div><!--//container-->
-</div><!--//body-->
-</div><!--//container-->
+</div><!--//second container-->
 
 <div id="footer">
-				<ul class="footernav">
-					<li><a href="#termsofuse">Terms of Use</a></li>
-					<li><a href="#privacy">Privacy</a></li>
-					<li><a href="#sitemap">Sitemap</a></li>
-				</ul>
-				<p style="text-align: center;">© 2016 Statistics UI Kit . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-			<p style="text-align: center;">Disclaimer:<br>
-This Site has been made for educational purposes by students of RMIT University towards
-the completion of CPT331 - Programming Poject</p>
-			</div>
-			
+	<ul class="footernav">
+		<li><a href="#termsofuse">Terms of Use</a></li>
+			<li><a href="#privacy">Privacy</a></li>
+			<li><a href="#sitemap">Sitemap</a></li>
+		</ul>
+		<p style="text-align: center;">© 2016 Statistics UI Kit . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+		<p style="text-align: center;">Disclaimer:<br>
+										This Site has been made for educational purposes by students of RMIT University towards
+										the completion of CPT331 - Programming Poject</p>
+</div>		
 <?php
     
      if(isset($_POST['searchText']))
@@ -314,7 +287,6 @@ the completion of CPT331 - Programming Poject</p>
         {
             echo "";
         }
-?>
-			
+?>		
 </body>
 </html>
