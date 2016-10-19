@@ -306,7 +306,7 @@
 								<li><a class="active" href="">Transactions</a></li>
 								<li><a href="#gettingstarted">Getting Started</a></li>
 								<li><a href="#aboutus">About Us</a></li>
-								<li class="right"><a href="../webiste/login.php">Logout&nbsp;&nbsp;</a></li>
+								<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
 							</ul>	
 					</div>
 				</div>
