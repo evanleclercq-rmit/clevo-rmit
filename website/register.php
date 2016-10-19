@@ -68,7 +68,7 @@
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 					
 					<h3 style="text-align: center;">Register</h3><br>
-					<form  name="RegisterForm" action="../website/register.php" method="post"> 
+					<form  name="RegisterForm" action="../website/login.php" method="post"> 
 					<input name="searchText" placeholder="Name" type="text"> 
 					<input name="searchText" placeholder="Email" type="text"> 
 					<input name="searchText" placeholder="Password" type="text"> 

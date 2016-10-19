@@ -299,7 +299,7 @@
 								<li><a href="../website/transactions.php">Transactions</a></li>
 								<li><a href="#gettingstarted">Getting Started</a></li>
 								<li><a href="#aboutus">About Us</a></li>
-								<li class="right"><a href="#logout">Logout&nbsp;&nbsp;</a></li>
+								<li class="right"><a href="../website/login.php">Logout&nbsp;&nbsp;</a></li>
 							</ul>	
 					</div>
 				</div>
