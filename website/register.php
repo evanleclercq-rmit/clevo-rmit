@@ -68,7 +68,7 @@
 			<ul class="topnav">
 				<li><a href="#gettingstarted">Getting Started</a></li>
 				<li><a href="#aboutus">About Us</a></li>
-				<li class="right"><a href="../website/login.php">Login&nbsp;&nbsp;</a></li>
+				<li class="right"><a href="../website/index.php">Login&nbsp;&nbsp;</a></li>
 				<li class="right" ><a class="active" href="../website/register.php">Register&nbsp;&nbsp;</a></li>
 			</ul>	
 		</div>
@@ -78,7 +78,7 @@
 	<div id="middle">	
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3 style="text-align: center;">Register</h3><br>
-			<form  name="RegisterForm" action="../website/login.php" method="post"> 
+			<form  name="RegisterForm" action="../website/index.php" method="post"> 
 				<input name="searchText" placeholder="Name" type="text"> 
 				<input name="searchText" placeholder="Email" type="text"> 
 				<input name="searchText" placeholder="Password" type="text"> 
