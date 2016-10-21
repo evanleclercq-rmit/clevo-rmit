@@ -4,6 +4,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\User;
 
 
 class AccountsTest extends TestCase
@@ -14,66 +15,44 @@ class AccountsTest extends TestCase
      * @return void
      */
 
-    // Reverses any changes to DB between tests
-    use DatabaseTransactions; 
-
- 
-    public function testLinksExist()
+    public function setUp()
     {
-        $this->visit('/')
-             ->see('LOGIN');
-        $this->visit('/')
-             ->see('REGISTER');
-    }
+        parent::setUp();
+        Artisan::call('migrate');
+        Artisan::call('db:seed', ['--class' => 'DatabaseSeeder', '--database' => 'testing']);
+    }    
 
-    public function testLoginURL(){
-        $response = $this->call('GET', '/login');
-        $this->assertEquals(200, $response->status());
-    }
-
-    public function testRegisterURL(){
-        $response = $this->call('GET', '/register');
-        $this->assertEquals(200, $response->status());
-    }
-
-    public function testRegisterPasswordMismatch()
+    public function tearDown()
     {
-        $this->visit('/')
-        ->see('Register')
-        ->click('Register')
-        ->seePageIs('/register')
-        ->submitForm('Register', ['name' => 'testuser', 'email' => 'testuser@unittest.com', 'password' => 'password', 'password_confirmation' => 'wordpass'])
-        ->see('The password confirmation does not match.');
+        Artisan::call('migrate:reset');
+        parent::tearDown();
     }
 
-    public function testRegisterationSuccess()
+    public function test_database_was_seeded()
     {
-        $this->visit('/')
-        ->see('Register')
-        ->click('Register')
-        ->seePageIs('/register')
-        ->submitForm('Register', ['name' => 'testuser', 'email' => 'testuser2@clevo.com', 'password' => 'password', 'password_confirmation' => 'password'])
-        ->seePageIs('/dashboard')
-        ->seeInDatabase('users', ['email' => 'testuser2@clevo.com']);
+        $this->assertCount(10, user::all());
     }
 
-    public function testLoginInvalidEmail()
+    public function test_user_auth()
     {
-        $this->visit('/')
-        ->see('Login')
-        ->click('Login')
-        ->seePageIs('/login')
-        ->submitForm('Login', ['email' => 'testuser', 'password' => 'password'])
-        ->see('form-group has-error');
+        $user = User::first();
+        $this->be($user);
     }
 
-    public function testLoginSuccess()
+       public function test_auth_redirect()
     {
-        $this->visit('/')
-        ->see('Login')
-        ->click('Login')
-        ->seePageIs('/login')
-        ->submitForm('Login', ['email' => 'testuser@clevo.com', 'password' => 'password'])
-        ->seePageIs('/dashboard');
+        $user = User::first();
+        $this->actingAs($user)
+        ->get('/dashboard')
+        ->assertResponseStatus(200);
     }
+
+       public function test_redirect_to_login_if_guest()
+     {
+        $this->assertTrue(Auth::guest());
+        $this->call('GET', '/dashboard');
+        $this->assertRedirectedTo('/login');  
+     }
+
+
 }
