@@ -2,35 +2,6 @@
 
 @section('content')
 
-<div class="content-top" style="padding-bottom:50px;">
-		<div class="container">
-			<div class="logo">
-				<h1 class="wow fadeInDown animated" data-wow-delay=".5s">Sharemarket Budding Investor</h1>
-			</div>
-			<!-- header -->
-			<div class="header">
-				<div class="top-navigation">
-					<div class="top-nav">
-						<nav class="navbar navbar-default">
-							<div class="container">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">MENU						
-								</button>
-							</div>
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-									<li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
-									<li><a href="{{ url('/register') }}"><i class="fa fa-register"></i> Register</a></li>
-								</ul>	
-								<div class="clearfix"> </div>
-							</div>	
-						</nav>		
-				  </div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
