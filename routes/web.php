@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 #Profile
-
 Auth::routes();
 Route::get('profile', 'UserController@profile');
 Route::get('/home', 'HomeController@index');
@@ -27,12 +26,10 @@ Route::get('/login', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-
     // All routes that need a logged in user
 	Route::any('/dashboard', 'DashboardController@index');
 	Route::any('/transactions', 'TransactionsController@index');
-
+	Route::any('/company', 'CompanyController@index');
 });
-
 //Route to the API Test page/
 Route::get('/apitest', 'ApiTestController@index');
