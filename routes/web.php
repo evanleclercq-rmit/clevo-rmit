@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // All routes that need a logged in user
 	Route::any('/dashboard', 'DashboardController@index');
+	Route::any('/transactions', 'TransactionsController@index');
+
 });
 
 //Route to the API Test page/
