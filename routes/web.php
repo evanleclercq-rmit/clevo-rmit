@@ -18,7 +18,7 @@ Route::get('/', function () {
 #Profile
 
 Auth::routes();
-
+Route::get('profile', 'UserController@profile');
 Route::get('/home', 'HomeController@index');
 Route::get('/login', function () {
     return view ('login.blade.php');

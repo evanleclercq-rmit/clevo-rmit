@@ -80,7 +80,7 @@
                 <ul class="topnav">
                     <!--Left menu items-->
                     <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ url('/transactions') }}">Transactions</a></li>
+                    <li><a href="#transactions">Transactions</a></li>
                     <li><a href="#gettingstarted">Getting Started</a></li>
                     <!--Right menu items-->
                     <li class="right"><a href="{{ url('/logout') }}"
@@ -89,6 +89,7 @@
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
+						 <li class="right"><a href="{{ url('/profile') }}">Profile</a></li>
                         <li class="right"><a href="#settings">Settings</a></li>
                         @endif
                     </ul>   
