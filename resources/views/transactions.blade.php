@@ -121,19 +121,19 @@
            
 		return $stockData;
     }
-?>		
+?>
 
 <div class="container"><!--second container-->
 	<div class="col-md-4 content-left"><!--Search Live Stock-->
-		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3><b>Search Live Stock</b></h3><br>
 				<form  name="APIsearchForm" action="{{ action('DashboardController@index') }}" method="post"> 
 					<input name="searchText" placeholder=" search by stock symbol" type="text"> 
 					<button class="submitButt" type="submit" value="submit">Search</button>
 					{{ csrf_field() }}
 				</form>
-				<br>
-				<form  name="APIsearchForm" action="{{ action('DashboardController@index') }}" method="post">
+				<br>			
+				<form  name="APIsearchForm" action="{{ action('DashboardController@index') }}" method="post">	
 					<select name="searchText" onchange="this.form.submit();"> 
 					<option value="">select company</option>
 					<option value="AAPL">APPLE</option>
@@ -155,44 +155,63 @@
 					<li>Company : <?php echo $company ?></li>
 					<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
 					<li>Currency  : <?php echo $currency ?></li>
-					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>				
+					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
+									
 				</ul>
-		</div>	
+		</div>
 	</div><!--//Search Live Stock-->
 
-	<div class="col-md-4 content-middle"><!--Current Holdings-->
-		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-			<h3><b>Current Holdings</b></h3><br>
-				<ul>
-					<li>Current Balance: ${{ Auth::user()->balance }}</li>
-					<li>Shares Bought:</li>
-					<li>Shares Sold:</li>
-					<li>Profit:</li>
-					<li>Initial Balance: $20000</li>
-				</ul>  
+	<div class="col-md-4 content-middle"><!--Buy Shares-->
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+			<h3><b>Buy Shares</b></h3><br>
+				<form  name="buySharesForm" action="{{ action('DashboardController@index') }}" method="post">
+					<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+					<input name="numberOfShares" id="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1"
+                       onchange="calculateTotalShareCost(this)" disabled>
+					<br><br>
+					<ul>
+						<li>Company : <?php echo $company ?></li>
+						<li>Total Value: <input name="totalCostOfShares" style="width: 4em;" id="totalCostOfShares" value="" readonly> <?php echo $currency ?></li>
+					</ul><br>
+					<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
+					<br>
+				</form>
 		</div>
-	</div><!--//Current Holdings-->
+	</div><!--//Buy Shares-->
  
-	<div class="col-md-4 content-right"><!--Leaderboard-->
-		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-			<h3><b>Leaderboard</b></h3><br>
+	<div class="col-md-4 content-right"><!--Sale Shares-->
+		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+			<h3><b>Sell Shares</b></h3><br>
+				<form  name="APIsearchForm" action="{{ action('DashboardController@index') }}" method="post">
+					<select name="searchText" onchange="this.form.submit();" > 
+					<option value="">select company</option>
+					<option value="AAPL">APPLE</option>
+					<option value="GOOGL">GOOGLE</option>
+					<option value="MSFT">MICROSOFT</option>
+					<option value="FB">FACEBOOK</option>
+					<option value="AMZN">AMAZON</option>
+					<option value="XOM">Exxon Mobil Corporation</option>
+					<option value="BRK.B">Berkshire Hathaway Inc. Class B</option>
+					<option value="JNJ">Johnson & Johnson </option>
+					<option value="GE">General Electric</option>
+					<option value="TCEHY">Tencent</option>
+					</select><br><br>
+					<input name="numberOfShares" placeholder="Number of Shares" type="number" min="1" step="1" value="">
+					<button class="submitButt" type="submit" value="submit">Calculate</button>	
+					<br><br>
 				<ul>
-					<li> 1. C</li>
-					<li> 2. L</li>
-					<li> 3. E</li>
-					<li> 4. V</li>
-					<li> 5. O</li>
-					<li> 6. A</li>
-					<li> 7. B</li>
-					<li> 8. C</li>
-					<li> 9. D</li>
-					<li>10. E</li>
-				</ul>
+					<li>Company : <?php echo $company ?></li>
+					<li>Total Value: <?php echo ($price * 2) ?> <?php echo $currency ?></li>
+				</ul><br>
+				<button class="submitButt" type="submit" value="submit">Sell Shares</button>
+				<br>
+				{{ csrf_field() }}
+				</form>
 		</div>
-	</div><!--//Leaderboard-->
-</div><!--//second container-->
+	</div><!--//Sale Shares-->
+</div><!--second container-->
+		
 
-	
 <?php
     
      if(isset($_POST['searchText']))
@@ -205,6 +224,6 @@
         {
             echo "";
         }
-?>		
+?>
 
 @endsection
