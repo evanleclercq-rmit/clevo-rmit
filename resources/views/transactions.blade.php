@@ -175,13 +175,12 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3><b>Buy Shares</b></h3><br>
 				<form  name="buySharesForm" action="{{ action('TransactionsController@index') }}" method="post">
-					<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
-					<input name="numberOfSharesBuy" id="numberOfSharesBuy" placeholder="Number of Shares" type="number" min="1" step="1"
-                       onchange="calculateTotalShareCostBuy(this)" disabled>
-					<br><br>
 					<ul>
-						<li>Company : <?php echo $company ?></li>
-						<li>Total Value: <input name="totalCostOfSharesBuy" style="width: 5em;" id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></li>
+					<li>Company : <?php echo $company ?></li>
+					<li>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+					<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="No." type="number" min="1" step="1"
+                       onchange="calculateTotalShareCostBuy(this)" disabled> units</li>
+					<li>Total Value: <input name="totalCostOfSharesBuy" style="width: 6em;" id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></li>
 					</ul><br>
 					<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 					<br>
@@ -194,13 +193,12 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3><b>Sell Shares</b></h3><br>
 				<form  name="sellSharesForm" action="{{ action('TransactionsController@index') }}" method="post">
-					<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
-					<input name="numberOfSharesSell" id="numberOfSharesSell" placeholder="Number of Shares" type="number" min="1" step="1"
-                       onchange="calculateTotalShareCostSell(this)" disabled>
-					<br><br>
 					<ul>
-						<li>Company : <?php echo $company ?></li>
-						<li>Total Value: <input name="totalCostOfSharesSell" style="width: 5em;" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></li>
+					<li>Company : <?php echo $company ?></li>
+					<li>Shares to Sell :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+					<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em" placeholder="No." type="number" min="1" step="1"
+                       onchange="calculateTotalShareCostSell(this)" disabled> units</li>
+					<li>Total Value: <input name="totalCostOfSharesSell" style="width: 6em;" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></li>
 					</ul><br>
 					<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 					<br>
