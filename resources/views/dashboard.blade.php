@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="col-md-16 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-					<h3><b>Stockmarket Information</b></h3><br>
+					<h3><b>Watch List</b></h3><br>
 					<!-- TradingView Widget BEGIN -->
 					<div id="tv-medium-widget-f0442">
 					</div>
