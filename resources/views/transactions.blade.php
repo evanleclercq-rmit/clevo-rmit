@@ -28,6 +28,7 @@
 			new TradingView.MediumWidget({
 			  "container_id": "tv-medium-widget-f0442",
 			  "symbols": [
+			  
 				[
 				  "Apple",
 				  "AAPL|1d"
