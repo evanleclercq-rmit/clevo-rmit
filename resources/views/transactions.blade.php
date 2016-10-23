@@ -149,7 +149,7 @@
 <option value="MOQ.AX">MOQ LIMITED</option>
 <option value="1PG.AX">1-PAGE LIMITED</option>
 <option value="ONT.AX">1300 SMILES LIMITED</option>
-<option value="1ST.AX.AX">1ST AVAILABLE LTD</option>
+<option value="1ST.AX">1ST AVAILABLE LTD</option>
 <option value="T3D.AX">333D LIMITED</option>
 <option value="TGP.AX">360 CAPITAL GROUP</option>
 <option value="TIX.AX">360 CAPITAL INDUSTRIAL FUND</option>
