@@ -1,26 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-	<div id="body">	
-		<div class="container">
-			<div class="col-md-16 content-left">
-				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-					<h3><b>Stockmarket Information</b></h3><br>
-					<div id="chart_div" style="width: 100%; height: 250px;">
-					</div>
-				</div>
-			</div>
-		</div>
-		
-
-
-	<!--new leaderboard scr-->		
-   
-<!--//new leaderboard script-->		
-	
-	</div><!--//body-->
-		
 <?php
                     
 	$company = "";
@@ -68,6 +48,31 @@
 		return $stockData;
     }
 ?>		
+	<div id="body">	
+		<div class="container">
+			<div class="col-md-16 content-left">
+				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
+					<h3><b>Stockmarket Information</b></h3><br>
+					
+					<div>
+					<ul style="text-align: left">
+					<li>Company : <?php echo $company ?></li>
+					<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
+					<li>Currency  : <?php echo $currency ?></li>
+					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>				
+					</ul>
+					</div>
+					<div id="chart_div" style="width: 70%; height: 250px;"><!--stockmarket chart-->
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+	
+	</div><!--//body-->
+		
+
 
 <div class="container"><!--second container-->
 	<div class="col-md-4 content-left"><!--Search Live Stock-->
@@ -2263,21 +2268,21 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Current Holdings</b></h3><br>
 				<ul>
+					<li>Initial Balance: $20000</li>
 					<li>Current Balance: ${{ Auth::user()->balance }}</li>
 					<li>Shares Bought:</li>
 					<li>Shares Sold:</li>
 					<li>Profit:</li>
-					<li>Initial Balance: $20000</li>
 				</ul>  
 		</div>
 	</div><!--//Current Holdings-->
  
-	<div class="col-md-4 content-right"><!--Leaderboard-->
+	<div class="col-md-4 content-right">
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Leaderboard</b></h3><br>
-			<div id="table_div"></div>
+			<div id="table_div"></div><!--Leaderboard-->
 		</div>
-	</div><!--//Leaderboard-->
+	</div>
 </div><!--//second container-->
 
 	
