@@ -62,7 +62,7 @@
 					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>				
 					</ul>
 					</div>
-					<div id="chart_div" style="width: 70%; height: 250px;"><!--stockmarket chart-->
+					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
 					</div>
 					
 				</div>

@@ -109,11 +109,18 @@ google.charts.setOnLoadCallback(drawTable);
 		  ['Bob3',	{v: 10000,  f: '5,000'}],
 		  ['Bob4',	{v: 72000,  f: '3,000'}],
 		  ['Bob5',	{v: 7000,  	f: '11,000'}],
-		  ['Bob6',	{v: 7000,  	f: '2,000'}]
+		  ['Bob6',	{v: 7000,  	f: '12,000'}],
+		  ['Bob7',	{v: 7000,  	f: '7,500'}],
+		  ['Bob8',	{v: 7000,  	f: '4,400'}],
+		  ['Bob9',	{v: 7000,  	f: '5,700'}],
+		  ['Bob10',	{v: 7000,  	f: '8,200'}],
+		  ['Bob11',	{v: 7000,  	f: '10,100'}],
+		  ['Bob12',	{v: 7000,  	f: '11,000'}],
+		  ['Bob13',	{v: 7000,  	f: '2,000'}]
         ]);
 		
 		var table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data2, {showRowNumber: true, width: '100%', height: '100%'});
+        table.draw(data2, {showRowNumber: true, width: '100%', height: '280px'});
       }
 
    </script>
