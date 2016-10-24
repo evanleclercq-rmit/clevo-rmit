@@ -59,6 +59,12 @@ return [
             'prefix' => '',
         ],
 
+         'companies' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', database_path('asx.sqlite')),
+            'prefix' => '',
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
