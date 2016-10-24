@@ -2,6 +2,7 @@
 
 @section('content')
 
+<?php require(app_path().'/financeWebService.php') ?>
 	<div id="body">	
 		<div class="container">
 			<div class="col-md-16 content-left">
@@ -95,43 +96,29 @@
                     
 	if(isset($_POST)&&!empty($_POST))
 	{
-		$stockSymbol = $_POST['searchText'];
-		$stockData = search_stock($stockSymbol);
-		$company = $stockData['name'];
-		$price = $stockData['price'];
-		$currency = $stockData['currency'];
-		$change = $stockData['change'];
+        if(isset($_POST['searchText']))
+        {
+            $stockSymbol = $_POST['searchText'];
+            $stockData = search_stock($stockSymbol);
+            $company = $stockData['name'];
+		    $price = $stockData['price'];
+            $currency = $stockData['currency'];
+            $change = $stockData['change'];
 
-		//foreach ($stockData as $key => $value)
-		//{
-		//   echo $key, " :", $value, "<br>";      
-		//}
+        }
+        
+	    if(isset($_POST['totalCostOfSharesBuy']))
+        {
+            
+            $user = Auth::user();
+            $user->decrement('balance',$_POST['totalCostOfSharesBuy']);
+            
+        }
+      
 	}
         
         
-    function search_stock($stockSymbol)
-    {
-		$cSession = curl_init(); 
-		$queryURL = 
-"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22".$stockSymbol."%22)&format=json&env=store://datatables.org/alltableswithkeys";
-            
-		curl_setopt($cSession,CURLOPT_URL,$queryURL);
-		curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($cSession,CURLOPT_HEADER, false);    
-            
-		$result = curl_exec($cSession);
-		curl_close($cSession);
-		$json = json_decode($result, true);
-        
-		$stockData = array	(
-							"name" => $json['query']['results']['quote']['Name'],
-							"price" => $json['query']['results']['quote']['Ask'],
-							"currency" => $json['query']['results']['quote']['Currency'],
-							"change" => $json['query']['results']['quote']['Change'],
-							);
-           
-		return $stockData;
-    }
+   
 ?>
 
 <div class="container"><!--second container-->
@@ -139,13 +126,13 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3><b>Search Live Stock</b></h3><br>
 				<form  name="APIsearchForm" action="{{ action('TransactionsController@index') }}" method="post"> 
-					<input name="searchText" placeholder="Search by Company Symbol" type="text"> 
+					<input name="searchText" placeholder="Search by Company Symbol" type="text" value="<?php echo isset($_POST['searchText']) ? $_POST['searchText'] : '' ?>"> 
 					<button class="submitButt" type="submit" value="submit">Search</button>
 					{{ csrf_field() }}
 				</form>
 				<br>			
 				<form  name="APIsearchForm" action="{{ action('TransactionsController@index') }}" method="post">	
-					<select name="searchText" style="width: 20.5em" onchange="this.form.submit();"> 
+					<select name="searchText" style="width: 20.5em" onchange="this.form.submit();" value="<?php echo isset($_POST['searchText']) ? $_POST['searchText'] : '' ?>">
 <option value="">Select Company</option>
 <option value="MOQ.AX">MOQ LIMITED</option>
 <option value="1PG.AX">1-PAGE LIMITED</option>
@@ -2329,6 +2316,7 @@
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
 			<h3><b>Buy Shares</b></h3><br>
 				<form  name="buySharesForm" action="{{ action('TransactionsController@index') }}" method="post">
+                    <input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['searchText']) ? $_POST['searchText'] : '' ?>">
 					<ul>
 					<li>Company : <?php echo $company ?></li>
 					<li>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
@@ -2338,7 +2326,7 @@
 					</ul><br>
 					<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 					<br>
-					
+				{{ csrf_field() }}	
 				</form>
 		</div>
 	</div><!--//Buy Shares-->
