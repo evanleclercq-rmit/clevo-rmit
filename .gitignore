@@ -2,6 +2,5 @@
 /public/storage
 /vendor
 /.idea
-*.sqlite
 Homestead.json
 Homestead.yaml
