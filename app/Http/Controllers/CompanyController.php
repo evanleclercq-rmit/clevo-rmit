@@ -10,7 +10,8 @@ class CompanyController extends Controller
     
     // initial landing function for the dashboard
     public function index () {
-        return view('company');
-    }
-    
+     
+    $companies = \App\Companies::pluck('name', 'symbol');
+    return view('company')->with('companies', $companies);
+}
 }
