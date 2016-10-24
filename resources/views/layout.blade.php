@@ -5,7 +5,6 @@
     <head>
         <title>The Budding Investor</title>
         <meta charset='utf-8'/>
-        
         @yield ('head')
         
     </head>

@@ -6,74 +6,20 @@
 		<div class="container">
 			<div class="col-md-16 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-					<h3><b>Watch List</b></h3><br>
-					<!-- TradingView Widget BEGIN -->
-					<div id="tv-medium-widget-f0442">
+					<h3><b>Stockmarket Information</b></h3><br>
+					<div id="chart_div" style="width: 100%; height: 250px;">
 					</div>
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
-		<script type="text/javascript">
-			new TradingView.MediumWidget({
-			  "container_id": "tv-medium-widget-f0442",
-			  "symbols": [
-				[
-				  "Apple",
-				  "AAPL|1d"
-				],
-				[
-				  "Google",
-				  "GOOGL|1d"
-				],
-				[
-				  "Microsoft",
-				  "MSFT|1d"
-				],
-				[
-				  "Facebook",
-				  "FB|1d"
-				],
-				[
-				  "Amazon",
-				  "AMZN|1d"
-				],
-				[
-				  "Exxon Mobil Corporation",
-				  "XOM|1d"
-				],
-				[
-				  "Berkshire Hathaway",
-				  "BRK.B|1d"
-				],
-				[
-				  "Johnson & Johnson",
-				  "JNJ|1d"
-				],
-				[
-				  "GE",
-				  "General Electric|1d"
-				],
-				[
-				  "Tencent",
-				  "TCEHY|1d"
-				],
-				[
-				  "Yahoo",
-				  "YHOO|1d"
-				]
-			  ],
-			  "gridLineColor": "#e9e9ea",
-			  "fontColor": "#83888D",
-			  "underLineColor": "#dbeffb",
-			  "trendLineColor": "#4bafe9",
-			  "width": "100%",
-			  "height": "300px",
-			  "locale": "en"
-			});
-			</script>
-			<!-- TradingView Widget END -->
-	</div><!--//body-->	
+		
+
+
+	<!--new leaderboard scr-->		
+   
+<!--//new leaderboard script-->		
+	
+	</div><!--//body-->
 		
 <?php
                     
@@ -2313,9 +2259,9 @@
 		</div>	
 	</div><!--//Search Live Stock-->
 
-	<div class="col-md-4 content-middle"><!--Current HLDG.-->
+	<div class="col-md-4 content-middle"><!--Current Holdings-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-			<h3><b>Current HLDG.</b></h3><br>
+			<h3><b>Current Holdings</b></h3><br>
 				<ul>
 					<li>Current Balance: ${{ Auth::user()->balance }}</li>
 					<li>Shares Bought:</li>
@@ -2324,23 +2270,12 @@
 					<li>Initial Balance: $20000</li>
 				</ul>  
 		</div>
-	</div><!--//Current HLDG.-->
+	</div><!--//Current Holdings-->
  
 	<div class="col-md-4 content-right"><!--Leaderboard-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Leaderboard</b></h3><br>
-				<ul>
-					<li> 1. C</li>
-					<li> 2. L</li>
-					<li> 3. E</li>
-					<li> 4. V</li>
-					<li> 5. O</li>
-					<li> 6. A</li>
-					<li> 7. B</li>
-					<li> 8. C</li>
-					<li> 9. D</li>
-					<li>10. E</li>
-				</ul>
+			<div id="table_div"></div>
 		</div>
 	</div><!--//Leaderboard-->
 </div><!--//second container-->

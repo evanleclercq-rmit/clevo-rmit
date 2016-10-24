@@ -52,7 +52,78 @@
     });
     </script>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+<!--new chart-->		
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data1 = new google.visualization.arrayToDataTable([
+          ['Time', '$ Value'],
+          ['-10h',  10],
+          ['-9h',  8.20],
+          ['-8h',  5],
+          ['-7h',  9],
+		  ['-6h',  12.1],
+		  ['-5h',  19],
+		  ['-4h',  1.52],
+		  ['-3h',  3.8],
+		  ['-2h',  8.7],
+		  ['-1h',  2.4],
+		  ['now',  12.5]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data1, options);
+      }
+	  
+    </script>
+<!--//new chart-->
+	
+<!--leaderboard table script-->
+    <script type="text/javascript">
+	
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var data2 = new google.visualization.DataTable();
+        data2.addColumn('string', 'Name');
+        data2.addColumn('number', 'Holdings');
+   
+        data2.addRows([
+          ['Mike',  {v: 10000, f: '$10,000'}],
+          ['Jim',   {v: 8000, f: '$8,000'}],
+          ['Alice', {v: 12500, f: '$12,500'}],
+          ['Bob',   {v: 7000,  f: '$7,000'}],
+		  ['Bob1',   {v: 8000,  f: '$7,000'}],
+		  ['Bob2',   {v: 90000,  f: '$7,000'}],
+		  ['Bob3',   {v: 10000,  f: '$7,000'}],
+		  ['Bob4',   {v: 72000,  f: '$7,000'}],
+		  ['Bob5',   {v: 7000,  f: '$7,000'}],
+		  ['Bob6',   {v: 7000,  f: '$7,000'}],
+		  ['Bob7',   {v: 7000,  f: '$7,000'}],
+		  ['Bob8',   {v: 7000,  f: '$7,000'}],
+		  ['Bob9',   {v: 7000,  f: '$7,000'}],
+		  ['Bob10',   {v: 7000,  f: '$7,000'}]
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data2, {showRowNumber: true, width: '100%', height: '100%'});
+      }
+
+   </script>
+<!--//leaderboard table script-->
+	
 </head>
 
 <body>
