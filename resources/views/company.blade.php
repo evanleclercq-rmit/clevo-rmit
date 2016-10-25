@@ -3,11 +3,14 @@
 @section('content')
 
 <?php
-                    
+    require_once('../app/financeWebService.php');
+
 	$company = "";
 	$price = "";
 	$currency = "";
 	$change = "";
+	$changeFromYearHigh = "";
+	$graph = "";
                     
 	if(isset($_POST)&&!empty($_POST))
 	{
@@ -17,37 +20,10 @@
 		$price = $stockData['price'];
 		$currency = $stockData['currency'];
 		$change = $stockData['change'];
+		$changeFromYearHigh = $stockData['changeFromYearHigh'];
+		$graph = $stockData['graph'];
 
-		//foreach ($stockData as $key => $value)
-		//{
-		//   echo $key, " :", $value, "<br>";      
-		//}
 	}
-        
-        
-    function search_stock($stockSymbol)
-    {
-		$cSession = curl_init(); 
-		$queryURL = 
-"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22".$stockSymbol."%22)&format=json&env=store://datatables.org/alltableswithkeys";
-            
-		curl_setopt($cSession,CURLOPT_URL,$queryURL);
-		curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($cSession,CURLOPT_HEADER, false);    
-            
-		$result = curl_exec($cSession);
-		curl_close($cSession);
-		$json = json_decode($result, true);
-        
-		$stockData = array	(
-							"name" => $json['query']['results']['quote']['Name'],
-							"price" => $json['query']['results']['quote']['Ask'],
-							"currency" => $json['query']['results']['quote']['Currency'],
-							"change" => $json['query']['results']['quote']['Change'],
-							);
-           
-		return $stockData;
-    }
 ?>
 
 	<div id="body">	
@@ -61,15 +37,47 @@
 					{{ Form::button('Submit', array('type' => 'submit', )) }}
 					{{ Form::close() }}
 				</div>
+				<br>
+				<section>
 
-
-				<ul>
+ 				<div id="info">
+<!--  					<ul>
 					<li>Company: <?php echo $company ?></li>
 					<li>Price: <?php echo $price ?></li>
 					<li>Currency: <?php echo $currency ?></li>
-					<li>Change: <?php echo $change ?></li>					
-				</ul>
-				<img src="images/graph.png" alt="Mountain View">
+					<li>Change: <?php echo $change ?></li>
+					<li>Change from year high: <?php echo $changeFromYearHigh ?></li> 
+					</ul>-->
+				<table>
+				  <tr>
+				    <th>Company:</th>
+				    <td><?php echo $company ?></td>
+				  </tr>
+				  <tr>
+				  	<th>Price:</th> 
+				    <td><?php echo $price ?></td> 
+				  </tr>
+				  <tr>
+				  	<th>Currency:</th> 
+				    <td><?php echo $currency ?></td> 
+				  </tr>
+				   <tr>
+				  	<th>Change: </th> 
+				    <td><?php echo $change ?></td> 
+				  </tr>
+				    <tr>
+				  	<th>Change from year high:</th> 
+				    <td><?php echo $changeFromYearHigh ?></td> 
+				  </tr>
+				</table>
+				</div>
+				<div id="graph">
+				 	<?php echo $graph ?>
+				</div>
+ 				</section>
+
+				
+
 				</div>
 			</div>
 		</div>
