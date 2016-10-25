@@ -33,3 +33,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 //Route to the API Test page/
 Route::get('/apitest', 'ApiTestController@index');
+
+Route::get('/apiRequest', 'ApiRequestController@index');
