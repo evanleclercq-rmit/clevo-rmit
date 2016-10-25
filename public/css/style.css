@@ -2471,6 +2471,7 @@ li {
     list-style-type: none;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -2483,3 +2484,18 @@ li {
 
 
 
+=======
+section {
+    width: 100%;
+    min-height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+div#info {
+    width: 50%;
+    float: left;
+}
+div#graph {
+    margin-left: 50%;
+}
+>>>>>>> a0c9af4d1b5ab8985300affbef1cd6afaa245e35
