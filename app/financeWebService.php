@@ -1,8 +1,5 @@
 
 <?php
-
-    
-        
     function search_stock($stockSymbol)
     {
             $cSession = curl_init(); 
@@ -24,10 +21,11 @@
                  "name" => $json['query']['results']['quote']['Name'],
                  "price" => $json['query']['results']['quote']['Ask'],
                  "currency" => $json['query']['results']['quote']['Currency'],
+                 "changeFromYearHigh" => $json['query']['results']['quote']['PercebtChangeFromYearHigh'],
                  "change" => $json['query']['results']['quote']['Change'],
+                 "graph" => "<img src='http://chart.finance.yahoo.com/z?s=".$stockSymbol."&t=6m&q=l&l=on&z=s&p=m50,m200'>"
             );
             
-           
             return $stockData;
 
     }
