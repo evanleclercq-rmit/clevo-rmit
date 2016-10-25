@@ -31,6 +31,21 @@
 		</div>
 	
 		<script type="text/javascript">
+            function ajaxSearch(str)
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function()
+                {
+                    if (this.readyState == 4)
+                    {
+                        document.getElementById("companyData").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
+                xmlhttp.send();
+                
+            }
+            
 			function calculateTotalShareCostBuy(numShares)
                 {
                     document.getElementById("totalCostOfSharesBuy").value=numShares.value*document.getElementById("sharePrice").value;
@@ -89,8 +104,8 @@
 					{{ csrf_field() }}
 				</form>
 				<br>			
-				<form  name="APIsearchForm" action="{{ action('TransactionsController@index') }}" method="post">	
-					<select name="searchText" style="width: 20.5em" onchange="this.form.submit();" value="<?php echo isset($_POST['searchText']) ? $_POST['searchText'] : '' ?>">
+				<form  name="APIsearchForm" onsubmit="return false";>	
+					<select name="searchText" style="width: 20.5em" onchange="ajaxSearch(this.value);" value="">
 <option value="">Select Company</option>
 <option value="MOQ.AX">MOQ LIMITED</option>
 <option value="1PG.AX">1-PAGE LIMITED</option>
@@ -2259,14 +2274,10 @@
 					<br>
 					{{ csrf_field() }}
 				</form>
-				<ul>
-				<br>
-					<li>Company : <?php echo $company ?></li>
-					<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
-					<li>Currency  : <?php echo $currency ?></li>
-					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>
+            <p> <span id="companyData"></span></p> 
+				
 									
-				</ul>
+				
 		</div>
 	</div><!--//Search Live Stock-->
 
