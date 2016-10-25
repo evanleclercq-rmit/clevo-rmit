@@ -5,16 +5,31 @@
 <?php require(app_path().'/financeWebService.php') ?>
 	<div id="body">	
 		<div class="container">
-			<div class="col-md-16 content-left">
+			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 					<h3><b>Stockmarket Information</b></h3><br>
-					<!-- TradingView Widget BEGIN -->
-					<div id="tv-medium-widget-f0442">
+					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
 					</div>
+					
+					<div id="topBar">
+						<ul class="topnav">
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+							<li><a href="#">Company</a></li>
+						</ul>
+					</div>
+					
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+	
 		<script type="text/javascript">
 			function calculateTotalShareCostBuy(numShares)
                 {
@@ -26,65 +41,8 @@
                     document.getElementById("totalCostOfSharesSell").value=numShares.value*document.getElementById("sharePrice").value;
                 }
 			
-			new TradingView.MediumWidget({
-			  "container_id": "tv-medium-widget-f0442",
-			  "symbols": [
-			  
-				[
-				  "Apple",
-				  "AAPL|1d"
-				],
-				[
-				  "Google",
-				  "GOOGL|1d"
-				],
-				[
-				  "Microsoft",
-				  "MSFT|1d"
-				],
-				[
-				  "Facebook",
-				  "FB|1d"
-				],
-				[
-				  "Amazon",
-				  "AMZN|1d"
-				],
-				[
-				  "Exxon Mobil Corporation",
-				  "XOM|1d"
-				],
-				[
-				  "Berkshire Hathaway",
-				  "BRK.B|1d"
-				],
-				[
-				  "Johnson & Johnson",
-				  "JNJ|1d"
-				],
-				[
-				  "GE",
-				  "General Electric|1d"
-				],
-				[
-				  "Tencent",
-				  "TCEHY|1d"
-				],
-				[
-				  "Yahoo",
-				  "YHOO|1d"
-				]
-			  ],
-			  "gridLineColor": "#e9e9ea",
-			  "fontColor": "#83888D",
-			  "underLineColor": "#dbeffb",
-			  "trendLineColor": "#4bafe9",
-			  "width": "100%",
-			  "height": "300px",
-			  "locale": "en"
-			});
-			</script>
-			<!-- TradingView Widget END -->
+		</script>
+			
 	</div><!--//body-->	
 		
 <?php
