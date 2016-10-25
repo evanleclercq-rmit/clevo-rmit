@@ -18,9 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
 			$table->text('bio')->nullable;
-			$table->integer('balance');
+			$table->integer('balance')->defualt(20000);
 			$table->string('location')->nullable;
             $table->string('password');
+            $table->string('holdings')->nullable;
             $table->rememberToken();
             $table->timestamps();
         });
