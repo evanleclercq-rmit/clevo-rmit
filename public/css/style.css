@@ -2470,3 +2470,17 @@ h4.welcome {
 li {
     list-style-type: none;
 }
+
+section {
+    width: 100%;
+    min-height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+div#info {
+    width: 50%;
+    float: left;
+}
+div#graph {
+    margin-left: 50%;
+}
