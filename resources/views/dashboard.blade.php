@@ -53,10 +53,25 @@
 			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 					<h3><b>Stockmarket Information</b></h3>
+					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
+					<select name="searchText" style="width: 12em" onchange="">
+					<option value="">Select From Favourites</option>
+					<option value="">Favourite1</option>
+					<option value="">Favourite2</option>
+					<option value="">Favourite3</option>
+					<option value="">Favourite4</option>
+					<option value="">Favourite5</option>
+					<option value="">Favourite6</option>
+					<option value="">Favourite7</option>
+					<option value="">Favourite8</option>
+					<option value="">Favourite9</option>
+					<option value="">Favourite10</option>
+					</select>
+					</form><br>
 					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
 					</div>
 					
-					<div id="topBar">
+				<!--	<div id="topBar">
 						<ul class="topnav">
 							<li><a href="#">Company</a></li>
 							<li><a href="#">Company</a></li>
@@ -69,7 +84,9 @@
 							<li><a href="#">Company</a></li>
 							<li><a href="#">Company</a></li>
 						</ul>
-					</div>
+					</div>-->
+					
+					
 					
 				</div>
 			</div>

@@ -73,8 +73,8 @@ div#bs-example-navbar-collapse-1 {
 	padding: 2em 2.7em;
 }
 .top-nav ul li a:hover{
-/*    color: #a9221f !important;
-*/    background:#FFF !important;
+  /*  color: #a9221f !important;*/
+    background:#FFF !important;
 }
 .top-nav ul li a.active{
 /*    color: #a9221f !important;
@@ -2369,7 +2369,7 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #2b40  65;}
+ul.topnav li a:hover:not(.active) {background-color: #2b4065;}
 ul.topnav li.right a:active { color: #2b4065;}
 ul.topnav li.right {float: right;  }
 
