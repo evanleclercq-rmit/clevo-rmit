@@ -103,7 +103,7 @@ $(document).ready(function(){
 					<br>
 					<p>Or search by company symbol</p>
 					<form  name="APIsearchForm" onsubmit="ajaxSearch(this.value);"> 
-						<input name="symbol" placeholder="eg. AAPL" type="text" style="width: 250px" > 
+						<input name="symbol" placeholder="eg. ASX.AX" type="text" style="width: 250px" > 
 						<button class="submitButt" type="submit" value="submit">Search</button>
 						{{ csrf_field() }}
 					</form>
@@ -130,7 +130,7 @@ $(document).ready(function(){
 					
 					<!--TODO: Search box to use Ajax function-->
 					<form  name="APIsearchForm" action="{{ action('CompanyController@index') }}" method="post"> 
-						<input name="symbol" placeholder="eg. AAPL" type="text" style="width: 250px" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>"> 
+						<input name="symbol" placeholder="eg. ASX.AX" type="text" style="width: 250px" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>"> 
 						<button class="submitButt" type="submit" value="submit">Search</button>
 						{{ csrf_field() }}
 					</form>
@@ -150,13 +150,12 @@ $(document).ready(function(){
 					<hr class="style1"><h3><b>Buy Shares</b></h3><br>
 					<form  name="buySharesForm" action="{{ action('TransactionsController@index') }}" method="post">
 						<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
-						<ul>
-<!-- 							<li>Company : <?php echo $company ?></li>
- -->							<li>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
-								<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="No." type="number" min="1" step="1"
-								onchange="calculateTotalShareCostBuy(this)" disabled> units</li>
-								<li>Total Value: <input name="totalCostOfSharesBuy" style="width: 6em;" id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></li>
-							</ul><br>
+<!-- 					Company : <?php echo $company ?>-->							
+						<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+						<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="No." type="number" min="1" step="1"
+								onchange="calculateTotalShareCostBuy(this)" disabled> units</p>
+							<p>Total Value: <input name="totalCostOfSharesBuy" style="width: 6em;" id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
+							<br>
 							<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 							<br><br>
 							{{ csrf_field() }}	
@@ -167,13 +166,12 @@ $(document).ready(function(){
 					<div class="sell box" style="display:none">
 						<hr class="style1"><h3><b>Sell Shares</b></h3><br>
 						<form  name="sellSharesForm" action="{{ action('TransactionsController@index') }}" method="post">
-							<ul>
-								<li>Company : <?php echo $company ?></li>
-								<li>Shares to Sell :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+								<!-- <p>Company : <?php echo $company ?></p> -->
+								<p>Shares to Sell :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
 									<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em" placeholder="No." type="number" min="1" step="1"
-									onchange="calculateTotalShareCostSell(this)" disabled> units</li>
-									<li>Total Value: <input name="totalCostOfSharesSell" style="width: 6em;" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></li>
-								</ul><br>
+									onchange="calculateTotalShareCostSell(this)" disabled> units</p>
+									<p>Total Value: <input name="totalCostOfSharesSell" style="width: 6em;" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
+								<br>
 								<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 								<br><br>
 							</form>
