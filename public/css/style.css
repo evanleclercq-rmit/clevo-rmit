@@ -2487,3 +2487,15 @@ div#graph {
 hr.style1{
     border-top: 1px solid #8c8b8b;
 }
+
+section {
+    width: 100%;
+    margin: auto;
+}
+div#left {
+    width: 60%;
+    float: left;
+}
+div#right {
+    margin-left: 60%;
+}
