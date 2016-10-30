@@ -136,7 +136,7 @@ $(document).ready(function(){
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" step="1"
 									onchange="calculateTotalShareCostBuy(this)" disabled> </p>
-									<p>Total Value: <input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
+									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
 									<br>
 									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 									<br><br>
@@ -178,7 +178,7 @@ $(document).ready(function(){
 									<p>Shares to Sell :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
 										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" step="1"
 										onchange="calculateTotalShareCostSell(this)" disabled></p> 
-										<p>Total Value: <input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p> 
+										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p> 
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>
@@ -196,6 +196,29 @@ $(document).ready(function(){
 							<p>TODO: Chart to go here</p><br>
 							<!--TODO: chart to be refreshed to currently selected company-->
 							<!--<div id="chart_div" style="width: 100%; height: 250px;"></div>-->
+							
+					<!--new table formated				
+							<table style="width:30%">
+								<tr>
+									<th><h5>Company:</h5></th>
+									<td><?php echo $company ?></td>
+								</tr>
+								<tr>
+									<th><h5>Share Value:</h5></th>
+									<td>$<?php echo $price ?></td>
+								</tr>
+								<tr>
+									<th><h5>Currency:</h5></th>
+									<td><?php echo $currency ?></td>
+								</tr>
+								<tr>
+									<th><h5>Change:</h5></th>
+									<td>$<?php echo $change ?></td>
+								</tr>
+								
+							</table>
+					//new table-->			
+							
 						</div>
 					</div>
 				</div>

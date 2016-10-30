@@ -52,6 +52,18 @@
     });
     </script>
 
+	<style>
+	table, th, td {
+    border: 1px solid #ededed;
+    border-collapse: collapse;
+	}
+	th, td {
+    padding: 5px;
+    text-align: left;
+	}
+	</style>
+	
+	
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <!--new chart-->		
@@ -126,6 +138,7 @@ google.charts.setOnLoadCallback(drawTable);
 
    </script>
 <!--//leaderboard table script-->
+
 	
 </head>
 
