@@ -31,9 +31,12 @@ if(isset($_POST['totalCostOfSharesBuy']))
 }
 ?>
 
+var symbolSearch = document.getElementById("symbolSearch").value;
 
+    
 function ajaxSearch(str)
 {
+    
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function()
 	{
@@ -103,9 +106,9 @@ $(document).ready(function(){
 							</form>
 							<br>
 							<p>Or search by company symbol</p>
-							<form  name="APIsearchForm" onsubmit="ajaxSearch(this.value);"> 
-								<input name="symbol" placeholder="eg. ASX.AX" type="text" style="width: 250px" > 
-								<button class="submitButt" type="submit" value="submit">Search</button>
+							<form  name="APIsearchForm" onsubmit="return false"> 
+								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 250px" > 
+								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);" value="submit">Search</button>
 								{{ csrf_field() }}
 							</form>
 						</div>

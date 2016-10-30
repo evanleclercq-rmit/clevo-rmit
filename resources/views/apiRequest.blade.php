@@ -26,8 +26,15 @@ $stockSymbol = $_GET["q"];
                  "change" => $json['query']['results']['quote']['Change'],
             );
             
+            if($stockData['name']!=null)
+            {
+                 echo "<br><li>Company : ".$stockData['name']."</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$stockData['price']."</li><li>Currency  : ".$stockData['currency']."</li><li>Change   &nbsp;&nbsp; : ".$stockData['change']."</li>";
+            }
+            else
+            {
+                echo "<br>Company not found";
+            }
            
-            echo "<br><li>Company : ".$stockData['name']."</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$stockData['price']."</li><li>Currency  : ".$stockData['currency']."</li><li>Change   &nbsp;&nbsp; : ".$stockData['change']."</li>";
 
     
 
