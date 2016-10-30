@@ -2273,26 +2273,58 @@
 					<br>
 					{{ csrf_field() }}
 				</form>
-				<ul>
+				
 				<br>
-					<li>Company : <?php echo $company ?></li>
-					<li>Price    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : <?php echo $price ?></li>
-					<li>Currency  : <?php echo $currency ?></li>
-					<li>Change   &nbsp;&nbsp; : <?php echo $change ?></li>				
-				</ul>
+				<table style="width:100%">
+				<tr>
+					<th><h5>Company:</h5></th>
+					<td><?php echo $company ?></td>
+				</tr>
+				<tr>
+					<th><h5>Share Value:</h5></th>
+					<td>$<?php echo $price ?></td>
+				</tr>
+				<tr>
+					<th><h5>Currency:</h5></th>
+					<td><?php echo $currency ?></td>
+				</tr>
+				<tr>
+					<th><h5>Change:</h5></th>
+					<td>$<?php echo $change ?></td>
+				</tr>
+				</table>
+				
 		</div>	
 	</div><!--//Search Live Stock-->
 
 	<div class="col-md-4 content-middle"><!--Current Holdings-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Current Holdings</b></h3><br>
-				<ul>
-					<li>Initial Balance: $20000</li>
-					<li>Current Balance: ${{ Auth::user()->balance }}</li>
-					<li>Shares Bought:</li>
-					<li>Shares Sold:</li>
-					<li>Profit:</li>
-				</ul>  
+			
+			
+			<table style="width:100%">
+				<tr>
+					<th><h5>Initial Cash Balance:</h5></th>
+					<td>$20000</td>
+				</tr>
+				<tr>
+					<th><h5>Current Cash Balance:</h5></th>
+					<td>${{ Auth::user()->balance }}</td>
+				</tr>
+				<tr>
+					<th><h5>Shares Value:</h5></th>
+					<td>$</td>
+				</tr>
+				<tr>
+					<th><h5>Cash Value:</h5></th>
+					<td>$</td>
+				</tr>
+				<tr>
+					<th><h5>Profit:</h5></th>
+					<td>$</td>
+				</tr>
+			</table>
+				
 		</div>
 	</div><!--//Current Holdings-->
  
