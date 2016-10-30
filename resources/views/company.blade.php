@@ -103,7 +103,7 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="col-md-12 content-left">
 			<div class="contact-form wow fadeInUp animated">
-				<h3><b>Company Lookup</b></h3><br>
+				<h3><b>This is a test page</b></h3><br>
 
 				<!--Loads either buying or selling menu and boxes-->
 				<p>What would you like to do?</p>

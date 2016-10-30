@@ -155,7 +155,7 @@ google.charts.setOnLoadCallback(drawTable);
                     <!--Left menu items-->
                     <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ url('/transactions') }}">Transactions</a></li>
-                    <li><a href="{{ url('/company') }}">Companies</a></li>
+                    <li><a href="{{ url('/company') }}">Test Page</a></li>
                     <li><a href="#gettingstarted">Getting Started</a></li>
                     <!--Right menu items-->
                     <li class="right"><a href="{{ url('/logout') }}"

@@ -10,7 +10,8 @@ class TransactionsController extends Controller
     
     // initial landing function for the transactions
     public function index () {
-        return view('transactions');
+        $companies = \App\Companies::pluck('name', 'symbol');
+    	return view('transactions')->with('companies', $companies);
     }
     
 }
