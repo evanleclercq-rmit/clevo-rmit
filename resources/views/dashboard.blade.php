@@ -56,16 +56,16 @@
 					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
 					<select name="searchText" style="width: 12em" onchange="">
 					<option value="">Select From Favourites</option>
-					<option value="">Favourite1</option>
-					<option value="">Favourite2</option>
-					<option value="">Favourite3</option>
-					<option value="">Favourite4</option>
-					<option value="">Favourite5</option>
-					<option value="">Favourite6</option>
-					<option value="">Favourite7</option>
-					<option value="">Favourite8</option>
-					<option value="">Favourite9</option>
-					<option value="">Favourite10</option>
+					<option value="fav1">Favourite1</option>
+					<option value="fav2">Favourite2</option>
+					<option value="fav3">Favourite3</option>
+					<option value="fav4">Favourite4</option>
+					<option value="fav5">Favourite5</option>
+					<option value="fav6">Favourite6</option>
+					<option value="fav7">Favourite7</option>
+					<option value="fav8">Favourite8</option>
+					<option value="fav9">Favourite9</option>
+					<option value="fav10">Favourite10</option>
 					</select>
 					</form><br>
 					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
@@ -2275,6 +2275,12 @@
 					<th><h5>Change:</h5></th>
 					<td>$<?php echo $change ?></td>
 				</tr>
+				<tr>
+					<th><h5>Add to Favourites?</h5></th>
+					<td><form action="">
+						<input type="radio" name="favourite" value="favourite"> Yes<br></td>
+						</form>
+				</tr>
 				</table>
 				
 		</div>	
@@ -2299,7 +2305,7 @@
 					<td>$</td>
 				</tr>
 				<tr>
-					<th><h5>Cash Value:</h5></th>
+					<th><h5>Total Holdings Value:</h5></th>
 					<td>$</td>
 				</tr>
 				<tr>
