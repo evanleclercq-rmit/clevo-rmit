@@ -21,7 +21,7 @@ if(isset($_POST)&&!empty($_POST))
 	$price = $stockData['price'];
 	$currency = $stockData['currency'];
 	$change = $stockData['change'];
-	;
+	
 
 }
 if(isset($_POST['totalCostOfSharesBuy']))
@@ -33,7 +33,20 @@ if(isset($_POST['totalCostOfSharesBuy']))
 
 var symbolSearch = document.getElementById("symbolSearch").value;
 
+function processApiData(array)
+{
+    var newContent = '<br><li>Company : '+array.Name+'</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : '+array.Ask+'</li><li>Currency  : '+array.Currency+'</li><li>Change   &nbsp;&nbsp; : '+array.Change+'</li>';
     
+    document.getElementById("companyData").innerHTML = newContent;
+    
+    document.getElementById('numberOfSharesBuy').disabled=false;   
+    document.getElementById('buySharesButton').disabled=false;
+    document.getElementById('sharePrice').value = array.Ask;
+    
+    
+    
+}
+
 function ajaxSearch(str)
 {
     
@@ -42,7 +55,10 @@ function ajaxSearch(str)
 	{
 		if (this.readyState == 4)
 		{
-			document.getElementById("companyData").innerHTML = this.responseText;
+			//document.getElementById("companyData").innerHTML = this.responseText;
+            var json = JSON.parse(this.responseText);
+            processApiData(json);
+            
 		}
 	};
 	xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
@@ -87,7 +103,7 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="col-md-12 content-left">
 			<div class="contact-form wow fadeInUp animated">
-				<h3><b>Company Lookup</b></h3><br>
+				<h3><b>This is a test page</b></h3><br>
 
 				<!--Loads either buying or selling menu and boxes-->
 				<p>What would you like to do?</p>
