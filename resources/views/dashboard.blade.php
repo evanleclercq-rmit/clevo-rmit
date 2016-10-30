@@ -70,24 +70,7 @@
 					</form><br>
 					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
 					</div>
-					
-				<!--	<div id="topBar">
-						<ul class="topnav">
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-							<li><a href="#">Company</a></li>
-						</ul>
-					</div>-->
-					
-					
-					
+	
 				</div>
 			</div>
 		</div>
@@ -2331,6 +2314,23 @@
 	<div class="col-md-4 content-right">
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Leaderboard</b></h3><br>
+			
+			<table style="width:100%">
+					<tr>
+						<th><h5>{{ Auth::user()->name }}</h5></th>
+						<td>${{Auth::user()->balance}}</td>
+					</tr>
+					<tr>
+						<th><h5>Bob</h5></th>
+						<td>$15000</td>
+					</tr>
+					<tr>
+						<th><h5>Mike</h5></th>
+						<td>$13500</td>
+					</tr>
+					
+			</table>
+			
 			<div id="table_div"></div><!--Leaderboard-->
 		</div>
 	</div>

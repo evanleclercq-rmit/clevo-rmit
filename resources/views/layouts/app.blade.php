@@ -74,23 +74,20 @@ google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
         var data1 = new google.visualization.arrayToDataTable([
-          ['Time', '$Value'],
-          ['-10h', 10],
-          ['-9h',  8.20],
-          ['-8h',  5],
-          ['-7h',  9],
-		  ['-6h',  12.1],
-		  ['-5h',  13],
-		  ['-4h',  5.52],
-		  ['-3h',  7.8],
-		  ['-2h',  8.7],
-		  ['-1h',  6.4],
+          ['Date', '$Value'],
+          ['-7d',  9],
+		  ['-6d',  12.1],
+		  ['-5d',  13],
+		  ['-4d',  5.52],
+		  ['-3d',  7.8],
+		  ['-2d',  8.7],
+		  ['-1d',  6.4],
 		  ['now',  12.5]
         ]);
 
         var options = {
           title: 'Company Performance',
-          hAxis: {title: 'Time',  titleTextStyle: {color: '#333'}},
+          hAxis: {title: 'Date',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0}
 	  };
 function resize () {
