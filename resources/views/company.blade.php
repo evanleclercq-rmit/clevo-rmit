@@ -35,13 +35,22 @@ var symbolSearch = document.getElementById("symbolSearch").value;
 
 function processApiData(array)
 {
-    var newContent = '<br><li>Company : '+array.Name+'</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : '+array.Ask+'</li><li>Currency  : '+array.Currency+'</li><li>Change   &nbsp;&nbsp; : '+array.Change+'</li>';
+    if(array.Name != null)
+        {
+            var newContent = '<br><li>Company : '+array.Name+'</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : '+array.Ask+'</li><li>Currency  : '+array.Currency+'</li><li>Change   &nbsp;&nbsp; : '+array.Change+'</li>';
     
-    document.getElementById("companyData").innerHTML = newContent;
+            document.getElementById("companyData").innerHTML = newContent;
+
+            document.getElementById('numberOfSharesBuy').disabled=false;   
+            document.getElementById('buySharesButton').disabled=false;
+            document.getElementById('sharePrice').value = array.Ask;
+        }
+    else
+        {
+            var newContent = '<br><li> Company not found </li>';
+            document.getElementById("companyData").innerHTML = newContent;
+        }
     
-    document.getElementById('numberOfSharesBuy').disabled=false;   
-    document.getElementById('buySharesButton').disabled=false;
-    document.getElementById('sharePrice').value = array.Ask;
     
     
     
