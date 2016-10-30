@@ -18,28 +18,9 @@ $stockSymbol = $_GET["q"];
             curl_close($cSession);
         
             $json = json_decode($result, true);
-        
-            $stockData = array(
-                 "name" => $json['query']['results']['quote']['Name'],
-                 "price" => $json['query']['results']['quote']['Ask'],
-                 "currency" => $json['query']['results']['quote']['Currency'],
-                 "change" => $json['query']['results']['quote']['Change'],
-            );
             
-            if($stockData['name']!=null)
-            {
-                 echo "<br><li>Company : ".$stockData['name']."</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ".$stockData['price']."</li><li>Currency  : ".$stockData['currency']."</li><li>Change   &nbsp;&nbsp; : ".$stockData['change']."</li>";
-            }
-            else
-            {
-                echo "<br>Company not found";
-            }
-           
-
-    
-
-
-       
+            $companyData = json_encode($json['query']['results']['quote']);
+            echo $companyData;  
    
 ?>
 
