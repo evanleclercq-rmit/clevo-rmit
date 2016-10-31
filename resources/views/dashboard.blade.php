@@ -45,17 +45,14 @@ function processApiData(array)
 			var row4 = '<tr><th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr>';
 			var row5 = '<tr><th><h5>Add to Favourites?</h5></th><td><form action=""><input type="radio" name="favourite" value="favourite"> Yes<br></td></form></tr></table>';
 			var newContent = row1+row2+row3+row4+row5;
-
-
             document.getElementById("companyData").innerHTML = newContent;
-
             document.getElementById('numberOfSharesBuy').disabled=false;   
             document.getElementById('buySharesButton').disabled=false;
             document.getElementById('sharePrice').value = array.Ask;
         }
     else
         {
-            var newContent = '<br><li> Company not found </li>';
+            var newContent = '<table style="width:100%"><tr><th><h5>Company not found</h5></th></tr></table>';
             document.getElementById("companyData").innerHTML = newContent;
         }
  
