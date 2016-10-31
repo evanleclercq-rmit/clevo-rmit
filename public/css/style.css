@@ -2501,10 +2501,6 @@ div#right {
     margin-left: 60%;
 }
 
-
-
-
-
-
-
-
+.ASXList { /* ASX drop down menu on dashboard*/
+    width: 330px;
+}
