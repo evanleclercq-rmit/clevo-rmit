@@ -10,7 +10,8 @@ class DashboardController extends Controller
     
     // initial landing function for the dashboard
     public function index () {
-        return view('dashboard');
+        $companies = \App\Companies::pluck('name', 'symbol');
+    	return view('dashboard')->with('companies', $companies);
     }
     
 }
