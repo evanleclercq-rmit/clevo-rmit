@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-// require_once(app_path().'\DatabaseUtilities.php');
+use Illuminate\Support\Facades\Auth;
+require(app_path().'\DatabaseUtilities.php');
 
 class TransactionsController extends Controller
 {
@@ -18,22 +19,25 @@ class TransactionsController extends Controller
     public function buy (Request $request) {
         //TODO: Get code and number to sell
         //      update database holdings field
-        $company = $request->input('companyName');
+        $company = $request->input('symbol');
         echo ('Company:'.$company);
         $price = $request->input('sharePrice');
         echo ('<br>Price:'.$price);
         $numberPurchased = $request->input('numberOfSharesBuy');
         echo ('<br>Purchased:'.$numberPurchased);
-        // $user = Auth::User();
+
+        $user = Auth::User();
+        echo ('<br>ID:'.$user->id);
 
         // // //Updating the Users Holdings
         // $holdings = array();
-        // updateHoldings($user->id, $holdings);
+        // updateHoldings($id, $holdings);
 
         // // //Updating the Users Balance
-        // $total = 0;
+        $total = $price * $numberPurchased;
+        echo ('<br><br> Total:'.$total);
         // $newBalance = $user->balance - $total;
-        // updateBalance($user->id, $newBalance);
+        // updateBalance($id, $newBalance);
     }
 
     public function sell (Request $request) {
@@ -47,14 +51,12 @@ class TransactionsController extends Controller
         $numberPurchased = $request->input('numberOfSharesBuy');
         echo ('<br>Purchased:'.$numberPurchased);
 
-        // $user = Auth::User();
-
         // // //Updating the Users Holdings
         // $holdings = array();
         // updateHoldings($user->id, $holdings);
 
         // // //Updating the Users Balance
-        // $total = 0;
+        $total = $price * $numberPurchased;;
         // $newBalance = $user->balance + $total;
         // updateBalance($user->id, $newBalance);
     }
