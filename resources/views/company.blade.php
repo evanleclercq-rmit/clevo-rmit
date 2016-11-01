@@ -135,10 +135,7 @@ google.charts.load('current', {'packages':['corechart']});
         low = parseFloat(json[i].low);
         rows.push([date, high, low]);
       }
-      // This line is commented out because it should be deleted
-      // data.addColumn('string', 'Subject');
 
-      // These lines should be added for column headers
       data.addColumn('string', 'Date');
       data.addColumn('number', 'High');
       data.addColumn('number', 'Low');
@@ -147,7 +144,7 @@ google.charts.load('current', {'packages':['corechart']});
 
 
         var options = {
-          title: 'Company Performance',
+          title: 'Company Performance - Last 7 Days',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
