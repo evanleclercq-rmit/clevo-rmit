@@ -138,6 +138,7 @@ $(document).ready(function(){
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" step="1"
 									onchange="calculateTotalShareCostBuy(this)" disabled> </p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
+									<input name="companyName" id="companyName" type="hidden" value={{$company}}>
 									<br>
 									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 									<br><br>

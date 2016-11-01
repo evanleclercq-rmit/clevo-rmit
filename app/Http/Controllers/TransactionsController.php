@@ -18,33 +18,45 @@ class TransactionsController extends Controller
     public function buy (Request $request) {
         //TODO: Get code and number to sell
         //      update database holdings field
+        $company = $request->input('companyName');
+        echo ('Company:'.$company);
+        $price = $request->input('sharePrice');
+        echo ('<br>Price:'.$price);
+        $numberPurchased = $request->input('numberOfSharesBuy');
+        echo ('<br>Purchased:'.$numberPurchased);
+        // $user = Auth::User();
 
-        $user = Auth::User();
+        // // //Updating the Users Holdings
+        // $holdings = array();
+        // updateHoldings($user->id, $holdings);
 
-        // //Updating the Users Holdings
-        $holdings = array();
-        updateHoldings($user->id, $holdings);
-
-        // //Updating the Users Balance
-        $total = 0;
-        $newBalance = $user->balance - $total;
-        updateBalance($user->id, $newBalance);
+        // // //Updating the Users Balance
+        // $total = 0;
+        // $newBalance = $user->balance - $total;
+        // updateBalance($user->id, $newBalance);
     }
 
     public function sell (Request $request) {
         //TODO: Get code and number to sell
         //      update database holdings field
 
-        $user = Auth::User();
+        $company = $request->input('companyName');
+        echo ('Company:'.$company);
+        $price = $request->input('sharePrice');
+        echo ('<br>Price:'.$price);
+        $numberPurchased = $request->input('numberOfSharesBuy');
+        echo ('<br>Purchased:'.$numberPurchased);
 
-        // //Updating the Users Holdings
-        $holdings = array();
-        updateHoldings($user->id, $holdings);
+        // $user = Auth::User();
 
-        // //Updating the Users Balance
-        $total = 0;
-        $newBalance = $user->balance + $total;
-        updateBalance($user->id, $newBalance);
+        // // //Updating the Users Holdings
+        // $holdings = array();
+        // updateHoldings($user->id, $holdings);
+
+        // // //Updating the Users Balance
+        // $total = 0;
+        // $newBalance = $user->balance + $total;
+        // updateBalance($user->id, $newBalance);
     }
 
 }
