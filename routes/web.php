@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
 Route::get('/', function () {
 	return redirect()->route('login');
 });
@@ -34,14 +32,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('/company', 'CompanyController@index');
 });
 
-
 Route::get('/apiRequest', 'ApiRequestController@index');
-
-
 
 //Test Routes
 Route::get('/transTest', function () {
     return view ('transTest');
 });
+
 //Route to the API Test page/
 Route::get('/apitest', 'ApiTestController@index');
+Route::get('/hist', 'HistoricController@index');

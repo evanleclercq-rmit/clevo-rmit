@@ -59,16 +59,14 @@ function processApiData(array)
             document.getElementById('numberOfSharesBuy').disabled=false;   
             document.getElementById('buySharesButton').disabled=false;
             document.getElementById('sharePrice').value = array.Ask;
+
         }
     else
         {
             var newContent = '<br><li> Company not found </li>';
             document.getElementById("companyData").innerHTML = newContent;
         }
-    
-    
-    
-    
+
 }
 
 function ajaxSearch(str)
@@ -82,6 +80,7 @@ function ajaxSearch(str)
 			//document.getElementById("companyData").innerHTML = this.responseText;
             var json = JSON.parse(this.responseText);
             processApiData(json);
+            createChart(str);
             
 		}
 	};
@@ -99,6 +98,78 @@ function calculateTotalShareCostSell(numShares)
 {
 	document.getElementById("totalCostOfSharesSell").value=numShares.value*document.getElementById("sharePrice").value;
 }
+
+
+function createChart(str) {
+
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    function reqListener () {
+      console.log(this.responseText);
+    }
+    var oReq = new XMLHttpRequest(); //New request object
+    oReq.onload = function() {
+
+       	//alert(this.responseText);
+        var json = JSON.parse(this.responseText);
+        
+        var date = 0;
+        var high = 0;
+        var low = 0;
+        var rows = new Array();
+        var data = new google.visualization.DataTable();
+
+     for(var i = 1; i < json.length ; i++) {
+        date = json[i].date;
+        high = parseFloat(json[i].high)
+        low = parseFloat(json[i].low);
+        rows.push([date, high, low]);
+      }
+      // This line is commented out because it should be deleted
+      // data.addColumn('string', 'Subject');
+
+      // These lines should be added for column headers
+      data.addColumn('string', 'Date');
+      data.addColumn('number', 'High');
+      data.addColumn('number', 'Low');
+
+      data.addRows(rows);
+
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+
+    };
+    oReq.open("get", "{{ action('HistoricController@index') }}"+"?q=" + str, true);
+    //                               ^ Don't block the rest of the execution.
+    //                                 Don't wait until the request finishes to 
+    //                                 continue.
+    oReq.send();
+
+
+      }
+
+    }
+
+
+
 
 </script>
 
@@ -122,6 +193,8 @@ $(document).ready(function(){
 	});
 });
 </script>
+
+
 
 <div id="body">	
 	<div class="container">
@@ -217,7 +290,9 @@ $(document).ready(function(){
 							<hr class="style1">
 							<h3><b>Stockmarket Information</b></h3>
 							<p> <span id="companyData"></span></p> 
-							<p>TODO: Chart to go here</p><br>
+							  
+    						<div id="curve_chart" style="width: 900px; height: 500px"></div>
+
 							<!--TODO: chart to be refreshed to currently selected company-->
 							<!--<div id="chart_div" style="width: 100%; height: 250px;"></div>-->
 						</div>
