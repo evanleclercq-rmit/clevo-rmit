@@ -3,7 +3,6 @@
 @section('content')
 
 <?php require(app_path().'/financeWebService.php') ?>
-<?php require(app_path().'/DatabaseUtilities.php') ?>
 <script type="text/javascript">
 
 <?php
