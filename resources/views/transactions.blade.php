@@ -158,14 +158,17 @@ $(document).ready(function(){
 										<option value="" disabled selected hidden>Select a company...</option>
 										<?php
 											$currentHoldings = getHoldings(Auth::User()->id);
-											print_r($currentHoldings);
-											for ($i = 0; $i < count($currentHoldings); $i = $i+2) {
-												echo ('<option value="'.$currentHoldings[$i].'">'.$currentHoldings[$i].'</option>');
+											if (count($currentHoldings) > 0) {
+												foreach ($currentHoldings as $key=>$value) {
+													echo ('<option value="'.$key.'">'.$key.'</option>');
+												}
+											} else {
+												echo ('<option value = "empty">No Current Shares Owned</option>');
 											}
 										?>
 									</select>
 									<br>
-									{{ csrf_fieldf_field() }}
+									{{ csrf_field() }}
 								</form>
 								<br>
 								<p>Or search by company symbol</p>

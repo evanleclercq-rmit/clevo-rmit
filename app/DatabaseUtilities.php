@@ -14,12 +14,13 @@
 
     //Returns an array of current holdings
     function getHoldings ($id) {
-        $currentarray = explode (',', (rtrim (Auth::User()->holdings, ",")));
         $current = array();
-        for ($i = 0; $i < count($currentarray); $i = $i+2) {
-            $current[$currentarray[$i]] = $currentarray[$i+1];
+        if (Auth::User()->holdings != null) {
+            $currentarray = explode (',', (rtrim (Auth::User()->holdings, ",")));
+            for ($i = 0; $i < count($currentarray); $i = $i+2) {
+                $current[$currentarray[$i]] = $currentarray[$i+1];
+            }
         }
-
         return $current;
     }
 
