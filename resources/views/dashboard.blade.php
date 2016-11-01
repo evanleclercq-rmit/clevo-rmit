@@ -3,6 +3,7 @@
 @section('content')
 
 <?php require(app_path().'/financeWebService.php') ?>
+
 <script type="text/javascript">
 
 <?php
@@ -41,10 +42,8 @@ function processApiData(array)
     
             var row1 = '<table style="width:100%"><tr><th><h5>Company:</h5></th><td>'+array.Name+ '</td></tr>';
 			var row2 = '<tr><th><h5>Share Value:</h5></th><td>$'+array.Ask+'</td></tr>';
-			var row3 = '<tr><th><h5>Currency:</h5></th><td>'+array.Currency+'</td></tr>';
-			var row4 = '<tr><th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr>';
-			var row5 = '<tr><th><h5>Add to Favourites?</h5></th><td><form action=""><input type="radio" name="favourite" value="favourite"> Yes<br></td></form></tr></table>';
-			var newContent = row1+row2+row3+row4+row5;
+			var row3 = '<tr><th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr></table>';
+			var newContent = row1+row2+row3;
             document.getElementById("companyData").innerHTML = newContent;
             document.getElementById('numberOfSharesBuy').disabled=false;   
             document.getElementById('buySharesButton').disabled=false;
@@ -83,7 +82,7 @@ function ajaxSearch(str)
 		<div class="container">
 			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-					<h3><b>Stockmarket Information</b></h3>
+					<h3><b>Watch List</b></h3>
 					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
 					<select name="searchText" style="width: 12em" onchange="">
 					<option value="">Select From Favourites</option>
@@ -105,7 +104,6 @@ function ajaxSearch(str)
 				</div>
 			</div>
 		</div>
-	</div><!--//body-->
 
 <div class="container"><!--second container-->
 	<div class="col-md-4 content-left"><!--Search Live Stock-->
@@ -184,10 +182,11 @@ function ajaxSearch(str)
 					
 			</table>
 			
-			<div id="table_div"></div><!--Leaderboard-->
+			<!--<div id="table_div"></div>Leaderboard-->
 		</div>
 	</div>
 </div><!--//second container-->
+	</div><!--//body-->
 
 	
 <?php

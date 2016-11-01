@@ -37,8 +37,15 @@ var symbolSearch = document.getElementById("symbolSearch").value;
 
 function processApiData(array)
 {
-    var newContent = '<br><li>Company : '+array.Name+'</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : '+array.Ask+'</li><li>Currency  : '+array.Currency+'</li><li>Change   &nbsp;&nbsp; : '+array.Change+'</li>';
-
+    var row1col1 = "<h3><b>Stock Information for " +array.Name+"</b></h3>";
+	var row2col1 = "<label><input type='checkbox' id='cbox1' value='first_checkbox'> Add to watch list</label>";
+    var row3col1 = '<table style="width:100%"><tr><th><h5>Symbol:</h5></th><td>'+array.Symbol+ '</td>';
+    var row3col2 = '<th><h5>Currency:</h5></th><td>'+array.Currency+'</td></tr>';
+	var row4col1 = '<tr><th><h5>Current Price:</h5></th><td>$'+array.Ask+'</td>';
+	var row4col2 = '<th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr>';
+	var row5col1 = '<tr><th><h5>Year High:</h5></th><td>$'+array.YearHigh+'</td>';
+	var row5col2 = '<th><h5>Year Low:</h5></th><td>$'+array.YearLow+'</td></tr></table>';
+	var newContent = row1col1+row2col1+row3col1+row3col2+row4col1+row4col2+row5col1+row5col2;
     document.getElementById("companyData").innerHTML = newContent;
 
     document.getElementById('numberOfSharesBuy').disabled=false;
@@ -163,7 +170,7 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="col-md-12 content-left">
 			<div class="contact-form wow fadeInUp animated">
-				<h3><b>This is a test page</b></h3><br>
+				<h3><b>Transactions</b></h3><br>
 
 				<!--Loads either buying or selling menu and boxes-->
 				<p>What would you like to do?</p>
@@ -260,35 +267,8 @@ $(document).ready(function(){
 						</div><!--Sell box-->
 
 						<div class="stock box" style="display:none">
-							<hr class="style1">
-							<h3><b>Stockmarket Information</b></h3>
 							<p> <span id="companyData"></span></p>
     						<div id="curve_chart" style="width: 1000px; height: 500px"></div>
-							<!--TODO: chart to be refreshed to currently selected company-->
-							<!--<div id="chart_div" style="width: 100%; height: 250px;"></div>-->
-
-					<!--new table formated
-							<table style="width:30%">
-								<tr>
-									<th><h5>Company:</h5></th>
-									<td><?php echo $company ?></td>
-								</tr>
-								<tr>
-									<th><h5>Share Value:</h5></th>
-									<td>$<?php echo $price ?></td>
-								</tr>
-								<tr>
-									<th><h5>Currency:</h5></th>
-									<td><?php echo $currency ?></td>
-								</tr>
-								<tr>
-									<th><h5>Change:</h5></th>
-									<td>$<?php echo $change ?></td>
-								</tr>
-
-							</table>
-					//new table-->
-
 						</div>
 					</div>
 				</div>
