@@ -35,3 +35,10 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/apitest', 'ApiTestController@index');
 
 Route::get('/apiRequest', 'ApiRequestController@index');
+
+
+
+//Test Routes
+Route::get('/transTest', function () {
+    return view ('transTest');
+});
