@@ -160,7 +160,7 @@ $(document).ready(function(){
 											$currentHoldings = getHoldings(Auth::User()->id);
 											if (count($currentHoldings) > 0) {
 												foreach ($currentHoldings as $key=>$value) {
-													echo ('<option value="'.$key.'">'.$key.'</option>');
+													echo ('<option value="'.$key.'">'.strtoupper($key).'.AX</option>');
 												}
 											} else {
 												echo ('<option value = "empty">No Current Shares Owned</option>');
@@ -173,7 +173,7 @@ $(document).ready(function(){
 								<br>
 								<p>Or search by company symbol</p>
 								<!--TODO: Search box to use Ajax function-->
-								<form  name="APIsearchForm" action="{{ action('TransactionsController@sell') }}" method="post">
+								<form  name="APIsearchForm" action="{{ action('TransactionsController@index') }}" method="post">
 									<input name="symbol" placeholder="eg. ASX.AX" type="text" style="width: 250px" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
 									<button class="submitButt" type="submit" value="submit">Search</button>
 									{{ csrf_field() }}
