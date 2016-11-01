@@ -12,6 +12,7 @@ $currency = "";
 $change = "";
 $changeFromYearHigh = "";
 $graph = "";
+$symbol = "";
 
 if(isset($_POST)&&!empty($_POST))
 {
@@ -24,6 +25,7 @@ if(isset($_POST)&&!empty($_POST))
 
 
 }
+
 if(isset($_POST['totalCostOfSharesBuy']))
 {
 	$user = Auth::user();
@@ -43,7 +45,7 @@ function processApiData(array)
     document.getElementById('buySharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
 
-
+    document.getElementById('companyName').value = array.symbol;
 
 }
 
@@ -137,7 +139,7 @@ $(document).ready(function(){
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" step="1"
 									onchange="calculateTotalShareCostBuy(this)" disabled> </p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
-									<input name="companyName" type="hidden" id="companyName" value="<?php echo $company ?>">
+									<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
 									<br>
 									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 									<br><br>
@@ -187,6 +189,7 @@ $(document).ready(function(){
 										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" step="1"
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
+										<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>

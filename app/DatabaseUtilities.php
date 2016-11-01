@@ -4,9 +4,12 @@
     function updateHoldings($id, $holdings) {
         $holdingscsv = '';
 
-        for ($i = 0; $i < count($holdings); $i++) {
-            $holdingscsv = $holdingscsv . $holdings[$i] . ',';
+        foreach ($holdings as $key=>$value){
+            $holdingscsv = $holdingscsv . $key.','.$value.',';
         }
+
+        echo ("csv=".$holdingscsv);
+
         DB::table('users')
             ->where('id', $id)
             ->update(['holdings' => $holdingscsv]);
