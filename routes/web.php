@@ -29,16 +29,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('/transactions', 'TransactionsController@index');
     Route::post('/transactions/buy', 'TransactionsController@buy');
     Route::post('/transactions/sell', 'TransactionsController@sell');
-	Route::any('/company', 'CompanyController@index');
+	Route::any('/history', 'HistoryController@index');
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
+Route::get('/hist', 'HistoricController@index');
 
 //Test Routes
 Route::get('/transTest', function () {
     return view ('transTest');
 });
 
-//Route to the API Test page/
-Route::get('/apitest', 'ApiTestController@index');
-Route::get('/hist', 'HistoricController@index');
