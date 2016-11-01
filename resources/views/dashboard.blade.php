@@ -75,7 +75,58 @@ function ajaxSearch(str)
 	xmlhttp.send();
 }
 
+// Script to generate chart
+function createChart(str) {
+
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    function reqListener () {
+      console.log(this.responseText);
+    }
+    var oReq = new XMLHttpRequest(); //New request object
+    oReq.onload = function() {
+
+       	//alert(this.responseText);
+        var json = JSON.parse(this.responseText);
+        var date = 0;
+        var high = 0;
+        var low = 0;
+        var rows = new Array();
+        var data = new google.visualization.DataTable();
+
+     for(var i = 1; i < json.length ; i++) {
+        date = json[i].date;
+        high = parseFloat(json[i].high)
+        low = parseFloat(json[i].low);
+        rows.push([date, high, low]);
+      }
+
+      data.addColumn('string', 'Date');
+      data.addColumn('number', 'High');
+      data.addColumn('number', 'Low');
+      data.addRows(rows);
+
+        var options = {
+          title: 'Company Performance - Last 7 Days',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+
+    };
+    oReq.open("get", "{{ action('HistoricController@index') }}"+"?q=" + str, true);
+    oReq.send();
+      }
+    }
 </script>
+
+
 
 
 	<div id="body">	
@@ -83,12 +134,13 @@ function ajaxSearch(str)
 			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 					<h3><b>Watch List</b></h3>
+					<!--TODO: Add favourites-->
 					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
-					<select name="searchText" style="width: 12em" onchange="">
+					<select name="searchText" style="width: 12em" onchange="createChart(this.value)">
 					<option value="">Select From Favourites</option>
-					<option value="fav1">Favourite1</option>
-					<option value="fav2">Favourite2</option>
-					<option value="fav3">Favourite3</option>
+					<option value="ASX.AX">ASX</option>
+					<option value="AGX.AX">Agenix</option>
+					<option value="MGS.AX">MGT Resources</option>
 					<option value="fav4">Favourite4</option>
 					<option value="fav5">Favourite5</option>
 					<option value="fav6">Favourite6</option>
@@ -98,7 +150,7 @@ function ajaxSearch(str)
 					<option value="fav10">Favourite10</option>
 					</select>
 					</form><br>
-					<div id="chart_div" style="width: 100%; height: 250px;"><!--stockmarket chart-->
+    				<div id="curve_chart" style="width: 1000px; height: 300px"></div>
 					</div>
 	
 				</div>
