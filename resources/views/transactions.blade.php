@@ -58,7 +58,7 @@ function ajaxSearch(str)
 			//document.getElementById("companyData").innerHTML = this.responseText;
             var json = JSON.parse(this.responseText);
             processApiData(json);
-
+            createChart(str);
 		}
 	};
 	xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
@@ -76,6 +76,57 @@ function calculateTotalShareCostSell(numShares)
 	document.getElementById("totalCostOfSharesSell").value=numShares.value*document.getElementById("sharePrice").value;
 }
 
+
+// Script to generate chart
+function createChart(str) {
+
+google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        
+     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    function reqListener () {
+      console.log(this.responseText);
+    }
+    var oReq = new XMLHttpRequest(); //New request object
+    oReq.onload = function() {
+
+       	//alert(this.responseText);
+        var json = JSON.parse(this.responseText);
+        var date = 0;
+        var high = 0;
+        var low = 0;
+        var rows = new Array();
+        var data = new google.visualization.DataTable();
+
+     for(var i = 1; i < json.length ; i++) {
+        date = json[i].date;
+        high = parseFloat(json[i].high)
+        low = parseFloat(json[i].low);
+        rows.push([date, high, low]);
+      }
+
+      data.addColumn('string', 'Date');
+      data.addColumn('number', 'High');
+      data.addColumn('number', 'Low');
+      data.addRows(rows);
+
+        var options = {
+          title: 'Company Performance - Last 7 Days',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+
+    };
+    oReq.open("get", "{{ action('HistoricController@index') }}"+"?q=" + str, true);
+    oReq.send();
+      }
+    }
+</script>
 </script>
 
 
@@ -201,7 +252,7 @@ $(document).ready(function(){
 							<hr class="style1">
 							<h3><b>Stockmarket Information</b></h3>
 							<p> <span id="companyData"></span></p>
-							<p>TODO: Chart to go here</p><br>
+    						<div id="curve_chart" style="width: 1000px; height: 500px"></div>
 							<!--TODO: chart to be refreshed to currently selected company-->
 							<!--<div id="chart_div" style="width: 100%; height: 250px;"></div>-->
 
