@@ -48,4 +48,10 @@
             ->update(['balance' => $balance]);
     }
 
+    function getBalance ($id) {
+        return DB::table('users')
+            ->where ('id', $id)
+            ->value ('balance');
+    }
+
 ?>

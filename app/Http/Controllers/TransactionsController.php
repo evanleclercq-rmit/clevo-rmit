@@ -19,7 +19,6 @@ class TransactionsController extends Controller
     public function buy (Request $request) {
         //TODO: Hash the data
 
-
         $company = $request->input('companyName');
         echo ('Company:'.$company);
         $price = $request->input('sharePrice');

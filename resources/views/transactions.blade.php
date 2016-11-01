@@ -7,7 +7,7 @@
 
 <?php
 $company = "";
-$price = "";
+$price = 1;
 $currency = "";
 $change = "";
 $changeFromYearHigh = "";
@@ -47,6 +47,13 @@ function processApiData(array)
 
     document.getElementById('companyName').value = array.symbol;
 
+    //Set Limits for buying shares based on the users current balance
+    var maxPurchaseable = (<?php echo Auth::User()->balance; ?>) / array.Ask;
+    document.getElementById('maxAmount').innerHTML = "Maximum with current funds: " + maxPurchaseable.toFixed(3);
+    document.getElementById('numberOfSharesBuy').max = maxPurchaseable;
+
+    //Set Limis for selling shares based on number currently owned
+
 }
 
 function ajaxSearch(str)
@@ -85,7 +92,7 @@ function createChart(str) {
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
-        
+
      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
     function reqListener () {
       console.log(this.responseText);
@@ -187,8 +194,9 @@ $(document).ready(function(){
 								<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
 								<!-- 					Company : <?php echo $company ?>-->
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
-									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" step="1"
-									onchange="calculateTotalShareCostBuy(this)" disabled> </p>
+									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" max = ""step="1"
+									onchange="calculateTotalShareCostBuy(this)" disabled>
+									<p id='maxAmount' style="color:red; font-size: 11px;"></p></p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
 									<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
 									<br>
@@ -213,7 +221,7 @@ $(document).ready(function(){
 											$currentHoldings = getHoldings(Auth::User()->id);
 											if (count($currentHoldings) > 0) {
 												foreach ($currentHoldings as $key=>$value) {
-													echo ('<option value="'.$key.'">'.strtoupper($key).'.AX</option>');
+													echo ('<option value="'.$key.'">'.strtoupper($key).'    (' .$value. 'Currently Owned)</option>');
 												}
 											} else {
 												echo ('<option value = "empty">No Current Shares Owned</option>');
