@@ -138,7 +138,7 @@ $(document).ready(function(){
 				<div class="buy box" style="display:none">
 					<section>
 						<div id="left">
-							<form  name="APIsearchForm" onsubmit="return false";>						
+							<form  name="APIsearchForm" onsubmit="return false">						
 								{{ Form::open() }}
 								{{ Form::select('symbol', $companies, null, ['placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value);resetSymbolSearch();','id' =>'companyDropDown']) }}
 								{{ Form::close() }}
