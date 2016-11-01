@@ -6,7 +6,7 @@ Transactions Testing
     require(app_path().'\DatabaseUtilities.php');
 
     $user = (Auth::User());
-    // echo $user;
+    echo $user;
     // echo ("<br><br>");
     // echo ($user->name);
 
@@ -18,6 +18,9 @@ Transactions Testing
     $holdings = getHoldings($id);
     echo (rtrim (Auth::User()->holdings, ","));
     print_r ($holdings);
+
+    // updateBalance($id, 20000);
+    // echo Auth::User()->balance;
     // $holdingsnew = "cba,100,ahl,50,ori,500";
 
     // updateHoldings ($id, $holdings);

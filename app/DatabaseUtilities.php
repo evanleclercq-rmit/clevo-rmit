@@ -28,7 +28,7 @@
     function updateDBField ($id, $field, $update) {
         DB::table('users')
             ->where ('id',$id)
-            ->update([$field -> $update]);
+            ->update([$field => $update]);
     }
 
     //Get specified field for specified user
@@ -42,7 +42,7 @@
     function updateBalance ($id, $balance) {
         DB::table ('users')
             ->where ('id', $id)
-            ->update(['balance' -> $balance]);
+            ->update(['balance' => $balance]);
     }
 
 ?>
