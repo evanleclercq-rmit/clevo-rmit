@@ -3,7 +3,7 @@
 @section('content')
 
 <?php require(app_path().'/financeWebService.php') ?>
-<?php require(app_path().'/DatabaseUtilities') ?>
+<?php require(app_path().'/DatabaseUtilities.php') ?>
 <script type="text/javascript">
 
 <?php
@@ -131,7 +131,7 @@ $(document).ready(function(){
 						</div>
 
 						<div id="right">
-							<form  name="buySharesForm" action="{{ action('TransactionsController@buy') }}" method="post">
+							<form  name="buySharesForm" action="{{action('TransactionsController@buy')}}" method="post">
 								<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
 								<!-- 					Company : <?php echo $company ?>-->
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
@@ -155,13 +155,17 @@ $(document).ready(function(){
 								<form  name="APIsearchForm" onsubmit="return false";>
 									<!--TODO: Load in owned shares-->
 									<select name="ownedShares" style=" width:513px">
-										 <option value="" disabled selected hidden>Select a company...</option>
-										<option value="1">TODO: Load companies</option>
-										<option value="2">the user currently</option>
-										<option value="3">owns shares of</option>
+										<option value="" disabled selected hidden>Select a company...</option>
+										<?php
+											$currentHoldings = getHoldings(Auth::User()->id);
+											print_r($currentHoldings);
+											for ($i = 0; $i < count($currentHoldings); $i = $i+2) {
+												echo ('<option value="'.$currentHoldings[$i].'">'.$currentHoldings[$i].'</option>');
+											}
+										?>
 									</select>
 									<br>
-									{{ csrf_field() }}
+									{{ csrf_fieldf_field() }}
 								</form>
 								<br>
 								<p>Or search by company symbol</p>

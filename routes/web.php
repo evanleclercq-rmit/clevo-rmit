@@ -29,10 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     // All routes that need a logged in user
 	Route::any('/dashboard', 'DashboardController@index');
 	Route::any('/transactions', 'TransactionsController@index');
+    Route::post('/transactions/buy', 'TransactionsController@buy');
+    Route::post('/transactions/sell', 'TransactionsController@sell');
 	Route::any('/company', 'CompanyController@index');
 });
-//Route to the API Test page/
-Route::get('/apitest', 'ApiTestController@index');
+
 
 Route::get('/apiRequest', 'ApiRequestController@index');
 
@@ -42,3 +43,5 @@ Route::get('/apiRequest', 'ApiRequestController@index');
 Route::get('/transTest', function () {
     return view ('transTest');
 });
+//Route to the API Test page/
+Route::get('/apitest', 'ApiTestController@index');

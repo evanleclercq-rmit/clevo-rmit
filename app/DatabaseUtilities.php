@@ -16,11 +16,11 @@
     function getHoldings ($id) {
         $currentarray = explode (',', (rtrim (Auth::User()->holdings, ",")));
         $current = array();
-        // for ($i = 0; $i <= count($currentarray); $i+2) {
-        //     $current[$currentarray[$i]] = $currentarray[$i+1];
-        // }
+        for ($i = 0; $i < count($currentarray); $i = $i+2) {
+            $current[$currentarray[$i]] = $currentarray[$i+1];
+        }
 
-        return $currentarray;
+        return $current;
     }
 
     //Update the specified field for specified user
@@ -35,6 +35,13 @@
         DB::table('users')
             ->where ('id', $id)
             ->value ($field);
+    }
+
+    //Update Balance for specified user
+    function updateBalance ($id, $balance) {
+        DB::table ('users')
+            ->where ('id', $id)
+            ->update(['balance' -> $balance]);
     }
 
 ?>
