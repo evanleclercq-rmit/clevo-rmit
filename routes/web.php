@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
-Route::get('/hist', 'HistoricController@index');
+Route::get('/chart', 'ChartController@index');
 
 //Test Routes
 Route::get('/transTest', function () {
