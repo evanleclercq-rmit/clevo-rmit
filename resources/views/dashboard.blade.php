@@ -109,10 +109,20 @@ google.charts.load('current', {'packages':['corechart']});
       data.addColumn('number', 'Low');
       data.addRows(rows);
 
-        var options = {
-          title: 'Company Performance - Last 7 Days',
+           var options = {
+        	title: 'Company Performance - Last 7 Days',
+        	titleTextStyle: {
+    		color: '#636B6F',
+    		fontSize: '10px'},
           curveType: 'function',
-          legend: { position: 'bottom' }
+            hAxis: {textStyle: {
+			    fontSize: 12
+  			}},
+  			vAxis: {textStyle: {
+			    fontSize: 12
+  			}},
+          legend: { position: 'bottom'},
+          chartArea: {'left': '5%', 'right': '2%',  'width': '100%', 'height': '80%'},
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
@@ -130,32 +140,6 @@ google.charts.load('current', {'packages':['corechart']});
 
 
 	<div id="body">	
-		<div class="container">
-			<div class="col-md-12 content-left">
-				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
-					<h3><b>Watch List</b></h3>
-					<!--TODO: Add favourites-->
-					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
-					<select name="searchText" style="width: 12em" onchange="createChart(this.value)">
-					<option value="">Select From Favourites</option>
-					<option value="ASX.AX">ASX</option>
-					<option value="AGX.AX">Agenix</option>
-					<option value="MGS.AX">MGT Resources</option>
-					<option value="fav4">Favourite4</option>
-					<option value="fav5">Favourite5</option>
-					<option value="fav6">Favourite6</option>
-					<option value="fav7">Favourite7</option>
-					<option value="fav8">Favourite8</option>
-					<option value="fav9">Favourite9</option>
-					<option value="fav10">Favourite10</option>
-					</select>
-					</form><br>
-    				<div id="curve_chart" style="width: 1000px; height: 300px"></div>
-					</div>
-	
-				</div>
-			</div>
-		</div>
 
 <div class="container"><!--second container-->
 	<div class="col-md-4 content-left"><!--Search Live Stock-->
@@ -219,25 +203,49 @@ google.charts.load('current', {'packages':['corechart']});
 			<h3><b>Leaderboard</b></h3><br>
 			
 			<table style="width:100%">
-					<tr>
-						<th><h5>{{ Auth::user()->name }}</h5></th>
-						<td>${{Auth::user()->balance}}</td>
-					</tr>
-					<tr>
-						<th><h5>Bob</h5></th>
-						<td>$15000</td>
-					</tr>
-					<tr>
-						<th><h5>Mike</h5></th>
-						<td>$13500</td>
-					</tr>
-					
+				<?php 
+				$i = 0;
+            foreach ($users as $row)
+            {
+            	$i++;
+            echo 
+                "<tr>
+                  <td>" .$i. ". ".$row."</td>
+                </tr>";
+            } ?>				
 			</table>
-			
+
 			<!--<div id="table_div"></div>Leaderboard-->
 		</div>
 	</div>
 </div><!--//second container-->
+
+		<div class="container">
+			<div class="col-md-12 content-left">
+				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
+					<h3><b>Watch List</b></h3>
+					<!--TODO: Add favourites-->
+					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
+					<select name="searchText" style="width: 12em" onchange="createChart(this.value)">
+					<option value="">Select From Favourites</option>
+					<option value="ASX.AX">ASX</option>
+					<option value="AGX.AX">Agenix</option>
+					<option value="MGS.AX">MGT Resources</option>
+					<option value="fav4">Favourite4</option>
+					<option value="fav5">Favourite5</option>
+					<option value="fav6">Favourite6</option>
+					<option value="fav7">Favourite7</option>
+					<option value="fav8">Favourite8</option>
+					<option value="fav9">Favourite9</option>
+					<option value="fav10">Favourite10</option>
+					</select>
+					</form><br>
+    				<div id="curve_chart"></div>
+					</div>
+	
+				</div>
+			</div>
+
 	</div><!--//body-->
 
 	
