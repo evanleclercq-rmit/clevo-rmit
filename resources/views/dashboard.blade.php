@@ -97,8 +97,8 @@ google.charts.load('current', {'packages':['corechart']});
         var rows = new Array();
         var data = new google.visualization.DataTable();
 
-     for(var i = 1; i < json.length ; i++) {
-        date = json[i].date;
+     for(var i = 1; i < 8 ; i++) {
+       	date = json[i].date.slice(5,10);
         high = parseFloat(json[i].high)
         low = parseFloat(json[i].low);
         rows.push([date, high, low]);
@@ -120,7 +120,7 @@ google.charts.load('current', {'packages':['corechart']});
         chart.draw(data, options);
 
     };
-    oReq.open("get", "{{ action('HistoricController@index') }}"+"?q=" + str, true);
+    oReq.open("get", "{{ action('ChartController@index') }}"+"?q=" + str, true);
     oReq.send();
       }
     }

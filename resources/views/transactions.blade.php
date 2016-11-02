@@ -44,14 +44,13 @@ function processApiData(array)
 	var row4col1 = '<tr><th><h5>Current Price:</h5></th><td>$'+array.Ask+'</td>';
 	var row4col2 = '<th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr>';
 	var row5col1 = '<tr><th><h5>Year High:</h5></th><td>$'+array.YearHigh+'</td>';
-	var row5col2 = '<th><h5>Year Low:</h5></th><td>$'+array.YearLow+'</td></tr></table>';
+	var row5col2 = '<th><h5>Year Low:</h5></th><td>$'+array.YearLow+'</td></tr>';
 	var newContent = row1col1+row2col1+row3col1+row3col2+row4col1+row4col2+row5col1+row5col2;
-    document.getElementById("companyData").innerHTML = newContent;
 
+    document.getElementById("companyData").innerHTML = newContent;
     document.getElementById('numberOfSharesBuy').disabled=false;
     document.getElementById('buySharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
-
     document.getElementById('companyName').value = array.symbol;
 
     //Set Limits for buying shares based on the users current balance
@@ -96,6 +95,7 @@ function calculateTotalShareCostSell(numShares)
 // Script to generate chart
 function createChart(str) {
 
+
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -115,8 +115,8 @@ google.charts.load('current', {'packages':['corechart']});
         var rows = new Array();
         var data = new google.visualization.DataTable();
 
-     for(var i = 1; i < json.length ; i++) {
-        date = json[i].date;
+     for(var i = 1; i < 8 ; i++) {
+       	date = json[i].date.slice(5,10);
         high = parseFloat(json[i].high)
         low = parseFloat(json[i].low);
         rows.push([date, high, low]);
@@ -127,25 +127,31 @@ google.charts.load('current', {'packages':['corechart']});
       data.addColumn('number', 'Low');
       data.addRows(rows);
 
-        var options = {
-          title: 'Company Performance - Last 7 Days',
+      var options = {
+        	title: 'Company Performance - Last 7 Days',
+        	titleTextStyle: {
+    		color: '#636B6F',
+    		fontSize: '10px'},
           curveType: 'function',
-          legend: { position: 'bottom' }
+            hAxis: {textStyle: {
+			    fontSize: 12
+  			}},
+  			vAxis: {textStyle: {
+			    fontSize: 12
+  			}},
+          legend: { position: 'bottom'},
+          chartArea: {'left': '5%', 'right': '2%',  'width': '100%', 'height': '80%'},
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
-
         chart.draw(data, options);
 
     };
-    oReq.open("get", "{{ action('HistoricController@index') }}"+"?q=" + str, true);
+    oReq.open("get", "{{ action('ChartController@index') }}"+"?q=" + str, true);
     oReq.send();
       }
     }
 </script>
-</script>
-
-
 
 <!--Script to show/hide DIV depending on box checked-->
 <script type="text/javascript">
@@ -188,7 +194,7 @@ $(document).ready(function(){
 								{{ csrf_field() }}
 							</form>
 							<br>
-							<p>Or search by company symbol</p>
+							<p>Or search by company symbol</p><br>
 							<form  name="APIsearchForm" onsubmit="return false">
 								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 250px" >
 								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);" value="submit">Search</button>
@@ -268,7 +274,8 @@ $(document).ready(function(){
 
 						<div class="stock box" style="display:none">
 							<p> <span id="companyData"></span></p>
-    						<div id="curve_chart" style="width: 1000px; height: 500px"></div>
+							<h3><span id="chart_title"></span></h3>
+    						<div id="curve_chart"></div>
 						</div>
 					</div>
 				</div>

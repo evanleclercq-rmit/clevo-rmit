@@ -2473,6 +2473,10 @@ h3 {
     margin-top: 6px;
 }
 
+h5 {
+   font-weight: bold !important;
+}
+
 li {
     list-style-type: none;
 }
@@ -2511,10 +2515,14 @@ div#right {
 }
 
 .contact-form {
-    min-height: 360px;
+    min-height: 400px;
 }
 
 #curve_chart {
     width: 100%; 
-    height: 600px;
+    height: 500px;
+}
+
+tr:nth-child(odd) {
+    background-color: #F5F5F5;
 }
