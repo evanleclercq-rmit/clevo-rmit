@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-require(app_path().'\DatabaseUtilities.php');
+require(app_path().'/DatabaseUtilities.php');
 
 class TransactionsController extends Controller
 {
