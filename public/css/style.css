@@ -586,7 +586,7 @@ div#myclock canvas {
 /*-- //clock-bottom --*/
 /*-- contact-form --*/
 .contact-form-heading h3{
-	margin: 0 0 1em 0;
+	margin: 0 0 0 0;
 	text-align: center;
 	font-size: 1.5em;
 	color: #000000;
@@ -596,7 +596,7 @@ div#myclock canvas {
 .contact-form{
 	background: #FFFFFF;
 	padding: 1em;
-	margin: 2em 0 0 0;
+	margin: 1em 0 0 0;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-ms-border-radius: 5px;
@@ -605,6 +605,8 @@ div#myclock canvas {
 	box-shadow: 0 0px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
 	border-top-width: 5px;
 	border-top-style: solid;
+    
+
 /*	border-top-color: #a9221f;
 */}
 .contact-form input[type="text"] {
@@ -2435,7 +2437,6 @@ ul.footernav li.right {float: right;}
    min-height:100%;
    position:relative;
    height:100%;
-   padding-top: 10px;
    padding-bottom: 10px;
 }
 
@@ -2466,6 +2467,14 @@ body {
 h4.welcome {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+h3 {
+    margin-top: 6px;
+}
+
+h5 {
+   font-weight: bold !important;
 }
 
 li {
@@ -2503,4 +2512,17 @@ div#right {
 
 .ASXList { /* ASX drop down menu on dashboard*/
     width: 330px;
+}
+
+.contact-form {
+    min-height: 400px;
+}
+
+#curve_chart {
+    width: auto; 
+    height: 500px;
+}
+
+tr:nth-child(odd) {
+    background-color: #F5F5F5;
 }

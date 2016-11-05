@@ -17,9 +17,9 @@ class TransactionsController extends Controller
     }
 
     public function buy (Request $request) {
-        //TODO: Get code and number to sell
-        //      update database holdings field
-        $company = $request->input('symbol');
+        //TODO: Hash the data
+
+        $company = $request->input('companyName');
         echo ('Company:'.$company);
         $price = $request->input('sharePrice');
         echo ('<br>Price:'.$price);
@@ -30,14 +30,25 @@ class TransactionsController extends Controller
         echo ('<br>ID:'.$user->id);
 
         // // //Updating the Users Holdings
-        // $holdings = array();
-        // updateHoldings($id, $holdings);
+        $holdings = getHoldings($user->id);
+        print_r ($holdings);
+
+        if (isset ($holdings[$company])) {
+            echo $holdings[$company];
+            $holdings[$company] += $numberPurchased;
+            echo $holdings[$company];
+        } else {
+            $holdings[$company] = $numberPurchased;
+        }
+
+        print_r($holdings);
+        updateHoldings($user->id, $holdings);
 
         // // //Updating the Users Balance
         $total = $price * $numberPurchased;
         echo ('<br><br> Total:'.$total);
-        // $newBalance = $user->balance - $total;
-        // updateBalance($id, $newBalance);
+        $newBalance = $user->balance - $total;
+        updateBalance($user->id, $newBalance);
     }
 
     public function sell (Request $request) {

@@ -4,7 +4,7 @@
 $stockSymbol = $_GET["q"];
 
 $start = '10-21-2016';
-$end = '14-31-2016';
+$end = '10-31-2016';
 ?>
 <?php
 $StockMarketAPI = new StockMarketAPI;
