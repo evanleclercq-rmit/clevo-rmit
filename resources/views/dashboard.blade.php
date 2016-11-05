@@ -88,7 +88,6 @@ google.charts.load('current', {'packages':['corechart']});
     }
     var oReq = new XMLHttpRequest(); //New request object
     oReq.onload = function() {
-
        	//alert(this.responseText);
         var json = JSON.parse(this.responseText);
         var date = 0;
