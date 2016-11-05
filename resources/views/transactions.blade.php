@@ -5,6 +5,26 @@
 <?php require(app_path().'/financeWebService.php') ?>
 <script type="text/javascript">
 
+
+
+
+
+
+
+$.ajax({
+            url: '/add',
+            method: 'post',
+            success: function () {
+                console.log("done");
+                //do something
+            },error: function(xhr, ajaxOptions, thrownError){
+                    console.log(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
+                }
+            
+        }); 
+
+
+
 <?php
 $company = "";
 $price = 1;
@@ -38,13 +58,13 @@ var symbolSearch = document.getElementById("symbolSearch").value;
 function processApiData(array)
 {
     var row1col1 = "<h3><b>Stock Information for " +array.Name+"</b></h3>";
-	var row2col1 = "<label><input type='checkbox' id='cbox1' value='first_checkbox'> Add to watch list</label>";
+	var row2col1 = '';
     var row3col1 = '<table style="width:100%"><tr><th><h5>Symbol:</h5></th><td>'+array.Symbol+ '</td>';
     var row3col2 = '<th><h5>Currency:</h5></th><td>'+array.Currency+'</td></tr>';
 	var row4col1 = '<tr><th><h5>Current Price:</h5></th><td>$'+array.Ask+'</td>';
 	var row4col2 = '<th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr>';
-	var row5col1 = '<tr><th><h5>Year High:</h5></th><td>$'+array.YearHigh+'</td>';
-	var row5col2 = '<th><h5>Year Low:</h5></th><td>$'+array.YearLow+'</td></tr>';
+	var row5col1 = '<tr><th><h5>Year High:</h5></th><td style="color:green">$'+array.YearHigh+'</td>';
+	var row5col2 = '<th><h5>Year Low:</h5></th><td style="color:red";>$'+array.YearLow+'</td></tr>';
 	var newContent = row1col1+row2col1+row3col1+row3col2+row4col1+row4col2+row5col1+row5col2;
 
     document.getElementById("companyData").innerHTML = newContent;
@@ -52,6 +72,10 @@ function processApiData(array)
     document.getElementById('buySharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.symbol;
+    
+    //Set values used for Watchlist
+    document.getElementById('companySym').value = array.symbol;
+    document.getElementById('companyNm').value = array.Name;
 
     //Set Limits for buying shares based on the users current balance
     var maxPurchaseable = (<?php echo Auth::User()->balance; ?>) / array.Ask;
@@ -70,10 +94,10 @@ function ajaxSearch(str)
 	{
 		if (this.readyState == 4)
 		{
-			//document.getElementById("companyData").innerHTML = this.responseText;
             var json = JSON.parse(this.responseText);
             processApiData(json);
             createChart(str);
+            document.getElementById('stockBox').style.display = 'block';
 		}
 	};
 	xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
@@ -100,7 +124,6 @@ google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
-     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
     function reqListener () {
       console.log(this.responseText);
     }
@@ -151,7 +174,9 @@ google.charts.load('current', {'packages':['corechart']});
     oReq.send();
       }
     }
+
 </script>
+
 
 <!--Script to show/hide DIV depending on box checked-->
 <script type="text/javascript">
@@ -160,17 +185,28 @@ $(document).ready(function(){
 		if($(this).attr("value")=="buy"){
 			$(".box").not(".buy").hide();
 			$(".buy").show();
-			$(".stock").show();
+			//$(".stock").show();
 
 		}
 		if($(this).attr("value")=="sell"){
 			$(".box").not(".sell").hide();
 			$(".sell").show();
-			$(".stock").show();
+			//$(".stock").show();
 		}
 	});
 });
+
+
+
 </script>
+
+
+
+
+
+
+
+
 
 <div id="body">
 	<div class="container">
@@ -205,7 +241,6 @@ $(document).ready(function(){
 						<div id="right">
 							<form  name="buySharesForm" action="{{action('TransactionsController@buy')}}" method="post">
 								<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
-								<!-- 					Company : <?php echo $company ?>-->
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" max = ""step="1"
 									onchange="calculateTotalShareCostBuy(this)" disabled>
@@ -234,7 +269,7 @@ $(document).ready(function(){
 											$currentHoldings = getHoldings(Auth::User()->id);
 											if (count($currentHoldings) > 0) {
 												foreach ($currentHoldings as $key=>$value) {
-													echo ('<option value="'.$key.'">'.strtoupper($key).'    (' .$value. 'Currently Owned)</option>');
+													echo ('<option value="'.$key.'">'.strtoupper($key).'    (' .$value. ' Currently Owned)</option>');
 												}
 											} else {
 												echo ('<option value = "empty">No Current Shares Owned</option>');
@@ -272,9 +307,16 @@ $(document).ready(function(){
 							</section>
 						</div><!--Sell box-->
 
-						<div class="stock box" style="display:none">
+						<div class="stock box" id="stockBox" style="display:none">
 							<p> <span id="companyData"></span></p>
 							<h3><span id="chart_title"></span></h3>
+								<form  name="buySharesForm" action="{{action('WatchlistController@add')}}" method="post">
+									<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Add to Watchlist</button>
+									<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
+									<input name="companyNm" type="hidden" id="companyNm" placeholder="name" value="">
+
+									{{ csrf_field() }}
+								</form>
     						<div id="curve_chart"></div>
 						</div>
 					</div>

@@ -16,7 +16,6 @@ Route::get('/', function () {
 #Profile
 Auth::routes();
 Route::get('profile', 'UserController@profile');
-Route::get('/home', 'HomeController@index');
 Route::get('/login', function () {
     return view ('login.blade.php');
 });
@@ -34,9 +33,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('/apiRequest', 'ApiRequestController@index');
 Route::get('/chart', 'ChartController@index');
+Route::post('/add', 'WatchlistController@add');
+Route::post('/remove', 'WatchlistController@remove');
+
 
 //Test Routes
 Route::get('/transTest', function () {
     return view ('transTest');
 });
-

@@ -129,7 +129,10 @@ google.charts.load('current', {'packages':['corechart']});
 
         chart.draw(data, options);
 
+	   
     };
+     //Set values used for Watchlist
+	document.getElementById('companySym').value = str;
     oReq.open("get", "{{ action('ChartController@index') }}"+"?q=" + str, true);
     oReq.send();
       }
@@ -170,8 +173,7 @@ google.charts.load('current', {'packages':['corechart']});
 	<div class="col-md-4 content-middle"><!--Current Holdings-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Current Holdings</b></h3><br>
-			
-			
+
 			<table style="width:100%">
 				<tr>
 					<th><h5>Initial Cash Balance:</h5></th>
@@ -203,7 +205,7 @@ google.charts.load('current', {'packages':['corechart']});
 			<h3><b>Leaderboard</b></h3><br>
 			
 			<table style="width:100%">
-				<?php 
+		<?php 
 				$i = 0;
             foreach ($users as $row)
             {
@@ -212,7 +214,7 @@ google.charts.load('current', {'packages':['corechart']});
                 "<tr>
                   <td>" .$i. ". ".$row."</td>
                 </tr>";
-            } ?>				
+        } ?>				
 			</table>
 
 			<!--<div id="table_div"></div>Leaderboard-->
@@ -221,30 +223,29 @@ google.charts.load('current', {'packages':['corechart']});
 </div><!--//second container-->
 
 		<div class="container">
+		
 			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 					<h3><b>Watch List</b></h3>
 					<!--TODO: Add favourites-->
-					<form  name="APIgraphForm" action="{{ action('DashboardController@index') }}" method="post">
-					<select name="searchText" style="width: 12em" onchange="createChart(this.value)">
-					<option value="">Select From Favourites</option>
-					<option value="ASX.AX">ASX</option>
-					<option value="AGX.AX">Agenix</option>
-					<option value="MGS.AX">MGT Resources</option>
-					<option value="fav4">Favourite4</option>
-					<option value="fav5">Favourite5</option>
-					<option value="fav6">Favourite6</option>
-					<option value="fav7">Favourite7</option>
-					<option value="fav8">Favourite8</option>
-					<option value="fav9">Favourite9</option>
-					<option value="fav10">Favourite10</option>
-					</select>
+					<form name="APIgraphForm" onsubmit="return false">
+						{{ Form::open() }}
+						{{ Form::select('symbol', $watchlist, null, array('placeholder' => 'Select a company...', 'onchange' => 'createChart(this.value)', 'class' => 'ASXList')) }}
+						{{ Form::close() }}
+						{{ csrf_field() }}
 					</form><br>
+					<form name="buySharesForm" action="{{ action('WatchlistController@remove') }}" method="post">
+								<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Unwatch</button>
+								<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
+								{{ csrf_field() }}
+							</form>
     				<div id="curve_chart"></div>
 					</div>
 	
 				</div>
-			</div>
+			
+	</div>
+
 
 	</div><!--//body-->
 
