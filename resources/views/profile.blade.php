@@ -13,6 +13,14 @@
 						<td>{{ $user->name }}</td>
 					</tr>
 					<tr>
+						<th><h5>City:</h5></th>
+						<td>{{ $user->city }}</td>
+					</tr>
+					<tr>
+						<th><h5>Age:</h5></th>
+						<td>{{ $user->age }}</td>
+					</tr>
+					<tr>
 						<th><h5>Email:</h5></th>
 						<td>{{ $user->email }}</td>
 					</tr>
