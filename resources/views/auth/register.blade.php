@@ -42,7 +42,7 @@
                         </div>
 						
 						<div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">City</label>
+                            <label for="city" class="col-md-4 control-label">City</label>
 
                             <div class="col-md-6">
                                 <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required>
