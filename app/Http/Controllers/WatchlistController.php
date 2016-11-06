@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-require(app_path().'\Watchlist.php');
+require(app_path().'/Watchlist.php');
 
 
 class WatchlistController extends Controller
