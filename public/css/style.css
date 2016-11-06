@@ -2434,15 +2434,12 @@ ul.footernav li.right {float: right;}
 }
 
 .container {
-   min-height:100%;
    position:relative;
-   height:100%;
    padding-bottom: 10px;
 }
 
 html {
     position: relative;
-    min-height: 100%;
 }
 
 body {
