@@ -297,7 +297,7 @@ $(document).ready(function(){
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
 										<p id='maxToSell' style="color:red; font-size: 11px;"></p></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
-										<input name="companyNameSell" type="text" id="companyNameSell" placeholder="symbol" value="">
+										<input name="companyNameSell" type="hidden" id="companyNameSell" placeholder="symbol" value="">
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>
