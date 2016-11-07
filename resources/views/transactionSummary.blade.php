@@ -27,13 +27,15 @@
                     <br />
                     <?php echo (determineTransaction($info)); ?>
                     <br />
-                    <?php echo ("Price: " . $info['price']); ?>
+                    <?php echo ("Unit Price: $" . $info['price']); ?><i> to add 1% during purchase or deduct 0.25% during sell </i>
                     <br /><br />
-                    <?php echo ("Starting Balance: " . $info['startBalance']); ?>
+                    <?php echo ("Starting Balance: $" . $info['startBalance']); ?>
                     <br />
-                    <?php echo ("Transaction Cost: " . $info['totalCost']); ?>
+                    <?php echo ("Transaction Cost: $" . $info['totalCost']); ?>
+					<br />
+					<i><?php echo ("Transaction Fee: $50"); ?></i>
                     <br />
-                    <?php echo ("Closing Balance: " . $info['closeBalance']); ?>
+                    <?php echo ("Closing Balance: $" . $info['closeBalance']); ?>
                     <br /> <br />
 
                     <form action = "{{ url ('/dashboard') }}" method = "POST" style = "display:inline-block">
