@@ -10,7 +10,7 @@
             if ($info['transaction'] == "Sale") {
                 return "Number of Shares Sold: " . $info['numberShares'];
             } else {
-                return "Number of Shares Purchased: " . $info['numberShares']; 
+                return "Number of Shares Purchased: " . $info['numberShares'];
             }
         }
 
@@ -38,7 +38,7 @@
                     <?php echo ("Closing Balance: $" . $info['closeBalance']); ?>
                     <br /> <br />
 
-                    <form action = "{{ url ('/dashboard') }}" method = "POST" style = "display:inline-block">
+                    <form action = "{{ url('/dashboard') }}" method = "POST" style = "display:inline-block">
                         <button type="submit" class="btn btn-primary">Return to Dashboard</button>
                         {{csrf_field()}}
                     </form>

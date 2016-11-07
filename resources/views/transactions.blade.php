@@ -20,8 +20,8 @@ $.ajax({
             },error: function(xhr, ajaxOptions, thrownError){
                     console.log(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
                 }
-            
-        }); 
+
+        });
 
 
 
@@ -74,8 +74,8 @@ function processApiData(array)
     document.getElementById('sellSharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.symbol;
-    
-	
+
+
 
     //Set values used for Watchlist
     document.getElementById('companySym').value = array.symbol;
@@ -89,6 +89,7 @@ function processApiData(array)
     //Set Limis for selling shares based on number currently owned
     document.getElementById('companyNameSell').value = array.symbol;
     document.getElementById('sharePriceSell').value = array.Ask;
+    document.getElementById('companySell').innerHTML = "Company: " + array.Name;
 
 }
 
@@ -291,7 +292,7 @@ $(document).ready(function(){
 
 							<div id="right">
 								<form  name="sellSharesForm" action="{{ action('TransactionsController@sell') }}" method="post">
-									<!-- <p>Company : <?php echo $company ?></p> -->
+									<p id = "companySell" >Company: </p>
 									<p>Shares to Sell :<input name="sharePriceSell" type="hidden" id="sharePriceSell" value="<?php echo $price ?>" >
 										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" max=""step="1"
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
