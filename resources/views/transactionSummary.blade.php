@@ -31,7 +31,9 @@
                     <h3><b>Transaction Summary</b></h3><br>
                     <?php echo ("Transaction Type: " . $info['transaction']); ?>
                     <br />
-                    <?php echo ("Company: " . $info['company']); ?>
+                    <?php echo ("Company Symbol: " . $info['companySymbol']); ?>
+                    <br />
+                    <?php echo ("Company Name: " . $info['companyName']); ?>
                     <br />
                     <?php echo (determineTransaction($info)); ?>
                     <br />

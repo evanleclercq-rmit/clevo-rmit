@@ -20,7 +20,8 @@ class TransactionsController extends Controller
         //TODO: Hash the data
         //      Add transaction fees
 
-        $company = $request->input('companyName');
+        $companySymbol = $request->input('companySymbol');
+        $companyName = $request->input('companyName');
         // echo ('Company:'.$company);
         $price = $request->input('sharePrice');
         // echo ('<br>Price:'.$price);
@@ -34,12 +35,12 @@ class TransactionsController extends Controller
         $holdings = getHoldings($user->id);
         // print_r ($holdings);
 
-        if (isset ($holdings[$company])) {
+        if (isset ($holdings[$companySymbol])) {
             // echo $holdings[$company];
-            $holdings[$company] += $numberPurchased;
+            $holdings[$companySymbol] += $numberPurchased;
             // echo $holdings[$company];
         } else {
-            $holdings[$company] = $numberPurchased;
+            $holdings[$companySymbol] = $numberPurchased;
         }
 
         // print_r($holdings);
@@ -54,7 +55,8 @@ class TransactionsController extends Controller
 
         $info = array (
                        'transaction'=>'Purchase',
-                       'company'=>$company,
+                       'companySymbol'=>$companySymbol,
+                       'companyName'=>$companyName,
                        'numberShares'=>$numberPurchased,
                        'price'=>$price,
                        'totalCost'=>$total,
@@ -73,7 +75,8 @@ class TransactionsController extends Controller
 
         $user = Auth::User();
 
-        $company = $request->input('companyNameSell');
+        $companySymbol = $request->input('companySymbolSell');
+        $companyName = $request->input('companyNameSell');
         // echo ('Company:'.$company);
         $price = $request->input('sharePriceSell');
         // echo ('<br>Price:'.$price);
@@ -85,10 +88,10 @@ class TransactionsController extends Controller
         // echo "<br><br>";
         // print_r($holdings);
 
-        if ($numberPurchased < $holdings[$company]) {
-            $holdings[$company] = $holdings[$company] - $numberPurchased;
+        if ($numberPurchased < $holdings[$companySymbol]) {
+            $holdings[$companySymbol] = $holdings[$companySymbol] - $numberPurchased;
         } else {
-            unset ($holdings[$company]);
+            unset ($holdings[$companySymbol]);
         }
 
         updateHoldings($user->id, $holdings);
@@ -107,7 +110,8 @@ class TransactionsController extends Controller
 
         $info = array (
                        'transaction'=>'Sale',
-                       'company'=>$company,
+                       'companySymbol'=>$companySymbol,
+                       'companyName'=>$companyName,
                        'numberShares'=>$numberPurchased,
                        'price'=>$price,
                        'totalCost'=>$total,

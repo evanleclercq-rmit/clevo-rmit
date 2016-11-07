@@ -34,17 +34,17 @@ $changeFromYearHigh = "";
 $graph = "";
 $symbol = "";
 
-if(isset($_POST)&&!empty($_POST))
-{
-	$stockSymbol = $_POST['symbol'];
-	$stockData = search_stock($stockSymbol);
-	$company = $stockData['name'];
-	$price = $stockData['price'];
-	$currency = $stockData['currency'];
-	$change = $stockData['change'];
-
-
-}
+//Commented out as does not look like is performing any function
+//TODO: Test to make sure this did not break anything
+// if(isset($_POST)&&!empty($_POST))
+// {
+// 	$stockSymbol = $_POST['symbol'];
+// 	$stockData = search_stock($stockSymbol);
+// 	$company = $stockData['name'];
+// 	$price = $stockData['price'];
+// 	$currency = $stockData['currency'];
+// 	$change = $stockData['change'];
+// }
 
 if(isset($_POST['totalCostOfSharesBuy']))
 {
@@ -73,8 +73,8 @@ function processApiData(array)
     document.getElementById('buySharesButton').disabled=false;
     document.getElementById('sellSharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
-    document.getElementById('companyName').value = array.symbol;
-
+    document.getElementById('companyName').value = array.Name;
+    document.getElementById('companySymbol').value = array.symbol;
 
 
     //Set values used for Watchlist
@@ -87,7 +87,8 @@ function processApiData(array)
     document.getElementById('numberOfSharesBuy').max = maxPurchaseable;
 
     //Set Limis for selling shares based on number currently owned
-    document.getElementById('companyNameSell').value = array.symbol;
+    document.getElementById('companySymbolSell').value = array.symbol;
+    document.getElementById('companyNameSell').value = array.Name;
     document.getElementById('sharePriceSell').value = array.Ask;
     document.getElementById('companySell').innerHTML = "Company: " + array.Name;
 
@@ -247,7 +248,8 @@ $(document).ready(function(){
 									onchange="calculateTotalShareCostBuy(this)" disabled>
 									<p id='maxAmount' style="color:red; font-size: 11px;"></p></p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
-									<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
+									<input name="companySymbol" type="hidden" id="companySymbol" placeholder="symbol" value="">
+									<input name="companyName" type="hidden" id="companyName" placeholder="name" value="">
 									<p id = "buyTransactionFee"><i>Transaction Fees: $50 plus 1% of Purchase Price</i></p>
 									<br>
 									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
@@ -300,7 +302,8 @@ $(document).ready(function(){
 										<p id='maxToSell' style="color:red; font-size: 11px;"></p></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
 										<p id = sellTransactionFee><i>Transaction Fees: $50 plus 0.25% of Sale Price </i></p>
-										<input name="companyNameSell" type="hidden" id="companyNameSell" placeholder="symbol" value="">
+										<input name="companySymbolSell" type="hidden" id="companySymbolSell" placeholder="symbol" value="">
+										<input name="companyNameSell" type="hidden" id="companyNameSell" placeholder="name" value="">
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>

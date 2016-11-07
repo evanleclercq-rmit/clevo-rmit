@@ -14,17 +14,19 @@ $change = "";
 $changeFromYearHigh = "";
 $graph = "";
 
-if(isset($_POST)&&!empty($_POST))
-{
-	$stockSymbol = $_POST['symbol'];
-	$stockData = search_stock($stockSymbol);
-	$company = $stockData['name'];
-	$price = $stockData['price'];
-	$currency = $stockData['currency'];
-	$change = $stockData['change'];
-	;
+//Commented out as does not look like is performing any function
+//TODO: Test to make sure this did not break anything
+// if(isset($_POST)&&!empty($_POST))
+// {
+// 	$stockSymbol = $_POST['symbol'];
+// 	$stockData = search_stock($stockSymbol);
+// 	$company = $stockData['name'];
+// 	$price = $stockData['price'];
+// 	$currency = $stockData['currency'];
+// 	$change = $stockData['change'];
+//     ;
+// }
 
-}
 if(isset($_POST['totalCostOfSharesBuy']))
 {
 	$user = Auth::user();
@@ -39,13 +41,13 @@ function processApiData(array)
     if(array.Name != null)
         {
             // '<br><li>Company : '+array.Name+'</li><li>Price &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : '+array.Ask+'</li><li>Currency  : '+array.Currency+'</li><li>Change   &nbsp;&nbsp; : '+array.Change+'</li>';
-    
+
             var row1 = '<table style="width:100%"><tr><th><h5>Company:</h5></th><td>'+array.Name+ '</td></tr>';
 			var row2 = '<tr><th><h5>Share Value:</h5></th><td>$'+array.Ask+'</td></tr>';
 			var row3 = '<tr><th><h5>Change:</h5></th><td>$'+array.Change+'</td></tr></table>';
 			var newContent = row1+row2+row3;
             document.getElementById("companyData").innerHTML = newContent;
-            document.getElementById('numberOfSharesBuy').disabled=false;   
+            document.getElementById('numberOfSharesBuy').disabled=false;
             document.getElementById('buySharesButton').disabled=false;
             document.getElementById('sharePrice').value = array.Ask;
         }
@@ -54,12 +56,12 @@ function processApiData(array)
             var newContent = '<table style="width:100%"><tr><th><h5>Company not found</h5></th></tr></table>';
             document.getElementById("companyData").innerHTML = newContent;
         }
- 
+
 }
 
 function ajaxSearch(str)
 {
-    
+
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function()
 	{
@@ -68,7 +70,7 @@ function ajaxSearch(str)
 			//document.getElementById("companyData").innerHTML = this.responseText;
             var json = JSON.parse(this.responseText);
             processApiData(json);
-            
+
 		}
 	};
 	xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
@@ -128,7 +130,7 @@ google.charts.load('current', {'packages':['corechart']});
 
         chart.draw(data, options);
 
-	   
+
     };
      //Set values used for Watchlist
 	document.getElementById('companySym').value = str;
@@ -141,13 +143,13 @@ google.charts.load('current', {'packages':['corechart']});
 
 
 
-	<div id="body">	
+	<div id="body">
 
 <div class="container"><!--second container-->
 	<div class="col-md-4 content-left"><!--Search Live Stock-->
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Search Live Stock</b></h3><br>
-				<form name="APIsearchForm" onsubmit="return false";>						
+				<form name="APIsearchForm" onsubmit="return false";>
 								{{ Form::open() }}
 								{{ Form::select('symbol', $companies, null, array('placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value)', 'class' => 'ASXList')) }}
 								{{ Form::close() }}
@@ -155,18 +157,18 @@ google.charts.load('current', {'packages':['corechart']});
 							</form>
 							<br>
 							<p>Or search by company symbol</p>
-							<form  name="APIsearchForm" onsubmit="return false"> 
-								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 260px" > 
+							<form  name="APIsearchForm" onsubmit="return false">
+								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 260px" >
 								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);" value="submit">Search</button>
 								{{ csrf_field() }}
 							</form>
 
-				
-				<p> <span id="companyData"></span></p> 
 
-		
-				
-		</div>	
+				<p> <span id="companyData"></span></p>
+
+
+
+		</div>
 	</div><!--//Search Live Stock-->
 
 	<div class="col-md-4 content-middle"><!--Current Holdings-->
@@ -195,25 +197,25 @@ google.charts.load('current', {'packages':['corechart']});
 					<td>$</td>
 				</tr>
 			</table>
-				
+
 		</div>
 	</div><!--//Current Holdings-->
- 
+
 	<div class="col-md-4 content-right">
 		<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 			<h3><b>Leaderboard</b></h3><br>
-			
+
 			<table style="width:100%">
-		<?php 
+		<?php
 				$i = 0;
             foreach ($users as $row)
             {
             	$i++;
-            echo 
+            echo
                 "<tr>
                   <td>" .$i. ". ".$row."</td>
                 </tr>";
-        } ?>				
+        } ?>
 			</table>
 
 			<!--<div id="table_div"></div>Leaderboard-->
@@ -222,7 +224,7 @@ google.charts.load('current', {'packages':['corechart']});
 </div><!--//second container-->
 
 		<div class="container">
-		
+
 			<div class="col-md-12 content-left">
 				<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 					<h3><b>Watch List</b></h3>
@@ -240,27 +242,27 @@ google.charts.load('current', {'packages':['corechart']});
 							</form>
     				<div id="curve_chart"></div>
 					</div>
-	
+
 				</div>
-			
+
 	</div>
 
 
 	</div><!--//body-->
 
-	
+
 <?php
-    
+
      if(isset($_POST['searchText']))
         {
             echo "<script type=\"text/javascript\"> document.getElementById('numberOfShares').disabled=false;
                     document.getElementById('buySharesButton').disabled=false;</script>";
-                
+
         }
         else
         {
             echo "";
         }
-?>		
+?>
 
 @endsection
