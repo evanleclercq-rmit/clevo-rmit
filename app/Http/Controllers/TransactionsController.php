@@ -70,16 +70,16 @@ class TransactionsController extends Controller
         $user = Auth::User();
 
         $company = $request->input('companyNameSell');
-        echo ('Company:'.$company);
+        // echo ('Company:'.$company);
         $price = $request->input('sharePriceSell');
-        echo ('<br>Price:'.$price);
+        // echo ('<br>Price:'.$price);
         $numberPurchased = $request->input('numberOfSharesSell');
-        echo ('<br>Sold:'.$numberPurchased);
+        // echo ('<br>Sold:'.$numberPurchased);
 
         $holdings = getHoldings($user->id);
 
-        echo "<br><br>";
-        print_r($holdings);
+        // echo "<br><br>";
+        // print_r($holdings);
 
         if ($numberPurchased < $holdings[$company]) {
             $holdings[$company] = $holdings[$company] - $numberPurchased;
