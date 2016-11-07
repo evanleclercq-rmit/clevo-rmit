@@ -3,23 +3,18 @@
 @section('content')
 
     <?php require(app_path().'/financeWebService.php') ?>
-    <script type="text/javascript">
-        function setvalues(transaction, company, numshares, price, startBal, totalCost, closeBal) {
-            Document.getElementById('transactionType').innerHTML = "Transaction Type: " + transaction;
-            Document.getElementById('company').innerHTML = "Company: " + company;
-            Document.getElementById('numShares').innerHTML = "Number of shares: " + numshares;
-            Document.getElementById('price').innerHTML = "Price: " + price;
-            Document.getElementById('startBal').innerHTML = "Starting Balance: " + startBal;
-            Document.getElementById('totalCost').innerHTML = "Transaction Cost:" + totalCost;
-            Document.getElementById('closeBal').innerHTML = "Closing Balance: " + closeBal;
-        }
-    </script>
 
     <?php
 
-        print_r ($info);
-            // echo ('<script type = "text/javascript">setvalues(' . $info->transaction . ',' . $info->company . ',' . $info->numberShares. ',' . $info->price . ',' . $info->startBalance . ',' . $info->totalCost . ',' . $info->closeBalance . ');</script>');
+        function determineTransaction ($info) {
+            if ($info['transaction'] == "Sale") {
+                return "Number of Shares Sold: " . $info['numberShares'];
+            } else {
+                return "Number of Shares Purchased: " . $info['numberShares']; 
+            }
+        }
 
+        print_r ($info);
 
     ?>
 
@@ -28,19 +23,19 @@
             <div class="col-md-12 content-left">
                 <div class="contact-form wow fadeInUp animated">
                     <h3><b>Transaction Summary</b></h3><br>
-                    Transaction Type:
+                    <?php echo ("Transaction Type: " . $info['transaction']); ?>
                     <br />
-                    Company:
+                    <?php echo ("Company: " . $info['company']); ?>
                     <br />
-                    Number of Shares purcahsed:
+                    <?php echo (determineTransaction($info)); ?>
                     <br />
-                    Price:
+                    <?php echo ("Price: " . $info['price']); ?>
                     <br /><br />
-                    Starting Balance:
+                    <?php echo ("Starting Balance: " . $info['startBalance']); ?>
                     <br />
-                    Transaction Cost:
+                    <?php echo ("Transaction Cost: " . $info['totalCost']); ?>
                     <br />
-                    Closing Balance:
+                    <?php echo ("Closing Balance: " . $info['closeBalance']); ?>
                     <br /> <br />
 
                     <form action = "{{ url ('/dashboard') }}" method = "POST" style = "display:inline-block">
