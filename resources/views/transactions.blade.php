@@ -36,8 +36,8 @@ $symbol = "";
 
 if(isset($_POST)&&!empty($_POST))
 {
-	// $stockSymbol = $_POST['symbol'];
-	// $stockData = search_stock($stockSymbol);
+	$stockSymbol = $_POST['symbol'];
+	$stockData = search_stock($stockSymbol);
 	$company = $stockData['name'];
 	$price = $stockData['price'];
 	$currency = $stockData['currency'];

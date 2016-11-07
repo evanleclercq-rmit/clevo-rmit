@@ -113,7 +113,7 @@ class TransactionsController extends Controller
                        'totalCost'=>$total,
                        'startBalance'=>$user->balance,
                        'closeBalance'=>$newBalance,
-                       'fees'=>$fee
+                       'fee'=>$fee
                        );
 
         return view ('transactionSummary', ['info'=>$info]);

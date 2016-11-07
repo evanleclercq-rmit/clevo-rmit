@@ -41,7 +41,7 @@
                     <br />
                     <?php echo ("Transaction Cost: $" . $info['totalCost']); ?>
 					<br />
-					<i><?php echo ("Transaction Fees: " . $info['fee'] . $feeExplain); ?></i>
+                    <?php echo ("Transaction Fees: $" . $info['fee'] . $feeExplain); ?>
                     <br />
                     <?php echo ("Closing Balance: $" . $info['closeBalance']); ?>
                     <br /> <br />
