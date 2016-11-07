@@ -36,8 +36,8 @@ $symbol = "";
 
 if(isset($_POST)&&!empty($_POST))
 {
-	$stockSymbol = $_POST['symbol'];
-	$stockData = search_stock($stockSymbol);
+	// $stockSymbol = $_POST['symbol'];
+	// $stockData = search_stock($stockSymbol);
 	$company = $stockData['name'];
 	$price = $stockData['price'];
 	$currency = $stockData['currency'];
@@ -75,6 +75,8 @@ function processApiData(array)
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.symbol;
     
+	
+
     //Set values used for Watchlist
     document.getElementById('companySym').value = array.symbol;
     document.getElementById('companyNm').value = array.Name;
@@ -85,6 +87,8 @@ function processApiData(array)
     document.getElementById('numberOfSharesBuy').max = maxPurchaseable;
 
     //Set Limis for selling shares based on number currently owned
+    document.getElementById('companyNameSell').value = array.symbol;
+    document.getElementById('sharePriceSell').value = array.Ask;
 
 }
 
@@ -286,13 +290,14 @@ $(document).ready(function(){
 							</div>
 
 							<div id="right">
-								<form  name="sellSharesForm" action="{{ action('TransactionsController@index') }}" method="post">
+								<form  name="sellSharesForm" action="{{ action('TransactionsController@sell') }}" method="post">
 									<!-- <p>Company : <?php echo $company ?></p> -->
-									<p>Shares to Sell :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
-										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" step="1"
+									<p>Shares to Sell :<input name="sharePriceSell" type="hidden" id="sharePriceSell" value="<?php echo $price ?>" >
+										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" max=""step="1"
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
+										<p id='maxToSell' style="color:red; font-size: 11px;"></p></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
-										<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
+										<input name="companyNameSell" type="text" id="companyNameSell" placeholder="symbol" value="">
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>

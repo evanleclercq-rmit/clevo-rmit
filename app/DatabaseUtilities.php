@@ -8,7 +8,7 @@
             $holdingscsv = $holdingscsv . $key.','.$value.',';
         }
 
-        echo ("csv=".$holdingscsv);
+        // echo ("csv=".$holdingscsv);
 
         DB::table('users')
             ->where('id', $id)
