@@ -41,3 +41,6 @@ Route::post('/remove', 'WatchlistController@remove');
 Route::get('/transTest', function () {
     return view ('transTest');
 });
+Route::get('/transComplete', function () {
+    return view ('transactionComplete');
+});

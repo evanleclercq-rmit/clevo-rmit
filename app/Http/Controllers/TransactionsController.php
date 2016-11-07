@@ -49,6 +49,17 @@ class TransactionsController extends Controller
         echo ('<br><br> Total:'.$total);
         $newBalance = $user->balance - $total;
         updateBalance($user->id, $newBalance);
+
+        $info = array (
+                       'company'=>$company,
+                       'numberPurchased'=>$numberPurchased,
+                       'price'=>$price,
+                       'totalCost'=>$totalCost,
+                       'balance'=>$newBalance
+                       );
+
+        return view ('transactionComplete')->with('info', $info);
+
     }
 
     public function sell (Request $request) {
