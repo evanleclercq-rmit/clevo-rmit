@@ -20,8 +20,8 @@ $.ajax({
             },error: function(xhr, ajaxOptions, thrownError){
                     console.log(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
                 }
-
-        });
+            
+        }); 
 
 
 
@@ -69,10 +69,12 @@ function processApiData(array)
 
     document.getElementById("companyData").innerHTML = newContent;
     document.getElementById('numberOfSharesBuy').disabled=false;
+    document.getElementById('numberOfSharesSell').disabled=false;
     document.getElementById('buySharesButton').disabled=false;
+    document.getElementById('sellSharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.symbol;
-
+    
     //Set values used for Watchlist
     document.getElementById('companySym').value = array.symbol;
     document.getElementById('companyNm').value = array.Name;
@@ -202,12 +204,6 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
 <div id="body">
 	<div class="container">
 		<div class="col-md-12 content-left">
@@ -263,7 +259,7 @@ $(document).ready(function(){
 							<div id="left">
 								<form  name="APIsearchForm" onsubmit="return false";>
 									<!--TODO: Load in owned shares-->
-									<select name="ownedShares" style=" width:513px">
+									<select name="ownedShares" style=" width:513px" onchange="ajaxSearch(this.value)";>
 										<option value="" disabled selected hidden>Select a company...</option>
 										<?php
 											$currentHoldings = getHoldings(Auth::User()->id);
