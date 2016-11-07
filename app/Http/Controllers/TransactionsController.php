@@ -54,11 +54,11 @@ class TransactionsController extends Controller
                        'company'=>$company,
                        'numberPurchased'=>$numberPurchased,
                        'price'=>$price,
-                       'totalCost'=>$totalCost,
+                       'totalCost'=>$total,
                        'balance'=>$newBalance
                        );
 
-        return view ('transactionComplete')->with('info', $info);
+        return view ('transactionSummary')->with('info', $info);
 
     }
 

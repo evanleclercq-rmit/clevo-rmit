@@ -42,5 +42,5 @@ Route::get('/transTest', function () {
     return view ('transTest');
 });
 Route::get('/transComplete', function () {
-    return view ('transactionComplete');
+    return view ('transactionSummary');
 });
