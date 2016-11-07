@@ -20,8 +20,8 @@ $.ajax({
             },error: function(xhr, ajaxOptions, thrownError){
                     console.log(xhr.status+" ,"+" "+ajaxOptions+", "+thrownError);
                 }
-            
-        }); 
+
+        });
 
 
 
@@ -72,7 +72,7 @@ function processApiData(array)
     document.getElementById('buySharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.symbol;
-    
+
     //Set values used for Watchlist
     document.getElementById('companySym').value = array.symbol;
     document.getElementById('companyNm').value = array.Name;

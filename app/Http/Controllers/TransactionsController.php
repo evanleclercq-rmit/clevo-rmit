@@ -20,51 +20,54 @@ class TransactionsController extends Controller
         //TODO: Hash the data
 
         $company = $request->input('companyName');
-        echo ('Company:'.$company);
+        // echo ('Company:'.$company);
         $price = $request->input('sharePrice');
-        echo ('<br>Price:'.$price);
+        // echo ('<br>Price:'.$price);
         $numberPurchased = $request->input('numberOfSharesBuy');
-        echo ('<br>Purchased:'.$numberPurchased);
+        // echo ('<br>Purchased:'.$numberPurchased);
 
         $user = Auth::User();
-        echo ('<br>ID:'.$user->id);
+        // echo ('<br>ID:'.$user->id);
 
         // // //Updating the Users Holdings
         $holdings = getHoldings($user->id);
-        print_r ($holdings);
+        // print_r ($holdings);
 
         if (isset ($holdings[$company])) {
-            echo $holdings[$company];
+            // echo $holdings[$company];
             $holdings[$company] += $numberPurchased;
-            echo $holdings[$company];
+            // echo $holdings[$company];
         } else {
             $holdings[$company] = $numberPurchased;
         }
 
-        print_r($holdings);
+        // print_r($holdings);
         updateHoldings($user->id, $holdings);
 
         // // //Updating the Users Balance
         $total = $price * $numberPurchased;
-        echo ('<br><br> Total:'.$total);
+        // echo ('<br><br> Total:'.$total);
         $newBalance = $user->balance - $total;
         updateBalance($user->id, $newBalance);
 
         $info = array (
+                       'transaction'=>'Purchase',
                        'company'=>$company,
-                       'numberPurchased'=>$numberPurchased,
+                       'numberShares'=>$numberPurchased,
                        'price'=>$price,
                        'totalCost'=>$total,
-                       'balance'=>$newBalance
+                       'closeBalance'=>$newBalance,
+                       'startBalance'=>$user->balance
                        );
 
-        return view ('transactionSummary')->with('info', $info);
+        return view ('transactionSummary', ['info'=>$info]);
 
     }
 
     public function sell (Request $request) {
         //TODO: Get code and number to sell
         //      update database holdings field
+        $user = Auth::User();
 
         $company = $request->input('companyName');
         echo ('Company:'.$company);
@@ -73,14 +76,36 @@ class TransactionsController extends Controller
         $numberPurchased = $request->input('numberOfSharesBuy');
         echo ('<br>Purchased:'.$numberPurchased);
 
+        $holdings = getHoldings($user->id);
+
+        if ($numberPurchased < $holdings[$company]) {
+            $holdings[$company] = $holdings[$company] - $numberPurchased;
+        } else {
+            unset ($holdings[$company]);
+        }
+
+        updateHoldings($user->id, $holdings);
+
+        $total = $price * $numberPurchased;
+        $newBalance = $user->balance + $total;
+
+        updateBalance($user->id, $newBalance);
+
         // // //Updating the Users Holdings
         // $holdings = array();
         // updateHoldings($user->id, $holdings);
 
-        // // //Updating the Users Balance
-        $total = $price * $numberPurchased;;
-        // $newBalance = $user->balance + $total;
-        // updateBalance($user->id, $newBalance);
+        $info = array (
+                       'transaction'=>'Sale',
+                       'company'=>$company,
+                       'numberShares'=>$numberPurchased,
+                       'price'=>$price,
+                       'totalCost'=>$total,
+                       'closeBalance'=>$newBalance,
+                       'startBalance'=>$user->balance
+                       );
+
+        return view ('transactionSummary', ['info'=>$info]);
     }
 
 }
