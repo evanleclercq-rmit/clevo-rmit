@@ -8,11 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
-    <link href="css/app.css" rel="stylesheet">
-    <link href = "css/master.css" rel = "stylesheet">
-    <link href = "css/font-awesome.css" rel = "stylesheet">
-    <link href = "css/animate.css" rel = "stylesheet">
-    <link href = "css/style.css" rel = "stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/master.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 
     <!-- Font -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
