@@ -18,6 +18,7 @@ class TransactionsController extends Controller
 
     public function buy (Request $request) {
         //TODO: Hash the data
+        //      Add transaction fees
 
         $company = $request->input('companyName');
         // echo ('Company:'.$company);
@@ -46,8 +47,9 @@ class TransactionsController extends Controller
 
         // // //Updating the Users Balance
         $total = $price * $numberPurchased;
+        $fee = ($total * 0.01) + 50;
         // echo ('<br><br> Total:'.$total);
-        $newBalance = $user->balance - $total;
+        $newBalance = $user->balance - ($total + $fee);
         updateBalance($user->id, $newBalance);
 
         $info = array (
@@ -57,7 +59,8 @@ class TransactionsController extends Controller
                        'price'=>$price,
                        'totalCost'=>$total,
                        'closeBalance'=>$newBalance,
-                       'startBalance'=>$user->balance
+                       'startBalance'=>$user->balance,
+                       'fee'=>$fee
                        );
 
         return view ('transactionSummary', ['info'=>$info]);
@@ -65,8 +68,9 @@ class TransactionsController extends Controller
     }
 
     public function sell (Request $request) {
-        //TODO: Get code and number to sell
-        //      update database holdings field
+        //TODO: Add transaction fees
+
+
         $user = Auth::User();
 
         $company = $request->input('companyNameSell');
@@ -90,7 +94,10 @@ class TransactionsController extends Controller
         updateHoldings($user->id, $holdings);
 
         $total = $price * $numberPurchased;
-        $newBalance = $user->balance + $total;
+
+        //Calculate fee of 0.25% of sale
+        $fee = ($total * 0.0025) + 50;
+        $newBalance = $user->balance + ($total - $fee);
 
         updateBalance($user->id, $newBalance);
 
@@ -105,7 +112,8 @@ class TransactionsController extends Controller
                        'price'=>$price,
                        'totalCost'=>$total,
                        'startBalance'=>$user->balance,
-                       'closeBalance'=>$newBalance
+                       'closeBalance'=>$newBalance,
+                       'fees'=>$fee
                        );
 
         return view ('transactionSummary', ['info'=>$info]);

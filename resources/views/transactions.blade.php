@@ -248,6 +248,7 @@ $(document).ready(function(){
 									<p id='maxAmount' style="color:red; font-size: 11px;"></p></p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
 									<input name="companyName" type="hidden" id="companyName" placeholder="symbol" value="">
+									<p id = "buyTransactionFee"><i>Transaction Fees: $50 plus 1% of Purchase Price</i></p>
 									<br>
 									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 									<br><br>
@@ -298,6 +299,7 @@ $(document).ready(function(){
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
 										<p id='maxToSell' style="color:red; font-size: 11px;"></p></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
+										<p id = sellTransactionFee><i>Transaction Fees: $50 plus 0.25% of Sale Price </i></p>
 										<input name="companyNameSell" type="hidden" id="companyNameSell" placeholder="symbol" value="">
 										<br>
 										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>

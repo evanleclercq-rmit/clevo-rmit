@@ -6,6 +6,14 @@
 
     <?php
 
+        $feeExplain = "";
+
+        if ($info['transaction'] == "Sale") {
+            $feeExplain = "    ($50 Transaction fee plus 0.25% of sale price)";
+        } else {
+            $feeExplain = "    ($5o Transaction fee plus 1% of purchase price)";
+        }
+
         function determineTransaction ($info) {
             if ($info['transaction'] == "Sale") {
                 return "Number of Shares Sold: " . $info['numberShares'];
@@ -33,7 +41,7 @@
                     <br />
                     <?php echo ("Transaction Cost: $" . $info['totalCost']); ?>
 					<br />
-					<i><?php echo ("Transaction Fee: $50"); ?></i>
+					<i><?php echo ("Transaction Fees: " . $info['fee'] . $feeExplain); ?></i>
                     <br />
                     <?php echo ("Closing Balance: $" . $info['closeBalance']); ?>
                     <br /> <br />
