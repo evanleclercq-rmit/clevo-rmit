@@ -14,8 +14,6 @@
             }
         }
 
-        print_r ($info);
-
     ?>
 
     <div id="body">
