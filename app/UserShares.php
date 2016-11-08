@@ -31,7 +31,7 @@ function calculateAvgShareValue()
     {
         foreach ($currentHoldings as $key=>$value)
         {
-            $numShares=$numShares+1;;
+            $numShares=$numShares+$value;
             $shareData = search_stock($key);
             $shareValue = $shareData['price']*$value;
             $totalValue=$totalValue+$shareValue;
