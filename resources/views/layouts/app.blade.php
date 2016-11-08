@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-
     <!-- Font -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 
@@ -67,45 +66,6 @@
     </style>
     
     
-
-<!--leaderboard table script-->
-<script type="text/javascript">
-//google.charts.load('current', {'packages':['table']});
-google.charts.setOnLoadCallback(drawTable);
-
-      function drawTable() {
-        var data2 = new google.visualization.DataTable();
-        data2.addColumn('string', 'Name');
-        data2.addColumn('number', 'Holdings');
-        data2.addRows([
-          ['Mike',  {v: 10000,  f: '10,000'}],
-          ['Jim',   {v: 8000,   f: '8,000'}],
-          ['Alice', {v: 12500,  f: '12,500'}],
-          ['Bob',   {v: 7000,   f: '7,000'}],
-          ['Bob1',  {v: 6000,   f: '6,000'}],
-          ['Bob2',  {v: 8000,   f: '8,000'}],
-          ['Bob3',  {v: 5000,   f: '5,000'}],
-          ['Bob4',  {v: 3000,   f: '3,000'}],
-          ['Bob5',  {v: 11000,  f: '11,000'}],
-          ['Bob6',  {v: 12000,  f: '12,000'}],
-          ['Bob7',  {v: 7500,   f: '7,500'}],
-          ['Bob8',  {v: 4400,   f: '4,400'}],
-          ['Bob9',  {v: 5700,   f: '5,700'}],
-          ['Bob10', {v: 8200,   f: '8,200'}],
-          ['Bob11', {v: 10100,  f: '10,100'}],
-          ['Bob12', {v: 11000,  f: '11,000'}]
-          
-        ]);
-        data2.sort({ column: 1, desc:true });
-        var table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(data2, {showRowNumber: true, width: '100%', height: '280px'});
-        
-      }
-
-   </script>
-<!--//leaderboard table script-->
-
-    
 </head>
 
 <body>
@@ -135,7 +95,6 @@ google.charts.setOnLoadCallback(drawTable);
                     <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ url('/transactions') }}">Transactions</a></li>
                     <li><a href="{{ url('/history') }}">History</a></li>
-                    <li><a href="#gettingstarted">Getting Started</a></li>
                     <!--Right menu items-->
                     <li class="right"><a href="{{ url('/logout') }}"
                         onclick="event.preventDefault();
@@ -144,7 +103,6 @@ google.charts.setOnLoadCallback(drawTable);
                             {{ csrf_field() }}
                         </form>
                          <li class="right"><a href="{{ url('/profile') }}">Profile</a></li>
-                        <li class="right"><a href="#settings">Settings</a></li>
                         @endif
                     </ul>   
                 </div>
@@ -168,4 +126,4 @@ google.charts.setOnLoadCallback(drawTable);
                 <!--//footer--> 
 
             </body>
-            </html>
+        </html>
