@@ -40,15 +40,15 @@
 					</tr>
 					<tr>
 						<th><h5>Total share value:</h5></th>
-						<td><?php echo $shareValue ?></td>
+						<td>$<?php echo $shareValue ?></td>
 					</tr>
                     <tr>
 						<th><h5>Average share value:</h5></th>
-						<td><?php echo $avgShareValue ?></td>
+						<td>$<?php echo $avgShareValue ?></td>
 					</tr>
                     <tr>
 						<th><h5>Profit:</h5></th>
-						<td>{{ $user->bio}}</td>
+						<td>${{ $user->bio}}</td>
 					</tr>
 				</table>
 			</div>
