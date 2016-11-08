@@ -6,18 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
-
+require(app_path().'/UserShares.php');
 
 class DashboardController extends Controller
 {
     
     // initial landing function for the dashboard
     public function index () {
+        $shareValue = calculateSharesValue();
         $users = \App\User::all()->pluck('name')->toArray();
         $companies = \App\Companies::pluck('name', 'symbol');
 		$currentString = Auth::User()->watchlist;
 		$watchlist = $this->parseString($currentString);
-		return view('dashboard')->with(compact('companies', $companies, 'users', $users, 'watchlist', $watchlist));
+		return view('dashboard')->with(compact('companies', $companies, 'users', $users, 'watchlist', $watchlist, 'shareValue',$shareValue));
     }
 
     	// Parse string 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php require(app_path().'/financeWebService.php') ?>
+
 
 <script type="text/javascript">
 
@@ -13,6 +13,9 @@ $currency = "";
 $change = "";
 $changeFromYearHigh = "";
 $graph = "";
+$sharesValue="";
+    
+
 
 //Commented out as does not look like is performing any function
 //TODO: Test to make sure this did not break anything
@@ -33,6 +36,8 @@ if(isset($_POST['totalCostOfSharesBuy']))
 	$user->decrement('balance',$_POST['totalCostOfSharesBuy']);
 }
 ?>
+
+
 function resetDropDown()
     {
         
@@ -202,11 +207,11 @@ google.charts.load('current', {'packages':['corechart']});
 				</tr>
 				<tr>
 					<th><h5>Shares Value:</h5></th>
-					<td>$</td>
+					<td>$<?php echo $shareValue ?></td>
 				</tr>
 				<tr>
 					<th><h5>Total Holdings Value:</h5></th>
-					<td>$</td>
+					<td>$<?php echo Auth::user()->balance+$shareValue ?> </td>
 				</tr>
 				<tr>
 					<th><h5>Profit:</h5></th>

@@ -2,7 +2,6 @@
 
 @section('content')
 
-<?php require(app_path().'/financeWebService.php') ?>
 <script type="text/javascript">
 
 
@@ -263,7 +262,7 @@ $(document).ready(function(){
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" max = ""step="1"
 									onchange="calculateTotalShareCostBuy(this)" disabled>
-									<p id='maxAmount' style="color:red; font-size: 11px;"></p></p>
+									<p id='maxAmount' style="color:red; font-size: 11px;"></p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
 									<input name="companySymbol" type="hidden" id="companySymbol" placeholder="symbol" value="">
 									<input name="companyName" type="hidden" id="companyName" placeholder="name" value="">
@@ -316,7 +315,7 @@ $(document).ready(function(){
 									<p>Shares to Sell :<input name="sharePriceSell" type="hidden" id="sharePriceSell" value="<?php echo $price ?>" >
 										<input name="numberOfSharesSell" id="numberOfSharesSell" style="width: 4.5em"  placeholder="#" type="number" min="1" max=""step="1"
 										onchange="calculateTotalShareCostSell(this)" disabled></p>
-										<p id='maxToSell' style="color:red; font-size: 11px;"></p></p>
+										<p id='maxToSell' style="color:red; font-size: 11px;"></p>
 										<p>Total Value: $<input name="totalCostOfSharesSell" style="width: 6em; border: 0" id="totalCostOfSharesSell" value="" readonly> <?php echo $currency ?></p>
 										<p id = sellTransactionFee><i>Transaction Fees: $50 plus 0.25% of Sale Price </i></p>
 										<input name="companySymbolSell" type="hidden" id="companySymbolSell" placeholder="symbol" value="">
