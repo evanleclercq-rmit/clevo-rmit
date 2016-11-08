@@ -22,25 +22,28 @@
     }
 
     function removeCompany($user, $symbol) {
+      if ($symbol != null){
         $watchlist = getWatchlist($user->id);
+          // If only entry resets string
+          if (substr_count($watchlist, ".AX")==1)
+           {
+              $updatedWatchlist = "";
+           }
 
-        // If only entry resets string
-        if (substr_count($watchlist, ".AX")==1)
-         {
-            $updatedWatchlist = "";
-         }
+          // Deletes string from Symbol to next '&' separator
+           else {
+              $updatedWatchlist = delete_all_between($symbol, '&', $watchlist);
+           }
 
-        // Deletes string from Symbol to next '&' separator
-         else {
-            $updatedWatchlist = delete_all_between($symbol, '&', $watchlist);
-         }
-         
-         //TOFIX: can't delete the last object of string
+        //TOFIX: can't delete the last object of string
 
         // Updates table with new string
         DB::table('users')
                     ->where('id', $user->id)
                     ->update(['watchlist' => $updatedWatchlist]);
+
+         }
+        
 }
 
     // Deletes part of string between two points. Used in removeCompany()
