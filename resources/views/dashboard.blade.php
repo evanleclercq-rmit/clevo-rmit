@@ -33,8 +33,24 @@ if(isset($_POST['totalCostOfSharesBuy']))
 	$user->decrement('balance',$_POST['totalCostOfSharesBuy']);
 }
 ?>
+function resetDropDown()
+    {
+        
+        document.getElementById("companyDropDown").selectedIndex=0;
+    }
+    
+function resetSymbolSearch()
+    {
+        
+        var x =document.getElementById("symbolSearch");
+        
+        x.value = "";
+        
+    }
+    
 
-var symbolSearch = document.getElementById("symbolSearch").value;
+var symbolSearch = document.getElementById("symbolSearchField").value;
+
 
 function processApiData(array)
 {
@@ -151,7 +167,7 @@ google.charts.load('current', {'packages':['corechart']});
 			<h3><b>Search Live Stock</b></h3><br>
 				<form name="APIsearchForm" onsubmit="return false";>
 								{{ Form::open() }}
-								{{ Form::select('symbol', $companies, null, array('placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value)', 'class' => 'ASXList')) }}
+								{{ Form::select('symbol', $companies, null, array('placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value);resetSymbolSearch();','id' =>'companyDropDown' , 'class' => 'ASXList')) }}
 								{{ Form::close() }}
 								{{ csrf_field() }}
 							</form>
@@ -159,7 +175,7 @@ google.charts.load('current', {'packages':['corechart']});
 							<p>Or search by company symbol</p>
 							<form  name="APIsearchForm" onsubmit="return false">
 								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 260px" >
-								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);" value="submit">Search</button>
+								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);resetDropDown();" value="submit" id="symbolSearchField">Search</button>
 								{{ csrf_field() }}
 							</form>
 
