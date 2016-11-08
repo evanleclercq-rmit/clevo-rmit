@@ -36,8 +36,10 @@ function calculateAvgShareValue()
             $shareValue = $shareData['price']*$value;
             $totalValue=$totalValue+$shareValue;
         }
+
+        return $totalValue/$numShares;
+
     }
     
-    return $totalValue/$numShares;
 }
 ?>
