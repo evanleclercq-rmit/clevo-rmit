@@ -201,9 +201,9 @@ google.charts.load('current', {'packages':['corechart']});
 					<th><h5>Initial Cash Balance:</h5></th>
 					<td>$20000</td>
 				</tr>
-				<tr>
+				<tr> 
 					<th><h5>Current Cash Balance:</h5></th>
-					<td>${{ Auth::user()->balance }}</td>
+					<td>${{ number_format((float)Auth::user()->balance, 2, '.', '') }}</td>
 				</tr>
 				<tr>
 					<th><h5>Shares Value:</h5></th>
@@ -211,7 +211,7 @@ google.charts.load('current', {'packages':['corechart']});
 				</tr>
 				<tr>
 					<th><h5>Total Holdings Value:</h5></th>
-					<td>$<?php echo Auth::user()->balance+$shareValue ?> </td>
+					<td>$<?php echo number_format((float)Auth::user()->balance+$shareValue, 2, '.', '') ?> </td>
 				</tr>
 				<tr>
 					<th><h5>Profit:</h5></th>
@@ -255,12 +255,12 @@ google.charts.load('current', {'packages':['corechart']});
 						{{ Form::select('symbol', $watchlist, null, array('placeholder' => 'Select a company...', 'onchange' => 'createChart(this.value)', 'class' => 'ASXList')) }}
 						{{ Form::close() }}
 						{{ csrf_field() }}
-					</form><br>
+					</form>
 					<form name="buySharesForm" action="{{ action('WatchlistController@remove') }}" method="post">
 								<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Unwatch</button>
 								<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 								{{ csrf_field() }}
-							</form>
+					</form>
     				<div id="curve_chart"></div>
 					</div>
 
