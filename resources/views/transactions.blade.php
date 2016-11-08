@@ -300,13 +300,8 @@ $(document).ready(function(){
 									{{ csrf_field() }}
 								</form>
 								<br>
-								<p>Or search by company symbol</p>
-								<!--TODO: Search box to use Ajax function-->
-								<form  name="APIsearchForm" action="{{ action('TransactionsController@index') }}" method="post">
-									<input name="symbol" placeholder="eg. ASX.AX" type="text" style="width: 250px" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
-									<button class="submitButt" type="submit" value="submit">Search</button>
-									{{ csrf_field() }}
-								</form>
+								
+								
 							</div>
 
 							<div id="right">

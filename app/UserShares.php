@@ -20,4 +20,24 @@ function calculateSharesValue()
     
     return $totalValue;
 }
+
+function calculateAvgShareValue()
+{
+    $totalValue = 0;
+    $numShares = 0;
+    $currentHoldings = getHoldings(Auth::User()->id);
+    
+    if (count($currentHoldings) > 0)
+    {
+        foreach ($currentHoldings as $key=>$value)
+        {
+            $numShares=$numShares+1;;
+            $shareData = search_stock($key);
+            $shareValue = $shareData['price']*$value;
+            $totalValue=$totalValue+$shareValue;
+        }
+    }
+    
+    return $totalValue/$numShares;
+}
 ?>

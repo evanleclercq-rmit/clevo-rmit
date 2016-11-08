@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
  
  use App\Http\Requests;
  use Auth;
- 
+ require(app_path().'/UserShares.php');
+
  class UserController extends Controller
  {
  	
      //
  	public function profile()
  	{
- 		return view('profile', array('user' => Auth::user()) );
+        $shareValue = calculateSharesValue();
+        $avgShareValue = calculateAvgShareValue();
+ 		return view('profile', array('user' => Auth::user()) )->with(compact('shareValue', $shareValue,'avgShareValue',$avgShareValue));
+                
+        
+
  	}
  }
 

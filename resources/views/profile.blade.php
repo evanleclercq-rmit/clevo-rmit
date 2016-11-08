@@ -24,12 +24,30 @@
 						<th><h5>Email:</h5></th>
 						<td>{{ $user->email }}</td>
 					</tr>
+					
 					<tr>
-						<th><h5>Balance:</h5></th>
+						<th><h5>Bio:</h5></th>
+						<td>{{ $user->bio}}</td>
+					</tr>
+				</table>
+                <h3><b>Trading details</b></h3>
+				<table style="width:100%">
+				
+				
+					<tr>
+						<th><h5>Current balance:</h5></th>
 						<td>${{ $user->balance}}</td>
 					</tr>
 					<tr>
-						<th><h5>Bio:</h5></th>
+						<th><h5>Total share value:</h5></th>
+						<td><?php echo $shareValue ?></td>
+					</tr>
+                    <tr>
+						<th><h5>Average share value:</h5></th>
+						<td><?php echo $avgShareValue ?></td>
+					</tr>
+                    <tr>
+						<th><h5>Profit:</h5></th>
 						<td>{{ $user->bio}}</td>
 					</tr>
 				</table>
