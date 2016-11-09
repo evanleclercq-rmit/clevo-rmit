@@ -181,6 +181,9 @@ function createChart(str) {
 						echo
 						"<tr>
 						<td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
+						if ($i > 9){ // limits the leaderboard to a total of 10 users
+							break;
+						}
 					 } 
 					 ?>
 				</table>
