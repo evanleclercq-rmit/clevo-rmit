@@ -3,10 +3,10 @@
 require(app_path().'/financeWebService.php');
 require(app_path().'/DatabaseUtilities.php');
 
-function calculateSharesValue()
+function calculateSharesValue($id)
 {
     $totalValue = 0;
-    $currentHoldings = getHoldings(Auth::User()->id);
+    $currentHoldings = getHoldings($id);
     
     if (count($currentHoldings) > 0)
     {

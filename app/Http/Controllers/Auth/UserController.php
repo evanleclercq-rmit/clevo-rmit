@@ -13,7 +13,7 @@ namespace App\Http\Controllers;
      //
  	public function profile()
  	{
-        $shareValue = calculateSharesValue();
+        $shareValue = calculateSharesValue(Auth::User()->id);
         $avgShareValue = calculateAvgShareValue();
  		return view('profile', array('user' => Auth::user()) )->with(compact('shareValue', $shareValue,'avgShareValue',$avgShareValue));
                 
