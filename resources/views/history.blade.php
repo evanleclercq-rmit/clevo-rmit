@@ -23,18 +23,20 @@ $(function() {
 
 			<table style="width:100%" >
 			
-			<tr><td><b>Date</td><td><b>Company</td><td><b>Units Purchased</td><td><b>Price Paid Per Unit</td><td><b>Total Price Paid</td></tr>
+			<tr><td><b>Date</td><td><b>Type</td><td><b>Company</td><td><b>Units Traded</td><td><b>Price Per Unit</td><td><b>Total Price</td></tr>
 		
 		<?php 
-			$currentHoldings = getHoldings(Auth::User()->id);
-				if (count($currentHoldings) > 0) {
-					foreach ($currentHoldings as $key=>$value) {
-						
-						echo "<tr><td></td><td>".strtoupper($key). "</td> <td>" .$value.  "</td><td></td><td></td></tr>";
-							}
-					} else {
-						echo "<tr><td colspan='5'>You do not own any shares</td></tr>";
-							}
+
+					foreach ($history as $transaction) {
+						echo 
+						"<tr><td>".$transaction['date']. "</td>
+						<td>".$transaction['type']. "</td> 
+						<td>".$transaction['symbol']. "</td> 
+						<td>".$transaction['number']."</td>
+						<td>$".$transaction['price']."</td>
+						<td>$".$transaction['total']."</td>
+						</tr>";
+					}
 
          ?>				
 			</table>

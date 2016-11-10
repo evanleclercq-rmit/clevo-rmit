@@ -55,7 +55,6 @@ class TransactionsController extends Controller
         // echo ('<br><br> Total:'.$total);
         $newBalance = $user->balance - ($total + $fee);
         updateBalance($user->id, $newBalance);
-        
         $info = array (
                        'transaction'=>'Purchase',
                        'companySymbol'=>$companySymbol,
@@ -68,7 +67,7 @@ class TransactionsController extends Controller
                        'startBalance'=>number_format((float)$user->balance, 2, '.', ''),
                        'fee'=>number_format((float)$fee, 2, '.', ''),
                        );
-
+       $this->createHistory($info);
         return view ('transactionSummary', ['info'=>$info]);
 
     }
@@ -108,7 +107,6 @@ class TransactionsController extends Controller
         $newBalance = $user->balance + ($shareValue - $fee);
 
         updateBalance($user->id, $newBalance);
-
         // // //Updating the Users Holdings
         // $holdings = array();
         // updateHoldings($user->id, $holdings);
@@ -126,7 +124,30 @@ class TransactionsController extends Controller
                        'fee'=>number_format((float)$fee, 2, '.', ''),
                        );
 
+       $this->createHistory($info);
         return view ('transactionSummary', ['info'=>$info]);
     } 
  
+   public function createHistory($info){
+
+            $user = Auth::User();
+            $date = date('d-m-Y');
+           
+           Transaction::create([
+            'name' => $user->name,
+            'number' => $info['numberShares'],
+            'price' => $info['price'],
+            'total' => $info['totalCost'],
+            'date' => $date,
+            'symbol' => $info['companySymbol'],
+            'type' => $info['transaction'],
+
+
+        ]);
+
+
+
+    }
+
+
 }
