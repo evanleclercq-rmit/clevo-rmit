@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'city' => 'max:255',
             'age' => $ageRules, 
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed',
+            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/|confirmed',
         ]);
     }
 
