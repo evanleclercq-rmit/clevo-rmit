@@ -17,9 +17,10 @@
 
     //Returns an array of current holdings
     function getHoldings ($id) {
+        $user = DB::table('users')->where('id', $id)->first();
         $current = array();
-        if (Auth::User()->holdings != null) {
-            $currentarray = explode (',', (rtrim (Auth::User()->holdings, ",")));
+        if ($user->holdings != null) {
+            $currentarray = explode (',', (rtrim ($user->holdings, ",")));
             for ($i = 0; $i < count($currentarray); $i = $i+2) {
                 $current[$currentarray[$i]] = $currentarray[$i+1];
             }
