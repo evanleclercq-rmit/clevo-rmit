@@ -104,6 +104,7 @@ function createChart(str) {
        		};
 
        		var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+       		document.getElementById('removeWatch').disabled=false;
        		chart.draw(data, options);
        	};
      document.getElementById('companySym').value = str;
@@ -174,13 +175,11 @@ function createChart(str) {
 					<?php
 					$i = 0;
 					echo "<tr><td><b>#</td><td><b>Name</td><td><b>Total value</td></tr>";
-
 					foreach ($leaders as $leader)
 					{
 						$i++;
 						echo
-						"<tr>
-						<td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
+						"<tr><td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
 						if ($i > 9){ // limits the leaderboard to a total of 10 users
 							break;
 						}
@@ -201,8 +200,8 @@ function createChart(str) {
 					{{ Form::close() }}
 					{{ csrf_field() }}
 				</form>
-				<form name="buySharesForm" action="{{ action('WatchlistController@remove') }}" method="post">
-					<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Unwatch</button>
+				<form name="removeWatch" action="{{ action('WatchlistController@remove') }}" method="post">
+					<button class="removeWatch" id="removeWatch" type="submit" value="submit" disabled>Unwatch</button>
 					<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 					{{ csrf_field() }}
 				</form>
