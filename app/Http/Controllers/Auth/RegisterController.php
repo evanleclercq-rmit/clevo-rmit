@@ -47,7 +47,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $ageRules = array('max:3', 'regex:/^.*(?:[1-9]\d{2,}+|[2-9]\d|1[89]).*$/');
+        $ageRules = array('numeric', 'max:100', 'regex:/^.*(?:[1-9]\d{2,}+|[2-9]\d|1[89]).*$/');
         return Validator::make($data, [
             'name' => 'required|max:255',
             'city' => 'max:255',
@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/|confirmed',
         ]);
+
     }
 
     /**
