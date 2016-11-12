@@ -105,7 +105,10 @@ function createChart(str) {
 
        		var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
        		document.getElementById('removeWatch').disabled=false;
+       		document.getElementById('curve_chart').style="height: 500px";
        		chart.draw(data, options);
+
+
        	};
      document.getElementById('companySym').value = str;
      oReq.open("get", "{{ action('ChartController@index') }}"+"?q=" + str, true);
@@ -145,7 +148,7 @@ function createChart(str) {
 				<table style="width:100%">
 					<tr>
 						<th><h5>Initial Cash Balance:</h5></th>
-						<td>$20000</td>
+						<td>$20000.00</td>
 					</tr>
 					<tr> 
 						<th><h5>Current Cash Balance:</h5></th>
@@ -153,7 +156,7 @@ function createChart(str) {
 					</tr>
 					<tr>
 						<th><h5>Shares Value:</h5></th>
-						<td>$<?php echo $shareValue ?></td>
+						<td>$<?php echo number_format(($shareValue), 2, '.', '')  ?></td>
 					</tr>
 					<tr>
 						<th><h5>Total Holdings Value:</h5></th>
@@ -192,7 +195,7 @@ function createChart(str) {
 
 	<div class="container"><!--//Second Container-->
 		<div class="col-md-12 content-left"><!--//Watch List-->
-			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
+			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s"  style="min-height: 50px">
 				<h3><b>Watch List</b></h3>
 				<form name="APIgraphForm" onsubmit="return false">
 					{{ Form::open() }}
@@ -205,7 +208,7 @@ function createChart(str) {
 					<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 					{{ csrf_field() }}
 				</form>
-				<div id="curve_chart"></div>
+				<div id="curve_chart" ></div>
 			</div>
 		</div><!--//Watch List-->
 	</div>

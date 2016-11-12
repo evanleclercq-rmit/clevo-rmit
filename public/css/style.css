@@ -2516,8 +2516,6 @@ div#right {
 }
 
 #curve_chart {
-    width: auto; 
-    height: 500px;
 }
 
 tr:nth-child(odd) {
