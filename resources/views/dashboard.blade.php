@@ -164,7 +164,15 @@ function createChart(str) {
 					</tr>
 					<tr>
 						<th><h5>Profit:</h5></th>
-						<td>$</td>
+						<?php 
+							$profit = Auth::user()->balance-20000;
+
+							if ($profit > 0){
+								echo "<td style='color:green'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
+							}
+							else {
+								echo "<td style='color:red'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
+						}?>
 					</tr>
 				</table>
 
