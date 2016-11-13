@@ -7,8 +7,6 @@
 		<div class="col-md-12 content-middle">
 			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 				<h3><b>Personal details</b></h3>
-
-
 				<table style="width:100%">
 					<tr>
 						<th><h5>Name:</h5></th>
@@ -41,7 +39,7 @@
 					<tr>
 						<th><h5>Profit:</h5></th>
 						<?php 
-							$profit = $user->balance-20000;
+							$profit = $user->balance+$shareValue-20000;
 
 							if ($profit > 0){
 								echo "<td style='color:green'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
