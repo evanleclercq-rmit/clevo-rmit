@@ -37,6 +37,18 @@
 						<td>${{ number_format((float)$user->balance, 2, '.', '') }}</td>
 					</tr>
 					<tr>
+						<th><h5>Total Share Value:</h5></th>
+						<td>$<?php echo number_format((float)$shareValue, 2, '.', '') ?></td>
+					</tr>
+                    <tr>
+						<th><h5>Average Share Value:</h5></th>
+						<td>$<?php echo number_format((float)$avgShareValue, 2, '.', '') ?></td>
+					</tr>
+					<tr>
+						<th><h5>Total Holdings Value:</h5></th>
+						<td>$<?php echo number_format((float)Auth::user()->balance+$shareValue, 2, '.', '') ?> </td>
+					</tr>
+					<tr>
 						<th><h5>Profit:</h5></th>
 						<?php 
 							$profit = $user->balance+$shareValue-20000;
@@ -48,14 +60,7 @@
 								echo "<td style='color:red'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
 						}?>
 					</tr>
-					<tr>
-						<th><h5>Total Share Value:</h5></th>
-						<td>$<?php echo number_format((float)$shareValue, 2, '.', '') ?></td>
-					</tr>
-                    <tr>
-						<th><h5>Average Share Value:</h5></th>
-						<td>$<?php echo number_format((float)$avgShareValue, 2, '.', '') ?></td>
-					</tr>
+					
                     
 				</table>
 			</div>
