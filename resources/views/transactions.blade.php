@@ -173,6 +173,7 @@ google.charts.load('current', {'packages':['corechart']});
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+        document.getElementById('curve_chart').style="height: 500px";
         chart.draw(data, options);
 
     };
