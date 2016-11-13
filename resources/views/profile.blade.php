@@ -33,7 +33,7 @@
 						<td>$20000.00</td>
 					</tr>
 					<tr>
-						<th><h5>Current balance:</h5></th>
+						<th><h5>Current Cash Balance:</h5></th>
 						<td>${{ number_format((float)$user->balance, 2, '.', '') }}</td>
 					</tr>
 					<tr>
@@ -49,11 +49,11 @@
 						}?>
 					</tr>
 					<tr>
-						<th><h5>Total share value:</h5></th>
+						<th><h5>Total Share Value:</h5></th>
 						<td>$<?php echo number_format((float)$shareValue, 2, '.', '') ?></td>
 					</tr>
                     <tr>
-						<th><h5>Average share value:</h5></th>
+						<th><h5>Average Share Value:</h5></th>
 						<td>$<?php echo number_format((float)$avgShareValue, 2, '.', '') ?></td>
 					</tr>
                     
