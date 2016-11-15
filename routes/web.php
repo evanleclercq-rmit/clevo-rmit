@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/transactions/buy', 'TransactionsController@buy');
     Route::post('/transactions/sell', 'TransactionsController@sell');
 	Route::any('/history', 'HistoryController@index');
+    Route::post('/edit-profile', 'editProfileController@index');
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
@@ -43,4 +44,8 @@ Route::get('/transTest', function () {
 });
 Route::get('/transComplete', function () {
     return view ('transactionSummary');
+});
+
+Route::get ('/editTest', function () {
+    return view ('editProfile');
 });
