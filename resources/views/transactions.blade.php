@@ -85,7 +85,8 @@ function processApiData(array)
     document.getElementById('companyNameSell').value = array.Name;
     document.getElementById('sharePriceSell').value = array.Ask;
     document.getElementById('companySell').innerHTML = "Company: " + array.Name;
-    document.getElementById('numberOfSharesSell').max = document.getElementById(array.symbol).max;
+        // seems to be preventing the API data and chart from loading
+    //document.getElementById('numberOfSharesSell').max = document.getElementById(array.symbol).max;
 }
 
 

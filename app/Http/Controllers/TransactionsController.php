@@ -74,10 +74,7 @@ class TransactionsController extends Controller
 
     public function sell (Request $request) {
         //TODO: Add transaction fees
-
-
         $user = Auth::User();
-
         $companySymbol = $request->input('companySymbolSell');
         $companyName = $request->input('companyNameSell');
         // echo ('Company:'.$company);
@@ -129,10 +126,9 @@ class TransactionsController extends Controller
     } 
  
    public function createHistory($info){
-
             $user = Auth::User();
-            $date = date('d-m-Y');
-           
+            $date = date('d/m/Y');
+            
            Transaction::create([
             'name' => $user->name,
             'number' => $info['numberShares'],
@@ -141,13 +137,6 @@ class TransactionsController extends Controller
             'date' => $date,
             'symbol' => $info['companySymbol'],
             'type' => $info['transaction'],
-
-
         ]);
-
-
-
     }
-
-
 }
