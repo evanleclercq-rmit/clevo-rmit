@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/master.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <!-- Font -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
     @yield('styles')
 
     <!-- Scripts -->
+
     <!-- chart-grid-left -->
     <script src="js/d3.min.js"></script>
     <script src="js/xcharts.min.js"></script>
