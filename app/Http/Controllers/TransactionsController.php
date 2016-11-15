@@ -92,10 +92,10 @@ class TransactionsController extends Controller
         // echo "<br><br>";
         // print_r($holdings);
 
-        if ($numberPurchased < $holdings[$companySymbol]) {
-            $holdings[$companySymbol] = $holdings[$companySymbol] - $numberPurchased;
+        if ($numberPurchased < $holdings[$companyName][1]) {
+            $holdings[$companyName][1] = $holdings[$companyName][1] - $numberPurchased;
         } else {
-            unset ($holdings[$companySymbol]);
+            unset ($holdings[$companyName]);
         }
 
         updateHoldings($user->id, $holdings);

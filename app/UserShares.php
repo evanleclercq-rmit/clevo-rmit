@@ -7,8 +7,7 @@ function calculateSharesValue($id)
 {
     $totalValue = 0;
     $currentHoldings = getHoldings($id);
-    print(count($currentHoldings));
-    print_r($currentHoldings);
+   
     if (count($currentHoldings) > 0)
         
     {
