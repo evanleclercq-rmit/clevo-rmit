@@ -268,7 +268,7 @@ $(document).ready(function(){
 											$currentHoldings = getHoldings(Auth::User()->id);
 											if (count($currentHoldings) > 0) {
 												foreach ($currentHoldings as $key=>$value) {
-													echo ('<option value="'.$key.'-'.$value.'">'.strtoupper($key).'    (' .$value. ' Currently Owned)</option>');
+													echo ('<option value="'.$value[0].'-'.$value[1].'">'.strtoupper($key).'    (' .$value[1]. ' Currently Owned)</option>');
 												}
 											} else {
 												echo ('<option value = "empty">No Current Shares Owned</option>');

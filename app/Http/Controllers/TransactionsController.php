@@ -37,12 +37,13 @@ class TransactionsController extends Controller
         $holdings = getHoldings($user->id);
         // print_r ($holdings);
 
-        if (isset ($holdings[$companySymbol])) {
+        if (isset ($holdings[$companyName])) {
             // echo $holdings[$company];
-            $holdings[$companySymbol] += $numberPurchased;
+            $holdings[$companyName][1] += $numberPurchased;
             // echo $holdings[$company];
         } else {
-            $holdings[$companySymbol] = $numberPurchased;
+            $holdings[$companyName][0] = $companySymbol;
+            $holdings[$companyName][1] = $numberPurchased;
         }
 
         // print_r($holdings);
