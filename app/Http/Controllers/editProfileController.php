@@ -13,27 +13,43 @@ class editProfileController extends Controller
 	}
 
 	public function changeName (Request $request) {
-		$name = $request->input('name');
-		updateDBField (Auth::User()->id, 'name', $name);
-		return redirect ('/profile');
+		if (isset($request->input('name')) && !isempty($request->input('name'))) {
+			$name = $request->input('name');
+			updateDBField (Auth::User()->id, 'name', $name);
+			return redirect()->route ('profile');
+		} else {
+			return redirect()->route ('profile');
+		}
 	}
 
 	public function changeEmail (Request $request) {
-		$email = $request->input('email');
-		updateDBField (Auth::User()->id, 'email', $email);
-		return redirect ('/profile');	
+		if (isset($request->input('email')) && !isempty ($request->input('email'))) {
+			$email = $request->input('email');
+			updateDBField (Auth::User()->id, 'email', $email);
+			return redirect()->route ('profile');
+		} else {
+			return redirect()->route ('profile');
+		}
 	}
 
 	public function changeCity (Request $request) {
-		$city = $request->input('city');
-		updateDBField (Auth::User()->id, 'city', $city);
-		return redirect ('/profile');		
+		if (isset($request->input('city')) && !isempty ($request->input('city'))) {
+			$city = $request->input('city');
+			updateDBField (Auth::User()->id, 'city', $city);
+			return redirect()->route ('profile');
+		} else {
+			return redirect()->route ('profile');
+		}
 	}
 
 	public function changeAge (Request $request) {
-		$age = $request->input('age');
-		updateDBField (Auth::User()->id, 'age', $age);
-		return redirect ('/profile');
+		if (isset ($request->input('age')) && !isempty ($request->input('age'))) {
+			$age = $request->input('age');
+			updateDBField (Auth::User()->id, 'age', $age);
+			return redirect()->route ('profile');
+		} else {
+			return redirect()-.route ('profile');
+		}
 	}
 
 	public function changePassword (Request $request) {
@@ -41,7 +57,7 @@ class editProfileController extends Controller
 
 
 
-		return redirect ('/profile');
+		return redirect()->route ('profile');
 	}
 
 }
