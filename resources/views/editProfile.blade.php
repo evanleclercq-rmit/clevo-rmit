@@ -8,7 +8,7 @@
                 <div class="contact-form wow fadeInUp animated">
                     <h3><b>Edit Your Profile</b></h3><br>
 
-                    <form class="form-horizontal" action="" method="post">
+                    <form class="form-horizontal" action="action('editProfileController@changeName')" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="name">Name:</label>
 					    <div class="col-sm-10">
@@ -24,7 +24,7 @@
 
 					<br>
 
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="action('editProfileController@changeEmail')" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="email">Email:</label>
 					    <div class="col-sm-10">
@@ -40,7 +40,7 @@
 
 					<br>
 
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="action('editProfileController@changeCity')" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="city">City:</label>
 					    <div class="col-sm-10">
@@ -56,7 +56,7 @@
 
 					<br>
 
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="action('editProfileController@changeAge')" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="age">Age:</label>
 					    <div class="col-sm-10">
@@ -73,7 +73,7 @@
 					<br>
 
 					<h3><b>Change Password:</b></h3>
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="action('editProfileController@changePassword')" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="currentPass">Current Password:</label>
 					    <div class="col-sm-10">
