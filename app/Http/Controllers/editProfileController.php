@@ -15,25 +15,33 @@ class editProfileController extends Controller
 	public function changeName (Request $request) {
 		$name = $request->input('name');
 		updateDBField (Auth::User()->id, 'name', $name);
+		return redirect ('/profile');
 	}
 
 	public function changeEmail (Request $request) {
 		$email = $request->input('email');
-		updateDBField (Auth::User()->id, 'email', $email);		
+		updateDBField (Auth::User()->id, 'email', $email);
+		return redirect ('/profile');	
 	}
 
 	public function changeCity (Request $request) {
 		$city = $request->input('city');
-		updateDBField (Auth::User()->id, 'city', $city);		
+		updateDBField (Auth::User()->id, 'city', $city);
+		return redirect ('/profile');		
 	}
 
 	public function changeAge (Request $request) {
 		$age = $request->input('age');
 		updateDBField (Auth::User()->id, 'age', $age);
+		return redirect ('/profile');
 	}
 
 	public function changePassword (Request $request) {
 		$newPass = $request->input('newPass');
+
+
+
+		return redirect ('/profile');
 	}
 
 }
