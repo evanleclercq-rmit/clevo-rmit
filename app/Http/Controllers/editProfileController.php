@@ -9,15 +9,16 @@ use Validator;
 require(app_path().'/DatabaseUtilities.php');
 
 class editProfileController extends Controller
-{
-
-	
+{	
 
 	public function index () {
 		return view('editProfile');
 	}
 
 	public function changeName (Request $request) {
+			$this->validate($request, [
+            'name' => 'required|max:255|regex:/^[a-zA-Z0-9].*$/',
+    ]);
 		if (!$request->input('name') == "") {
 			$name = $request->input('name');
 			updateDBField (Auth::User()->id, 'name', $name);
@@ -28,6 +29,9 @@ class editProfileController extends Controller
 	}
 
 	public function changeEmail (Request $request) {
+			$this->validate($request, [
+           'email' => 'required|email|max:255|unique:users',
+    ]);
 		if (!$request->input('email') == "") {
 			$email = $request->input('email');
 			updateDBField (Auth::User()->id, 'email', $email);
@@ -38,6 +42,9 @@ class editProfileController extends Controller
 	}
 
 	public function changeCity (Request $request) {
+			$this->validate($request, [
+            'city' => 'max:255|regex:/^[a-zA-Z0-9].*$/',
+    ]);
 		if (!$request->input('city') == "") {
 			$city = $request->input('city');
 			updateDBField (Auth::User()->id, 'city', $city);
@@ -48,6 +55,10 @@ class editProfileController extends Controller
 	}
 
 	public function changeAge (Request $request) {
+		$ageRules = array('numeric', 'max:100', 'regex:/^.*(?:[1-9]\d{2,}+|[2-9]\d|1[89]).*$/');
+		$this->validate($request, [
+            'age' => $ageRules, 
+    ]);
 		if (!$request->input('age') == "") {
 			$age = $request->input('age');
 			updateDBField (Auth::User()->id, 'age', $age);
@@ -58,6 +69,9 @@ class editProfileController extends Controller
 	}
 
 	public function changePassword (Request $request) {
+			$this->validate($request, [
+            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/|confirmed',
+    ]);
 		if ($request->input('newPass') != "" && $request->input('confirmPass') != "" && $request->input('currentPass') != "") {
 			$newPass = $request->input('newPass');
 			$confirmPass = $request->input('confirmPass');
@@ -85,19 +99,6 @@ class editProfileController extends Controller
 
 	}
 
-
-	protected function validator(array $data)
-    {
-        $ageRules = array('numeric', 'max:100', 'regex:/^.*(?:[1-9]\d{2,}+|[2-9]\d|1[89]).*$/');
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'city' => 'max:255',
-            'age' => $ageRules, 
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/|confirmed',
-        ]);
-
-    }
 
     public function alertResult ($msg) {
     	return ("<script>window.alert ('" . $msg . "')</script>");

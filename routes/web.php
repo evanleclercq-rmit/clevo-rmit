@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/transactions/buy', 'TransactionsController@buy');
     Route::post('/transactions/sell', 'TransactionsController@sell');
 	Route::any('/history', 'HistoryController@index');
-    Route::post('/edit-profile', 'editProfileController@index');
+    Route::any('/edit-profile', 'editProfileController@index');
     Route::post('/edit-profile/change-name', 'editProfileController@changeName');
     Route::post('/edit-profile/change-email', 'editProfileController@changeEmail');
     Route::post('/edit-profile/change-city', 'editProfileController@changeCity');
