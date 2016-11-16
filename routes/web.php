@@ -15,7 +15,7 @@ Route::get('/', function () {
 
 #Profile
 Auth::routes();
-Route::get('profile', 'UserController@profile');
+Route::get('/profile', 'UserController@profile')->name('profile');
 Route::get('/login', function () {
     return view ('login.blade.php');
 });
@@ -29,6 +29,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/transactions/buy', 'TransactionsController@buy');
     Route::post('/transactions/sell', 'TransactionsController@sell');
 	Route::any('/history', 'HistoryController@index');
+    Route::any('/edit-profile', 'editProfileController@index');
+    Route::post('/edit-profile/change-name', 'editProfileController@changeName');
+    Route::post('/edit-profile/change-email', 'editProfileController@changeEmail');
+    Route::post('/edit-profile/change-city', 'editProfileController@changeCity');
+    Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
+    Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
+	Route::any('/sitemap', 'SitemapController@index');
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
@@ -43,4 +50,8 @@ Route::get('/transTest', function () {
 });
 Route::get('/transComplete', function () {
     return view ('transactionSummary');
+});
+
+Route::get ('/editTest', function () {
+    return view ('editProfile');
 });

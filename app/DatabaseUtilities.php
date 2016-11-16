@@ -5,7 +5,9 @@
         $holdingscsv = '';
 
         foreach ($holdings as $key=>$value){
-            $holdingscsv = $holdingscsv . $key.','.$value.',';
+            $holdingscsv = $holdingscsv . $key.',';
+            foreach($value as $key2=>$value2)
+                $holdingscsv = $holdingscsv.$value2.',';
         }
 
         // echo ("csv=".$holdingscsv);
@@ -21,8 +23,13 @@
         $current = array();
         if ($user->holdings != null) {
             $currentarray = explode (',', (rtrim ($user->holdings, ",")));
-            for ($i = 0; $i < count($currentarray); $i = $i+2) {
-                $current[$currentarray[$i]] = $currentarray[$i+1];
+       
+            
+            for ($j = 0, $i = 0; $i < count($currentarray); $i = $i+3) {
+                $current[$currentarray[$i]][$j] = $currentarray[$i+1];
+                $current[$currentarray[$i]][$j+1] = $currentarray[$i+2];
+                
+                
             }
         }
         return $current;

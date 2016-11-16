@@ -104,7 +104,11 @@ function createChart(str) {
        		};
 
        		var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
+       		document.getElementById('removeWatch').disabled=false;
+       		document.getElementById('curve_chart').style="height: 500px";
        		chart.draw(data, options);
+
+
        	};
      document.getElementById('companySym').value = str;
      oReq.open("get", "{{ action('ChartController@index') }}"+"?q=" + str, true);
@@ -144,7 +148,7 @@ function createChart(str) {
 				<table style="width:100%">
 					<tr>
 						<th><h5>Initial Cash Balance:</h5></th>
-						<td>$20000</td>
+						<td>$20000.00</td>
 					</tr>
 					<tr> 
 						<th><h5>Current Cash Balance:</h5></th>
@@ -152,7 +156,7 @@ function createChart(str) {
 					</tr>
 					<tr>
 						<th><h5>Shares Value:</h5></th>
-						<td>$<?php echo $shareValue ?></td>
+						<td>$<?php echo number_format(($shareValue), 2, '.', '')  ?></td>
 					</tr>
 					<tr>
 						<th><h5>Total Holdings Value:</h5></th>
@@ -160,7 +164,15 @@ function createChart(str) {
 					</tr>
 					<tr>
 						<th><h5>Profit:</h5></th>
-						<td>$</td>
+						<?php 
+							$profit = Auth::user()->balance+$shareValue-20000;
+
+							if ($profit > 0){
+								echo "<td style='color:green'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
+							}
+							else {
+								echo "<td style='color:red'>$" . number_format((float)$profit, 2, '.', '') . "</td>";
+						}?>
 					</tr>
 				</table>
 
@@ -174,13 +186,11 @@ function createChart(str) {
 					<?php
 					$i = 0;
 					echo "<tr><td><b>#</td><td><b>Name</td><td><b>Total value</td></tr>";
-
 					foreach ($leaders as $leader)
 					{
 						$i++;
 						echo
-						"<tr>
-						<td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
+						"<tr><td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
 						if ($i > 9){ // limits the leaderboard to a total of 10 users
 							break;
 						}
@@ -193,7 +203,7 @@ function createChart(str) {
 
 	<div class="container"><!--//Second Container-->
 		<div class="col-md-12 content-left"><!--//Watch List-->
-			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
+			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s"  style="min-height: 50px">
 				<h3><b>Watch List</b></h3>
 				<form name="APIgraphForm" onsubmit="return false">
 					{{ Form::open() }}
@@ -201,12 +211,12 @@ function createChart(str) {
 					{{ Form::close() }}
 					{{ csrf_field() }}
 				</form>
-				<form name="buySharesForm" action="{{ action('WatchlistController@remove') }}" method="post">
-					<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Unwatch</button>
+				<form name="removeWatch" action="{{ action('WatchlistController@remove') }}" method="post">
+					<button class="removeWatch" id="removeWatch" type="submit" value="submit" disabled>Unwatch</button>
 					<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 					{{ csrf_field() }}
 				</form>
-				<div id="curve_chart"></div>
+				<div id="curve_chart" ></div>
 			</div>
 		</div><!--//Watch List-->
 	</div>

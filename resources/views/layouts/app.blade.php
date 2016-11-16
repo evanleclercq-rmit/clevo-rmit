@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/master.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <!-- Font -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -19,6 +20,7 @@
     @yield('styles')
 
     <!-- Scripts -->
+
     <!-- chart-grid-left -->
     <script src="js/d3.min.js"></script>
     <script src="js/xcharts.min.js"></script>
@@ -75,7 +77,7 @@
             <!--Navbar if not logged in-->        
             @if (Auth::guest())
             <ul class="toptitle">
-                <li><h1>CLEVO</h1></li>
+                <li><h1><a href="{{ url('/dashboard') }}">CLEVO</a></h1></li>
             </ul>
             <ul class="topnav">
                 <!--Left menu items-->
@@ -87,7 +89,7 @@
                 <!--Navbar if logged in-->
                 @else
                 <ul class="toptitle">
-                    <li><h1>CLEVO</h1></li>
+                    <li><h1><a href="{{ url('/dashboard') }}">CLEVO</a></h1></li>
                     <li class="right"><h4 class='welcome'>Welcome back {{ Auth::user()->name }}!</h4></li>
                 </ul>
                 <ul class="topnav">
@@ -116,7 +118,7 @@
                 <ul class="footernav">
                     <li><a href="#termsofuse">Terms of Use</a></li>
                     <li><a href="#privacy">Privacy</a></li>
-                    <li><a href="#sitemap">Sitemap</a></li>
+                    <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
                     <li><a href="#aboutus">About Us</a></li>
                 </ul>
                 <h5 class="footer">© 2016 Statistics UI Kit . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></h5>
