@@ -7,6 +7,7 @@
 		<div class="col-md-12 content-middle">
 			<div class="contact-form wow fadeInUp animated" data-wow-delay=".1s">
 				<h3><b>Personal details</b></h3>
+				
 				<table style="width:100%">
 					<tr>
 						<th><h5>Name:</h5></th>
@@ -25,7 +26,14 @@
 						<td>{{ $user->email }}</td>
 					</tr>
 					
-				</table><br>
+				</table>
+				
+				<form action = "{{url('/edit-profile')}}" method = "post">
+					<button type="submit" class = "btn btn-primary pull-right">Edit Profile</button>
+					{{ csrf_field() }}
+				</form>
+
+				<br>
                 <h3><b>Trading details</b></h3>
 				<table style="width:100%">
 					<tr>
