@@ -60,10 +60,15 @@
 					<br>
 
 					<form class="form-horizontal" action="{{action('editProfileController@changeAge')}}" method="post">
-					  <div class="form-group">
+					  <div class="form-group {{ $errors->has('age') ? ' has-error' : '' }}">
 					    <label class="control-label col-sm-2" for="age">Age:</label>
 					    <div class="col-sm-10">
 					      <input type="text" class="form-control" id="age" name="age" placeholder="Enter New Age" required>
+					      @if ($errors->has('age'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('age') }}</strong>
+                                </span>
+                            @endif
 					    </div>
 					  </div>
 					  <div class="form-group"> 
@@ -76,7 +81,7 @@
 
 					<br>
 
-					<!-- <h3><b>Change Password:</b></h3>
+					<h3><b>Change Password:</b></h3>
 					<form class="form-horizontal" action="{{action('editProfileController@changePassword')}}" method="post">
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="currentPass">Current Password:</label>
@@ -111,7 +116,7 @@
 					      <button type="submit" class="btn btn-primary pull-right">Change Password</button>
 					  </div>
 					  {{ csrf_field() }}
-					</form> -->
+					</form>
 
                 </div>
             </div>
