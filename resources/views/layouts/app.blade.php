@@ -77,7 +77,7 @@
             <!--Navbar if not logged in-->        
             @if (Auth::guest())
             <ul class="toptitle">
-                <li><h1>CLEVO</h1></li>
+                <li><h1><a href="{{ url('/dashboard') }}">CLEVO</a></h1></li>
             </ul>
             <ul class="topnav">
                 <!--Left menu items-->
@@ -89,7 +89,7 @@
                 <!--Navbar if logged in-->
                 @else
                 <ul class="toptitle">
-                    <li><h1>CLEVO</h1></li>
+                    <li><h1><a href="{{ url('/dashboard') }}">CLEVO</a></h1></li>
                     <li class="right"><h4 class='welcome'>Welcome back {{ Auth::user()->name }}!</h4></li>
                 </ul>
                 <ul class="topnav">
