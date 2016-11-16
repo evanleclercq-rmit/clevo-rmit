@@ -32,22 +32,22 @@ if(isset($_POST['totalCostOfSharesBuy']))
 	$user->decrement('balance',$_POST['totalCostOfSharesBuy']);
 }
 ?>
-
+    
 function resetDropDown()
     {
-
+        
         document.getElementById("companyDropDown").selectedIndex=0;
     }
-
+    
 function resetSymbolSearch()
     {
-
+        
         var x =document.getElementById("symbolSearch");
-
+        
         x.value = "";
-
+        
     }
-
+    
 
 var symbolSearch = document.getElementById("symbolSearchField").value;
 
@@ -76,19 +76,16 @@ function processApiData(array)
     document.getElementById('companyNm').value = array.Name;
 
     //Set Limits for buying shares based on the users current balance
-    var maxPurchaseable = ((<?php echo Auth::User()->balance; ?>) - 100) / array.Ask;
-    document.getElementById('maxAmount').innerHTML = "Maximum with current funds: " + Math.floor(maxPurchaseable);
-    document.getElementById('numberOfSharesBuy').max = Math.floor(maxPurchaseable);
+    var maxPurchaseable = (<?php echo Auth::User()->balance; ?>) / array.Ask;
+    document.getElementById('maxAmount').innerHTML = "Maximum with current funds: " + maxPurchaseable.toFixed(3);
+    document.getElementById('numberOfSharesBuy').max = maxPurchaseable;
 
     //Set Limis for selling shares based on number currently owned
     document.getElementById('companySymbolSell').value = array.symbol;
     document.getElementById('companyNameSell').value = array.Name;
     document.getElementById('sharePriceSell').value = array.Ask;
     document.getElementById('companySell').innerHTML = "Company: " + array.Name;
-        // seems to be preventing the API data and chart from loading
-    //document.getElementById('numberOfSharesSell').max = document.getElementById(array.symbol).max;
 }
-
 
 
 function ajaxSearch(str)
@@ -224,7 +221,7 @@ $(document).ready(function(){
 						<div id="left">
 							<form  name="APIsearchForm" onsubmit="return false";>
 								{{ Form::open() }}
-								{{ Form::select('symbol', $companies, null, ['placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value);resetSymbolSearch();','id' =>'companyDropDown']) }}
+								{{ Form::select('symbol', $companies, null, ['placeholder' => 'Select a company...', 'onchange' => 'ajaxSearch(this.value);resetSymbolSearch();','id' =>'companyDropDown']) }}				
 								{{ Form::close() }}
 								{{ csrf_field() }}
 							</form>
@@ -271,7 +268,7 @@ $(document).ready(function(){
 											$currentHoldings = getHoldings(Auth::User()->id);
 											if (count($currentHoldings) > 0) {
 												foreach ($currentHoldings as $key=>$value) {
-													echo ('<option max="' . $value . '" value="'.$key.'-'.$value.'">'.strtoupper($key).'    (' .$value. ' Currently Owned)</option>');
+													echo ('<option value="'.$value[0].'-'.$value[1].'">'.strtoupper($key).'    (' .$value[1]. ' Currently Owned)</option>');
 												}
 											} else {
 												echo ('<option value = "empty">No Current Shares Owned</option>');
@@ -282,8 +279,8 @@ $(document).ready(function(){
 									{{ csrf_field() }}
 								</form>
 								<br>
-
-
+								
+								
 							</div>
 
 							<div id="right">
