@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit-profile/change-city', 'editProfileController@changeCity');
     Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
     Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
+	Route::any('/sitemap', 'SitemapController@index');
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
