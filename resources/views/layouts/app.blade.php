@@ -88,6 +88,7 @@
 
                 <!--Navbar if logged in-->
                 @else
+
                 <ul class="toptitle">
                     <li><h1><a href="{{ url('/dashboard') }}">CLEVO</a></h1></li>
                     <li class="right"><h4 class='welcome'>Welcome back {{ Auth::user()->name }}!</h4></li>
@@ -104,6 +105,9 @@
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
+                        @if (Auth::user()->admin==true)
+                        <li class="right"><a href="{{ url('/admin') }}">Admin Settings</a></li>
+                        @endif
                          <li class="right"><a href="{{ url('/profile') }}">Profile</a></li>
                         @endif
                     </ul>   

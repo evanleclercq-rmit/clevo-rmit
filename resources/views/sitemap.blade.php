@@ -16,7 +16,7 @@
 					<li><a href="{{ url('/profile') }}">Profile</a></li>
 					<li><a href="#termsofuse">Terms of Use</a></li>
                     <li><a href="#privacy">Privacy</a></li>
-                    <li><a href="#sitemap">Sitemap</a></li>
+                    <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
                     <li><a href="#aboutus">About Us</a></li>
 				</ul>
 			</div>
