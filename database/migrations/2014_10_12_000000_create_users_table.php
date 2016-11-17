@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
 			$table->integer('balance')->default(20000);
 			$table->string('location')->nullable();
             $table->string('password');
+            $table->boolean('admin')->default(true);
             $table->string('holdings')->nullable();
             $table->string('watchlist')->nullable();
             $table->rememberToken();

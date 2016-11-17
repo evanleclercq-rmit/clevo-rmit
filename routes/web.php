@@ -20,6 +20,7 @@ Route::get('/login', function () {
     return view ('login.blade.php');
 });
 
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
@@ -36,6 +37,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
     Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
 	Route::any('/sitemap', 'SitemapController@index');
+    Route::get('/admin', function () {
+    if (Auth::user()->admin==true){
+        return view ('/admin');
+    }
+        else {
+           return redirect()->route('profile');
+    }
+
+});
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
@@ -55,3 +65,4 @@ Route::get('/transComplete', function () {
 Route::get ('/editTest', function () {
     return view ('editProfile');
 });
+
