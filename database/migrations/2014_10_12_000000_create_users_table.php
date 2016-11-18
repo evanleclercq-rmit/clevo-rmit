@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
 			$table->integer('balance')->default(20000);
             $table->string('password');
-            $table->boolean('admin')->default(true);
+            $table->boolean('admin')->default(false);
             $table->string('holdings')->nullable();
             $table->string('watchlist')->nullable();
             $table->rememberToken();
