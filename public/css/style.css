@@ -2511,8 +2511,12 @@ div#right {
     width: 330px;
 }
 
+.UserList { /* ASX drop down menu on dashboard*/
+    width: 200px;
+}
+
 .contact-form {
-    min-height: 400px;
+    min-height: 410px;
 }
 
 #curve_chart {
@@ -2520,4 +2524,10 @@ div#right {
 
 tr:nth-child(odd) {
     background-color: #F5F5F5;
+}
+
+.noBorder {
+    border:none !important;
+    background-color: #FFF;
+
 }
