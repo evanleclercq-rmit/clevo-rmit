@@ -26,7 +26,7 @@ function getID(id)
 
 				<h3><b>Admin Settings</b></h3><br>
 				{{ Form::open() }}
-				{{ Form::select('users', $users, null, array('placeholder' => 'Select a user...','onchange' => 'getID(this.value)', 'class' => 'UserList')) }}
+				{{ Form::select('users', $users, null, array('placeholder' => 'Select a user...', 'onchange' => 'getID(this.value)', 'class' => 'UserList')) }}
 				{{ Form::close() }}
 				{{ csrf_field() }}
 				
@@ -42,13 +42,13 @@ function getID(id)
 					{{ csrf_field() }}
 				</form>
 		
-				<form name="resetUser" action="{{ action('SettingsController@resetUser') }}"  method="post">
+				<form name="resetUser" action="{{ action('SettingsController@resetUser') }}"  method="post" onsubmit="return confirm('This will reset the balance, holdings and watchlist for this user. Are you sure?')">
 					<button style="width:200px" class="btn btn-primary" id="resetButton" type="submit" value="submit" disabled>Reset Account</button>
 					<input name="restID" type="hidden" id="restID" placeholder="restID" value="">
 					{{ csrf_field() }}
 				</form>
 				
-				<form name="deleteUser" action="{{ action('SettingsController@deleteUser') }}" method="post">
+				<form name="deleteUser" action="{{ action('SettingsController@deleteUser') }}" method="post" onsubmit="return confirm('Are you sure you want to delete this user?')">
 					<button style="width:200px" class="btn btn-primary" id="deleteButton" type="submit" value="submit" disabled>Delete Account</button>
 					<input name="deleteID" type="hidden" id="deleteID" placeholder="deleteID" value="">
 					{{ csrf_field() }}
