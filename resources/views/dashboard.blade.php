@@ -186,12 +186,18 @@ function createChart(str) {
 				<table style="width:100%">
 					<?php
 					$i = 0;
-					echo "<tr><td><b>#</td><td><b>Name</td><td><b>Total value</td></tr>";
+					//echo "<tr><td><b>#</td><td><b>Name</td><td><b>Total value</td></tr>";
 					foreach ($leaders as $leader)
 					{
 						$i++;
-						echo
-						"<tr><td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
+						
+						if ($leader[0]==Auth::user()->name) {
+						echo "<tr><td><b>" .$i. ". </td><td><b>".$leader[0]."</td><td><b>$".round($leader[1])."</td></tr><b>";
+						}
+						else {
+						echo "<tr><td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
+						}
+
 						if ($i > 9){ // limits the leaderboard to a total of 10 users
 							break;
 						}

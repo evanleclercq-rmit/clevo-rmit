@@ -13,7 +13,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-        $user = ['name' => 'admin','email' => 'admin@clevo.com','password' => bcrypt('Pass1234!'), 'admin' => true, 'balance' => '10000'];
+        $user = ['name' => 'admin','email' => 'admin@clevo.com','password' => bcrypt('Pass1234!'), 'admin' => true, 'balance' => '1'];
         DB::table('users')->insert($user);
     }
 }
