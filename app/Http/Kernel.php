@@ -3,7 +3,8 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Response;
 class Kernel extends HttpKernel
 {
     /**
@@ -53,4 +54,24 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
+        public function handle($request)
+    {
+        try
+        {
+            return parent::handle($request);
+        }
+
+        catch (NotFoundHttpException $e)
+        {
+            return Response::view('404', [], 404);
+        }
+
+        catch (Exception $e)
+        {
+            throw $e;
+        }
+    }
 }
+
+
