@@ -23,7 +23,7 @@ class SettingsController extends Controller
     }
 
     public function deleteUser (Request $request) {
-       	$id = $request->input('userID');
+       	$id = $request->input('deleteID');
  		$user = \App\User::find($id);    
 		$user->delete();
 		return redirect()->route('settings');
