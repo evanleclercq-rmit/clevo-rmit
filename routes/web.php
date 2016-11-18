@@ -37,17 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
   Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
 	Route::any('/sitemap', 'SitemapController@index');
-<<<<<<< HEAD
 	Route::any('/privacy', 'PrivacyController@index');
 	Route::any('/termsofuse', 'TermsOfUseController@index');
-    Route::get('/admin', function () {
-    if (Auth::user()->admin==true){
-        return view ('/admin');
-    }
-        else {
-           return redirect()->route('profile');
-    }
-=======
   Route::any('/settings', 'SettingsController@index')->name('settings');
   Route::any('/settings/delete-current', 'SettingsController@deleteCurrentUser');
   Route::any('/settings/clear-watch', 'SettingsController@clearWatchlist');
@@ -55,9 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::any('/settings/admin/reset', 'SettingsController@resetUser');
   Route::any('/settings/admin/add-admin', 'SettingsController@addAdmin');
   Route::any('/settings/admin/remove-admin', 'SettingsController@removeAdmin');
-
->>>>>>> 455e381a87d2f1b48b12f6fdbbef981249780dfb
-
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');
