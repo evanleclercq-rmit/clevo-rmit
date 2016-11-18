@@ -27,16 +27,17 @@ Route::group(['middleware' => 'auth'], function () {
     // All routes that need a logged in user
 	Route::any('/dashboard', 'DashboardController@index');
 	Route::any('/transactions', 'TransactionsController@index');
-    Route::post('/transactions/buy', 'TransactionsController@buy');
-    Route::post('/transactions/sell', 'TransactionsController@sell');
+  Route::post('/transactions/buy', 'TransactionsController@buy');
+  Route::post('/transactions/sell', 'TransactionsController@sell');
 	Route::any('/history', 'HistoryController@index');
-    Route::any('/edit-profile', 'editProfileController@index');
-    Route::post('/edit-profile/change-name', 'editProfileController@changeName');
-    Route::post('/edit-profile/change-email', 'editProfileController@changeEmail');
-    Route::post('/edit-profile/change-city', 'editProfileController@changeCity');
-    Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
-    Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
+  Route::any('/edit-profile', 'editProfileController@index');
+  Route::post('/edit-profile/change-name', 'editProfileController@changeName');
+  Route::post('/edit-profile/change-email', 'editProfileController@changeEmail');
+  Route::post('/edit-profile/change-city', 'editProfileController@changeCity');
+  Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
+  Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
 	Route::any('/sitemap', 'SitemapController@index');
+<<<<<<< HEAD
 	Route::any('/privacy', 'PrivacyController@index');
 	Route::any('/termsofuse', 'TermsOfUseController@index');
     Route::get('/admin', function () {
@@ -46,8 +47,17 @@ Route::group(['middleware' => 'auth'], function () {
         else {
            return redirect()->route('profile');
     }
+=======
+  Route::any('/settings', 'SettingsController@index')->name('settings');
+  Route::any('/settings/delete-current', 'SettingsController@deleteCurrentUser');
+  Route::any('/settings/clear-watch', 'SettingsController@clearWatchlist');
+  Route::any('/settings/admin/delete', 'SettingsController@deleteUser');
+  Route::any('/settings/admin/reset', 'SettingsController@resetUser');
+  Route::any('/settings/admin/add-admin', 'SettingsController@addAdmin');
+  Route::any('/settings/admin/remove-admin', 'SettingsController@removeAdmin');
 
-});
+>>>>>>> 455e381a87d2f1b48b12f6fdbbef981249780dfb
+
 });
 
 Route::get('/apiRequest', 'ApiRequestController@index');

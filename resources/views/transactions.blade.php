@@ -228,8 +228,8 @@ $(document).ready(function(){
 							<br>
 							<p>Or search by company symbol</p><br>
 							<form  name="APIsearchForm" onsubmit="return false">
-								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 250px" >
-								<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);resetDropDown();" value="submit" id="symbolSearchField">Search</button>
+								<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 200px" >
+								<button class="btn btn-primary"  type="submit" onclick="ajaxSearch(symbolSearch.value);resetDropDown();" value="submit" id="symbolSearchField">Search</button>
 
 								{{ csrf_field() }}
 							</form>
@@ -247,7 +247,7 @@ $(document).ready(function(){
 									<input name="companyName" type="hidden" id="companyName" placeholder="name" value="">
 									<p id = "buyTransactionFee"><i>Transaction Fees: $50 plus 1% of Purchase Price</i></p>
 									<br>
-									<button class="submitButt" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
+									<button class="btn btn-primary" id="buySharesButton" type="submit" value="submit" disabled>Buy Shares</button>
 									<br><br>
 									{{ csrf_field() }}
 								</form>
@@ -295,7 +295,7 @@ $(document).ready(function(){
 										<input name="companySymbolSell" type="hidden" id="companySymbolSell" placeholder="symbol" value="">
 										<input name="companyNameSell" type="hidden" id="companyNameSell" placeholder="name" value="">
 										<br>
-										<button class="submitButt" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
+										<button class="btn btn-primary" id="sellSharesButton" type="submit" value="submit" disabled>Sell Shares</button>
 									<br><br>
 									{{ csrf_field() }}
 								</form>
@@ -308,7 +308,7 @@ $(document).ready(function(){
 							<p> <span id="companyData"></span></p>
 							<h3><span id="chart_title"></span></h3>
 								<form  name="buySharesForm" action="{{action('WatchlistController@add')}}" method="post">
-									<button class="submitButt" id="buySharesButton" type="submit" value="submit" >Add to Watchlist</button>
+									<button class="btn btn-primary" id="buySharesButton" type="submit" value="submit" >Add to Watchlist</button>
 									<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 									<input name="companyNm" type="hidden" id="companyNm" placeholder="name" value="">
 

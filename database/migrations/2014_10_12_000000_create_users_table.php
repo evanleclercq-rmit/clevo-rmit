@@ -19,9 +19,7 @@ class CreateUsersTable extends Migration
 			$table->string('city')->nullable();
 			$table->integer('age')->nullable();
             $table->string('email')->unique();
-			$table->text('bio')->nullable();
 			$table->integer('balance')->default(20000);
-			$table->string('location')->nullable();
             $table->string('password');
             $table->boolean('admin')->default(true);
             $table->string('holdings')->nullable();
