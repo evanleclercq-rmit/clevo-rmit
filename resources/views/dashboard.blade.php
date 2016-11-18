@@ -105,6 +105,7 @@ function createChart(str) {
 
        		var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
        		document.getElementById('removeWatch').disabled=false;
+       		document.getElementById('removeWatch').style="display: ";
        		document.getElementById('curve_chart').style="height: 500px";
        		chart.draw(data, options);
 
@@ -131,8 +132,8 @@ function createChart(str) {
 				<br>
 				<p>Or search by company symbol</p>
 				<form  name="APIsearchForm" onsubmit="return false">
-					<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 260px" >
-					<button class="submitButt" type="submit" onclick="ajaxSearch(symbolSearch.value);resetDropDown();" value="submit" id="symbolSearchField">Search</button>
+					<input name="symbol" id="symbolSearch" placeholder="eg. ASX.AX" type="text" style="width: 200px" >
+					<button class="btn btn-primary pull-right" type="submit" onclick="ajaxSearch(symbolSearch.value);resetDropDown();" value="submit" id="symbolSearchField">Search</button>
 					{{ csrf_field() }}
 				</form>
 
@@ -212,7 +213,7 @@ function createChart(str) {
 					{{ csrf_field() }}
 				</form>
 				<form name="removeWatch" action="{{ action('WatchlistController@remove') }}" method="post">
-					<button class="removeWatch" id="removeWatch" type="submit" value="submit" disabled>Unwatch</button>
+					<button style="display: none;" class="btn btn-primary" id="removeWatch" type="submit" value="submit" disabled>Unwatch</button>
 					<input name="companySym" type="hidden" id="companySym" placeholder="symbol" value="">
 					{{ csrf_field() }}
 				</form>
