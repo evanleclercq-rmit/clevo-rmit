@@ -120,8 +120,8 @@
             <!--footer-->
             <div id="footer">
                 <ul class="footernav">
-                    <li><a href="#termsofuse">Terms of Use</a></li>
-                    <li><a href="#privacy">Privacy</a></li>
+                    <li><a href="{{ url('/termsofuse') }}">Terms of Use</a></li>
+                    <li><a href="{{ url('/privacy') }}">Privacy</a></li>
                     <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
                     <li><a href="#aboutus">About Us</a></li>
                 </ul>

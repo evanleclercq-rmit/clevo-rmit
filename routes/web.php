@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit-profile/change-age', 'editProfileController@changeAge');
     Route::post('/edit-profile/change-password', 'editProfileController@changePassword');
 	Route::any('/sitemap', 'SitemapController@index');
+	Route::any('/privacy', 'PrivacyController@index');
+	Route::any('/termsofuse', 'TermsOfUseController@index');
     Route::get('/admin', function () {
     if (Auth::user()->admin==true){
         return view ('/admin');
