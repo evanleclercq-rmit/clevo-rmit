@@ -192,7 +192,7 @@ function createChart(str) {
 						$i++;
 						
 						if ($leader[0]==Auth::user()->name) {
-						echo "<tr><td><b>" .$i. ". </td><td><b>".$leader[0]."</td><td><b>$".round($leader[1])."</td></tr><b>";
+						echo "<tr><td><b>" .$i. ". </b></td><td><b>".$leader[0]."</b></td><td><b>$".round($leader[1])."</b></td></tr>";
 						}
 						else {
 						echo "<tr><td>" .$i. ". </td><td>".$leader[0]."</td><td>$".round($leader[1])."</td></tr>";
