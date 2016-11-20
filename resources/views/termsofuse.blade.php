@@ -27,6 +27,9 @@
 				<h3>Intellectual property</h3>
 				<p>The materials displayed on this website, including without limitation all editorial materials, information, photographs, illustrations, artwork and other graphic materials, and names, logos and trade marks, are the property of CLEVO and are protected by copyright, trade mark and other intellectual property laws. Any such content may be displayed and printed solely for your personal, non-commercial use within your organisation provided that any copyright notice on such a display or page is not removed. You agree not to reproduce, retransmit, distribute, disseminate, sell, publish, broadcast or circulate any such material to any third party without the express prior written consent of CLEVO.
 				Save for the above, and unless expressly granted, CLEVO does not grant any licence or right in, or assign all or part of, its intellectual property rights in the content or applications incorporated into the CLEVO website or in the user interface of the CLEVO website.</p><br>
+				
+				<h3>No real curreny is being traded anywhere within this website.</h3>
+				
 				<p><i>CLEVO Team</i></p>
 			</div>
 		</div>

@@ -121,7 +121,7 @@
                     <li><a href="{{ url('/termsofuse') }}">Terms of Use</a></li>
                     <li><a href="{{ url('/privacy') }}">Privacy</a></li>
                     <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
-                    <li><a href="#aboutus">About Us</a></li>
+                    <li><a href="{{ url('/aboutus') }}">About Us</a></li>
                 </ul>
                 <h5 class="footer">© 2016 Statistics UI Kit . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></h5>
                 <h5 class="footer">Disclaimer: This Site has been made for educational purposes by students of RMIT University towards
