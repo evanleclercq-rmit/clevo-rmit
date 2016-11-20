@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::any('/privacy', 'PrivacyController@index');
 	Route::any('/termsofuse', 'TermsOfUseController@index');
 	Route::any('/aboutus', 'AboutUsController@index');
+	Route::any('/gettingstarted', 'GettingStartedController@index');
 	Route::any('/settings', 'SettingsController@index')->name('settings');
 	Route::any('/settings/delete-current', 'SettingsController@deleteCurrentUser');
 	Route::any('/settings/clear-watch', 'SettingsController@clearWatchlist');

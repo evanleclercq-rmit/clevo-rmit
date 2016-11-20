@@ -81,7 +81,7 @@
             </ul>
             <ul class="topnav">
                 <!--Left menu items-->
-                <li><a href="#gettingstarted">Getting Started</a></li>
+                <li><a href="{{ url('/gettingstarted') }}">Getting Started</a></li>
                 <!--Right menu items-->
                 <li class="right"><a href="{{ url('/login') }}">Login</a></li>
                 <li class="right"><a href="{{ url('/register') }}">Register</a></li>
