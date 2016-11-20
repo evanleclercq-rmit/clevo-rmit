@@ -5,33 +5,7 @@
 <script type="text/javascript">
 
 
-<?php
-$company = "";
-$price = 1;
-$currency = "";
-$change = "";
-$changeFromYearHigh = "";
-$graph = "";
-$symbol = "";
 
-//Commented out as does not look like is performing any function
-//TODO: Test to make sure this did not break anything
-// if(isset($_POST)&&!empty($_POST))
-// {
-// 	$stockSymbol = $_POST['symbol'];
-// 	$stockData = search_stock($stockSymbol);
-// 	$company = $stockData['name'];
-// 	$price = $stockData['price'];
-// 	$currency = $stockData['currency'];
-// 	$change = $stockData['change'];
-// }
-
-if(isset($_POST['totalCostOfSharesBuy']))
-{
-	$user = Auth::user();
-	$user->decrement('balance',$_POST['totalCostOfSharesBuy']);
-}
-?>
     
 function resetDropDown()
     {
@@ -65,8 +39,6 @@ function processApiData(array)
     document.getElementById("companyData").innerHTML = newContent;
     document.getElementById('numberOfSharesBuy').disabled=false;
     document.getElementById('numberOfSharesSell').disabled=false;
-    document.getElementById('buySharesButton').disabled=false;
-    document.getElementById('sellSharesButton').disabled=false;
     document.getElementById('sharePrice').value = array.Ask;
     document.getElementById('companyName').value = array.Name;
     document.getElementById('companySymbol').value = array.symbol;
@@ -77,7 +49,7 @@ function processApiData(array)
 
     //Set Limits for buying shares based on the users current balance
     var maxPurchaseable = (<?php echo Auth::User()->balance; ?>) / array.Ask;
-    document.getElementById('maxAmount').innerHTML = "Maximum with current funds: " + maxPurchaseable.toFixed(3);
+    document.getElementById('maxAmount').innerHTML = "Maximum with current funds: " + maxPurchaseable.toFixed(0);
     document.getElementById('numberOfSharesBuy').max = maxPurchaseable;
 
     //Set Limis for selling shares based on number currently owned
@@ -112,13 +84,13 @@ function ajaxSearch(str)
 function calculateTotalShareCostBuy(numShares)
 {
 	document.getElementById("totalCostOfSharesBuy").value=parseFloat(numShares.value*document.getElementById("sharePrice").value).toFixed(2);
+	document.getElementById('buySharesButton').disabled=false;
 }
 
 function calculateTotalShareCostSell(numShares)
 {
-
-
 	document.getElementById("totalCostOfSharesSell").value=parseFloat(numShares.value*document.getElementById("sharePrice").value).toFixed(2);
+	document.getElementById('sellSharesButton').disabled=false;
 }
 
 
@@ -238,11 +210,11 @@ $(document).ready(function(){
 						<div id="right">
 							<form  name="buySharesForm" action="{{action('TransactionsController@buy')}}" method="post">
 								<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
-								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="<?php echo $price ?>" >
+								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="" >
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" max = ""step="1"
-									onchange="calculateTotalShareCostBuy(this)" disabled>
+									onchange="calculateTotalShareCostBuy(this)">
 									<p id='maxAmount' style="color:red; font-size: 11px;"></p>
-									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly> <?php echo $currency ?></p>
+									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly></p>
 									<input name="companySymbol" type="hidden" id="companySymbol" placeholder="symbol" value="">
 									<input name="companyName" type="hidden" id="companyName" placeholder="name" value="">
 									<p id = "buyTransactionFee"><i>Transaction Fees: $50 plus 1% of Purchase Price</i></p>
