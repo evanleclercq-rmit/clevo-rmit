@@ -81,7 +81,7 @@
             </ul>
             <ul class="topnav">
                 <!--Left menu items-->
-                <li><a href="{{ url('/gettingstarted') }}">Getting Started</a></li>
+                <!--<li><a href="{{ url('/gettingstarted') }}">Getting Started</a></li>--?
                 <!--Right menu items-->
                 <li class="right"><a href="{{ url('/login') }}">Login</a></li>
                 <li class="right"><a href="{{ url('/register') }}">Register</a></li>
@@ -105,6 +105,7 @@
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
+						
                         <li class="right"><a href="{{ url('/settings') }}">Settings</a></li>
                          <li class="right"><a href="{{ url('/profile') }}">Profile</a></li>
                         @endif
@@ -118,6 +119,7 @@
             <!--footer-->
             <div id="footer">
                 <ul class="footernav">
+					<li><a href="{{ url('/gettingstarted') }}">Getting Started</a></li>
                     <li><a href="{{ url('/termsofuse') }}">Terms of Use</a></li>
                     <li><a href="{{ url('/privacy') }}">Privacy</a></li>
                     <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>
