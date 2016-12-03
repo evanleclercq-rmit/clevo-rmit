@@ -27,6 +27,7 @@ var symbolSearch = document.getElementById("symbolSearchField").value;
 
 function processApiData(array)
 {
+
     var row1col1 = "<h3><b>Stock Information for " +array.Name+"</b></h3>";
     var row3col1 = '<table style="width:100%"><tr><th><h5>Symbol:</h5></th><td>'+array.Symbol+ '</td>';
     var row3col2 = '<th><h5>Currency:</h5></th><td>'+array.Currency+'</td></tr>';
@@ -71,9 +72,15 @@ function ajaxSearch(str)
 		if (this.readyState == 4)
 		{
             var json = JSON.parse(this.responseText);
-            processApiData(json);
-            createChart(str);
-            document.getElementById('stockBox').style.display = 'block';
+            if (json.Ask != null){
+				processApiData(json);
+	            createChart(str);
+	            document.getElementById('stockBox').style.display = 'block';
+            }
+            else {
+            	alert("Company not found!");
+            }
+            
 		}
 	};
 	xmlhttp.open("GET", "{{ action('ApiRequestController@index') }}"+"?q=" + str, true);
