@@ -131,6 +131,9 @@ google.charts.load('current', {'packages':['corechart']});
 
      for(var i = 1; i < 8 ; i++) {
        	date = json[i].date.slice(5,10);
+       	var [month, day] = date.split('-');
+       	day = day.concat('-');
+       	date = day.concat(month);
         high = parseFloat(json[i].high)
         low = parseFloat(json[i].low);
         rows.push([date, high, low]);
