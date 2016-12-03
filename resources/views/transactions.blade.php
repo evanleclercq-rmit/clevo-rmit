@@ -1,10 +1,18 @@
+<!--
+
+Blade for the transactions page
+www.clevo-rmit.space/public/transactions
+
+Contains interface for company data lookup, buying and selling,
+price charts and adding to watchlist.
+
+-->
+
 @extends('layouts.app')
 
 @section('content')
 
 <script type="text/javascript">
-
-
 
     
 function resetDropDown()
@@ -22,12 +30,12 @@ function resetSymbolSearch()
         
     }
     
-
 var symbolSearch = document.getElementById("symbolSearchField").value;
 
+
+// Displays company data to corresponding html elements. Called from AJAX API function
 function processApiData(array)
 {
-
     var row1col1 = "<h3><b>Stock Information for " +array.Name+"</b></h3>";
     var row3col1 = '<table style="width:100%"><tr><th><h5>Symbol:</h5></th><td>'+array.Symbol+ '</td>';
     var row3col2 = '<th><h5>Currency:</h5></th><td>'+array.Currency+'</td></tr>';
@@ -60,7 +68,7 @@ function processApiData(array)
     document.getElementById('companySell').innerHTML = "Company: " + array.Name;
 }
 
-
+// Makes the API request 
 function ajaxSearch(str)
 {
 	var [str, number] = str.split('-');
@@ -72,7 +80,7 @@ function ajaxSearch(str)
 		if (this.readyState == 4)
 		{
             var json = JSON.parse(this.responseText);
-            if (json.Ask != null){
+            if (json.Ask != null && str.slice(-2).toUpperCase()=='AX'){
 				processApiData(json);
 	            createChart(str);
 	            document.getElementById('stockBox').style.display = 'block';
@@ -101,7 +109,7 @@ function calculateTotalShareCostSell(numShares)
 }
 
 
-// Script to generate chart
+// Generates price chart. Called from AjaxSearch()
 function createChart(str) {
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
@@ -141,12 +149,14 @@ google.charts.load('current', {'packages':['corechart']});
           curveType: 'function',
             hAxis: {textStyle: {
 			    fontSize: 12
-  			}},
+  			}, title: "Date",
+  		      direction: '-1'},
   			vAxis: {textStyle: {
 			    fontSize: 12
-  			}},
+  			}, format: '$#.###', title: "Price",
+},
           legend: { position: 'bottom'},
-          chartArea: {'left': '5%', 'right': '2%',  'width': '100%', 'height': '80%'},
+          chartArea: {'left': '10%', 'right': '2%',  'width': '100%', 'height': '80%'},
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
@@ -158,29 +168,23 @@ google.charts.load('current', {'packages':['corechart']});
     oReq.send();
       }
     }
-
 </script>
 
 
-<!--Script to show/hide DIV depending on box checked-->
+<!--Shows/hides buy/sell div depending on box checked-->
 <script type="text/javascript">
 $(document).ready(function(){
 	$('input[type="radio"]').click(function(){
 		if($(this).attr("value")=="buy"){
 			$(".box").not(".buy").hide();
 			$(".buy").show();
-			//$(".stock").show();
-
 		}
 		if($(this).attr("value")=="sell"){
 			$(".box").not(".sell").hide();
 			$(".sell").show();
-			//$(".stock").show();
 		}
 	});
 });
-
-
 </script>
 
 <div id="body">
@@ -216,10 +220,10 @@ $(document).ready(function(){
 
 						<div id="right">
 							<form  name="buySharesForm" action="{{action('TransactionsController@buy')}}" method="post">
-								<input name="searchText" type="hidden" type="text" value="<?php echo isset($_POST['symbol']) ? $_POST['symbol'] : '' ?>">
+								<input name="searchText" type="hidden" type="text" value="">
 								<p>Shares to Buy :<input name="sharePrice" type="hidden" id="sharePrice" value="" >
 									<input name="numberOfSharesBuy" id="numberOfSharesBuy" style="width: 4.5em" placeholder="#" type="number" min="1" max = ""step="1"
-									onchange="calculateTotalShareCostBuy(this)">
+									onchange="calculateTotalShareCostBuy(this)" disabled>
 									<p id='maxAmount' style="color:red; font-size: 11px;"></p>
 									<p>Total Value: $<input name="totalCostOfSharesBuy" style="width: 6em; border: 0"  id="totalCostOfSharesBuy" value="" readonly></p>
 									<input name="companySymbol" type="hidden" id="companySymbol" placeholder="symbol" value="">
@@ -283,6 +287,7 @@ $(document).ready(function(){
 							</section>
 						</div><!--Sell box-->
 
+						<!--Contains stock information table and chart-->
 						<div class="stock box" id="stockBox" style="display:none">
 							<p> <span id="companyData"></span></p>
 							<h3><span id="chart_title"></span></h3>
@@ -298,28 +303,5 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div> <!--body-->
-
-			<?php
-			if(isset($_POST['symbol']))
-			{
-				echo "<script type=\"text/javascript\"> document.getElementById('numberOfSharesBuy').disabled=false;
-				document.getElementById('buySharesButton').disabled=false;</script>";
-
-			}
-			else
-			{
-				echo "";
-			}
-			if(isset($_POST['symbol']))
-			{
-				echo "<script type=\"text/javascript\"> document.getElementById('numberOfSharesSell').disabled=false;
-				document.getElementById('sellSharesButton').disabled=false;</script>";
-
-			}
-			else
-			{
-				echo "";
-			}
-			?>
 
 	@endsection

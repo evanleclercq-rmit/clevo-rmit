@@ -3,10 +3,9 @@
 
 $stockSymbol = $_GET["q"];
 
-$start = '10-21-2016';
-$end = '10-31-2016';
-?>
-<?php
+$start = '11-20-2016';
+$end = date('m-d-Y');
+
 $StockMarketAPI = new StockMarketAPI;
 $StockMarketAPI->symbol = $stockSymbol;
 $StockMarketAPI->history = array(
