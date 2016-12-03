@@ -1,3 +1,13 @@
+<!--
+
+Blade for settings
+www.clevo-rmit.space/public/settings
+
+Contains interface to delete account and reset watchlist.
+If current user is an admin they will be redirected to admin.blade instead.
+
+-->
+
 @extends('layouts.app')
 
 @section('content')

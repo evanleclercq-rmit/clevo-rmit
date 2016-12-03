@@ -1,9 +1,19 @@
+<!--
+
+Blade for admin settings
+
+Contains interface to grant/revoke admin status, reset and delete accounts.
+If current user is not an admin they will be redirected to settings.blade instead.
+
+-->
+
 @extends('layouts.app')
 
 @section('content')
 
 <script type="text/javascript">
 
+// Keeps buttons disabled until a user is selected from dropdown menu
 function getID(id)
 {
 		document.getElementById('deleteButton').disabled=false;

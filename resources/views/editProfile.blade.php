@@ -1,3 +1,12 @@
+<!--
+
+Blade for the edit profile page
+
+Contains interface to change name, email, city, age 
+and to change password.
+
+-->
+
 @extends('layouts.app')
 
 @section('content')

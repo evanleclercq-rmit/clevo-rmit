@@ -1,3 +1,11 @@
+<!--
+
+Blade for the profile
+
+Contains interface to view list of transactions with ability to sort and filter by date
+
+-->
+
 @extends('layouts.app')
 
 @section('content')

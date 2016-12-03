@@ -1,9 +1,6 @@
 
 <?php
 $stockSymbol = $_GET["q"];
-    
-        
- 
             $cSession = curl_init(); 
             
             $queryURL = 

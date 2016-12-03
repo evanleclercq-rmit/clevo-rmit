@@ -1,5 +1,7 @@
  <?php
 
+// Functions to add and remove companies from watchlist
+
     function updateWatchlist($user, $symbol, $name) {
         $currentString = getWatchlist($user->id); 
         // If not first company to be saved
@@ -43,7 +45,6 @@
                     ->update(['watchlist' => $updatedWatchlist]);
 
          }
-        
 }
 
     // Deletes part of string between two points. Used in removeCompany()

@@ -1,5 +1,6 @@
-
 <?php
+
+    // Makes API request for current price data on a single stock
     function search_stock($stockSymbol)
     {
             $cSession = curl_init();
@@ -30,9 +31,5 @@
             return $stockData;
 
     }
-
-
-
-
 
 ?>

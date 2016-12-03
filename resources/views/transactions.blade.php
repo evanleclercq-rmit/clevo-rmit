@@ -1,7 +1,6 @@
 <!--
 
 Blade for the transactions page
-www.clevo-rmit.space/public/transactions
 
 Contains interface for company data lookup, buying and selling,
 price charts and adding to watchlist.
@@ -121,7 +120,6 @@ google.charts.load('current', {'packages':['corechart']});
     var oReq = new XMLHttpRequest(); //New request object
     oReq.onload = function() {
 
-       	//alert(this.responseText);
         var json = JSON.parse(this.responseText);
         var date = 0;
         var high = 0;
@@ -129,6 +127,7 @@ google.charts.load('current', {'packages':['corechart']});
         var rows = new Array();
         var data = new google.visualization.DataTable();
 
+    // removes year from date and changes format to DD/MM
      for(var i = 1; i < 8 ; i++) {
        	date = json[i].date.slice(5,10);
        	var [month, day] = date.split('-');
