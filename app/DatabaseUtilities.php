@@ -10,8 +10,6 @@
                 $holdingscsv = $holdingscsv.$value2.',';
         }
 
-        // echo ("csv=".$holdingscsv);
-
         DB::table('users')
             ->where('id', $id)
             ->update(['holdings' => $holdingscsv]);
@@ -27,9 +25,7 @@
             
             for ($j = 0, $i = 0; $i < count($currentarray); $i = $i+3) {
                 $current[$currentarray[$i]][$j] = $currentarray[$i+1];
-                $current[$currentarray[$i]][$j+1] = $currentarray[$i+2];
-                
-                
+                $current[$currentarray[$i]][$j+1] = $currentarray[$i+2];              
             }
         }
         return $current;

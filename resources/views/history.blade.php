@@ -1,3 +1,12 @@
+<!--
+
+Blade for the transaction history
+www.clevo-rmit.space/public/history
+
+Contains interface to view list of transactions with ability to sort and filter by date
+
+-->
+
 @extends('layouts.app')
 
 @section('content')

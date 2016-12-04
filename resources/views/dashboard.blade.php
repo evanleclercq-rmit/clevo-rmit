@@ -1,3 +1,13 @@
+<!--
+
+Blade for the dashboard page
+www.clevo-rmit.space/public/dashboard
+
+Contains interface for user's holdings info, leaderboard,
+quick stock lookup and viewing companies on watchlist.
+
+-->
+
 @extends('layouts.app')
 
 @section('content')
@@ -18,7 +28,7 @@ function resetSymbolSearch()
 
 var symbolSearch = document.getElementById("symbolSearchField").value;
 
-
+// Displays company data to corresponding html elements. Called from AJAX API function
 function processApiData(array)
 {
 	if(array.Name != null)
@@ -39,6 +49,7 @@ function processApiData(array)
 	}
 }
 
+// Makes the API request 
 function ajaxSearch(str)
 {
 	var xmlhttp = new XMLHttpRequest();
@@ -55,7 +66,7 @@ function ajaxSearch(str)
 	xmlhttp.send();
 }
 
-
+// Generates price chart. Called from AjaxSearch()
 function createChart(str) {
 
 	google.charts.load('current', {'packages':['corechart']});
@@ -74,13 +85,17 @@ function createChart(str) {
        	var low = 0;
        	var rows = new Array();
        	var data = new google.visualization.DataTable();
-
-       	for(var i = 1; i < 8 ; i++) {
-       		date = json[i].date.slice(5,10);
-       		high = parseFloat(json[i].high)
-       		low = parseFloat(json[i].low);
-       		rows.push([date, high, low]);
-       	}
+    
+    // removes year from date and changes format to DD/MM
+     for(var i = 1; i < 8 ; i++) {
+       	date = json[i].date.slice(5,10);
+       	var [month, day] = date.split('-');
+       	day = day.concat('-');
+       	date = day.concat(month);
+        high = parseFloat(json[i].high)
+        low = parseFloat(json[i].low);
+        rows.push([date, high, low]);
+      }
 
        	data.addColumn('string', 'Date');
        	data.addColumn('number', 'High');
@@ -88,20 +103,22 @@ function createChart(str) {
        	data.addRows(rows);
 
        	var options = {
-       		title: 'Company Performance - Last 7 Days',
-       		titleTextStyle: {
-       			color: '#636B6F',
-       			fontSize: '10px'},
-       			curveType: 'function',
-       			hAxis: {textStyle: {
-       				fontSize: 12
-       			}},
-       			vAxis: {textStyle: {
-       				fontSize: 12
-       			}},
-       			legend: { position: 'bottom'},
-       			chartArea: {'left': '5%', 'right': '2%',  'width': '100%', 'height': '80%'},
-       		};
+        	title: 'Company Performance - Last 7 Days',
+        	titleTextStyle: {
+    		color: '#636B6F',
+    		fontSize: '10px'},
+          curveType: 'function',
+            hAxis: {textStyle: {
+			    fontSize: 12
+  			}, title: "Date",
+  		      direction: '-1'},
+  			vAxis: {textStyle: {
+			    fontSize: 12
+  			}, format: '$#.###', title: "Price",
+},
+          legend: { position: 'bottom'},
+          chartArea: {'left': '10%', 'right': '2%',  'width': '100%', 'height': '80%'},
+        };
 
        		var chart = new google.visualization.AreaChart(document.getElementById('curve_chart'));
        		document.getElementById('removeWatch').disabled=false;

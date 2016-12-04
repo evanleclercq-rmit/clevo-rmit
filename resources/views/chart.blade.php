@@ -1,6 +1,11 @@
-<?php require(app_path().'/stockMarketAPI.php') ?>
-<?php
+<?php require(app_path().'/stockMarketAPI.php')
 
+// Makes API request for historical stock data to 
+// create price charts on dashboard and transactions pages
+
+?>
+
+<?php
 $stockSymbol = $_GET["q"];
 
 $start = '11-20-2016';

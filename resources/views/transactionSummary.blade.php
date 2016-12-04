@@ -1,3 +1,10 @@
+<!--
+
+Blade for the transaction summary
+
+Contains a summary of the transaction
+
+-->
 @extends('layouts.app')
 
 @section('content')
