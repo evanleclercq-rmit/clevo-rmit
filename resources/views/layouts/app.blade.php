@@ -119,7 +119,7 @@
             <!--footer-->
             <div id="footer">
                 <ul class="footernav">
-					<li><a href="{{ url('/gettingstarted') }}">Getting Started</a></li>
+					<li><a href="{{ url('/gettingStarted') }}">Getting Started</a></li>
                     <li><a href="{{ url('/termsofuse') }}">Terms of Use</a></li>
                     <li><a href="{{ url('/privacy') }}">Privacy</a></li>
                     <li><a href="{{ url('/sitemap') }}">Sitemap</a></li>

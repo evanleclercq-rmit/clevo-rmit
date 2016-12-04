@@ -9,6 +9,6 @@ use App\Http\Requests;
 class GettingStartedController extends Controller
 {
     public function index () {
-        return view('gettingstarted');
+        return view('gettingStarted');
     }
 }
